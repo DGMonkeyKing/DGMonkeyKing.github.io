@@ -1,30 +1,19 @@
 <?php
-
-$to = 'davidnew33@gmail.com';
-$subject = $_POST['subject'];
-
 $name = $_POST['name'];
 $email = $_POST['email'];
 $message = $_POST['message'];
-
-$message = <<<EMAIL
-
-Hi! my name is $name.
-
-$message
-
-From $email.
-EMAIL;
-
-$header = $email;
-
-//mail ( $to, $subject, $message, $additional_headers)
+$to = 'davidnew33@gmail.com'; 
+$subject = $_POST['subject'];
+		
+$body = "From: $name\n E-Mail: $email\n Message:\n $message";
+$header = "From: $name";
+	
 if($_POST){
-	if($email == '' || $message == '' || $subject == ''){
-		$feedback = 'Fill the obligatory fields, please.';
+	if($name == '' || $email == '' || $message == ''){
+		$feedback = 'Fill out the fields';
 	}else{
-		mail($to, $subject, $message, $header);
-		$feedback = 'Thanks for contact me!';
+		mail($to, $subject, $body, $header);
+		$feedback = 'Thanks!';
 	}
 }
 ?>
@@ -127,8 +116,10 @@ if($_POST){
 						<p>If you liked what you saw, don't hesitate to contact me. I'm currently looking for a job, so let's get in touch!</p>
 						<div class="row">
 							<div class="8u 12u$(small)">
-								<p id="feedback"><?php echo $feedback; ?></p>
-								<form method="post" action="?" enctype="text/plain">
+								<form action="?" method="post">
+									<?php if(!empty($feedback)) { ?>
+									<p id="feedback"><?php echo $feedback; ?></p>
+									<?php } ?>
 									<div class="row uniform 50%">
 										<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
 										<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email*" /></div>
@@ -137,7 +128,7 @@ if($_POST){
 									</div>
 									<p>* Fields are obligatory.</p>
 									<ul class="actions">
-										<li><input type="submit" value="Send Message" /></li>
+										<li><input type="submit" name="submit" value="Submit" /></li>
 									</ul>
 								</form>
 							</div>
