@@ -14,8 +14,8 @@ window.addEventListener("load",function() {
 		run_left: {frames: [15,16,17], rate: 1/5},
 		jump_right: {frames: [4], rate: 1/5},
 		jump_left: {frames: [18], rate: 1/5},
-		die_right: {frames: [12], loop: false, rate: 5, trigger: "died"},
-		die_left: {frames: [26], loop: false, rate: 5, trigger: "died"}
+		die_right: {frames: [12], loop: false, rate: 6, trigger: "died"},
+		die_left: {frames: [26], loop: false, rate: 6, trigger: "died"}
 	});
 
 	Q.animations("goomba_s", {
@@ -32,6 +32,12 @@ window.addEventListener("load",function() {
 
 	Q.animations("coin_s", {
 		glow: {frames: [0,1,2], rate: 1/6}
+	});
+
+	Q.Sprite.extend("Icon", {
+		init: function(p){
+			this._super(p, {sheet: "mario_small", x: Q.width/2-20, y: Q.height/2 + 10});
+		}
 	});
 
 	Q.Sprite.extend("Mario", {
@@ -56,11 +62,20 @@ window.addEventListener("load",function() {
       			}
     		});
 
-    		this.on("died", this, "destroy");
+    		this.on("died", this, "restart");
+		},
+
+		restart: function(){
+			this.destroy();
+			Q.clearStages();
+			if(Q.state.get("lives") < 0) Q.stageScene("gameEnded",1);
+			else Q.stageScene("lives",1);
 		},
 
 		dying: function(){
 			this.del('2d, platformerControls');
+			Q.state.dec("lives", 1);
+	    	Q.state.set("score", 0);
 			this.play("die_" + this.p.dir, 1);
 			gameOver = true;
 			this.p.vy = -5;
@@ -74,10 +89,9 @@ window.addEventListener("load",function() {
 					this.p.y+=this.p.vy;
 				}
 			}else{
-				if(this.p.y > Q.height+200){
+				if(this.p.y > Q.height+110){
 					Q.audio.stop();
 	    			Q.audio.play("music_die.mp3");
-	        		Q.stageScene("endGame", 1, { label: "You Died" }); 
 	        		this.dying();
 				}
 
@@ -118,7 +132,6 @@ window.addEventListener("load",function() {
 	    		if(collision.obj.isA("Mario")) { 
 	    			Q.audio.stop();
 	    			Q.audio.play("music_die.mp3");
-	        		Q.stageScene("endGame", 1, { label: "You Died" }); 
 	        		collision.obj.dying();
 	      		}
 	    	});
@@ -135,7 +148,9 @@ window.addEventListener("load",function() {
     	},
 
   		step:function(dt){
-  			if(!gameOver) this.play("move");
+  			if(!gameOver){
+  				this.play("move");
+  			} 
   			else{
   				this.play("stand");
   				this.del('2d');
@@ -215,6 +230,31 @@ window.addEventListener("load",function() {
 	  	box.fit(10);
 	});
 
+	Q.scene('lives',function(stage){
+		var box = stage.insert(new Q.UI.Container({
+	    	x: Q.width/2, y: Q.height/2, fill: "rgba(1,1,1,0)"
+	  	}));
+
+		var icon = stage.insert(new Q.Icon());
+
+	  	var label = box.insert(new Q.UI.Text({x:20, y: -10, color: "white",
+	  								label: "x "+Q.state.get("lives")}));
+
+	  	var time = 0;
+
+	  	stage.on("step", function(dt){
+	  		time += dt;
+	  		if(time >= 1.5){
+	  			Q.clearStages();
+	  			gameOver = false;
+	    		Q.stageScene('level1');
+	    		Q.stageScene('hud',1);
+	  		}
+	  	})
+
+	  	box.fit(10);
+	});
+
 	Q.scene('endGame',function(stage) {
 		var box = stage.insert(new Q.UI.Container({
 	    	x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
@@ -233,6 +273,36 @@ window.addEventListener("load",function() {
 	  	box.fit(20);
 	});
 
+	Q.scene('gameEnded',function(stage) {
+
+		var box = stage.insert(new Q.UI.Container({
+	    	x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0)"
+	  	}));
+	  
+		var button = box.insert(new Q.UI.Button({ x: 0, y: 0, h:480, w:320, fill: "rgba(0,0,0,0)"}));         
+
+	  	var label = box.insert(new Q.UI.Text({x:0, y: 0, color: "white",
+	  								label: "GAME OVER"}));    
+	  	
+	  	button.on("click",function() {
+	    	Q.clearStages();
+	    	Q.state.reset({score: 0, lives: 3});
+	    	Q.clearStages();
+	    	Q.stageScene("startGame",2);
+	  	});
+
+	  	stage.on("step",function() {
+	    	if(Q.inputs['fire']){
+		    	Q.clearStages();
+		    	Q.state.reset({score: 0, lives: 3});
+		    	Q.clearStages();
+		    	Q.stageScene("startGame",2);
+		    }
+	  	});
+	  	box.fit(1000);
+	});
+
+
 	Q.scene('startGame',function(stage) {
 
 		stage.insert(new Q.MainTitle({x:160, y: 240}));
@@ -242,20 +312,24 @@ window.addEventListener("load",function() {
 	  	}));
 	  
 		var button = box.insert(new Q.UI.Button({ x: 0, y: 0, h:480, w:320, fill: "rgba(0,0,0,0)"}));         
+	  	
+		var time = 0;
+
 	  	button.on("click",function() {
 	    	Q.clearStages();
-	    	Q.state.reset({score: 0, lives: 2});
-	    	Q.stageScene('level1');
-	    	Q.stageScene('hud',1);
+	    	Q.state.reset({score: 0, lives: 3});
+	    	Q.stageScene('lives',1);
 	  	});
 
-	  	button.on("step",function() {
-	    	if(Q.inputs['fire']){
-		    	Q.clearStages();
-		    	Q.state.reset({score: 0, lives: 2});
-		    	Q.stageScene('level1');
-		    	Q.stageScene('hud',1);
-		    }
+	  	button.on("step",function(dt) {
+	  		time+=dt;
+	  		if(time >= 1){
+		    	if(Q.inputs['fire']){
+			    	Q.clearStages();
+			    	Q.state.reset({score: 0, lives: 3});
+			    	Q.stageScene('lives',1);
+			    }
+			}
 	  	});
 	  	box.fit(1000);
 	});
