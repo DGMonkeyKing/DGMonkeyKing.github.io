@@ -1,22 +1,3 @@
-<?php
-$name = $_POST['name'];
-$email = $_POST['email'];
-$message = $_POST['message'];
-$to = 'davidnew33@gmail.com'; 
-$subject = $_POST['subject'];
-		
-$body = "From: $name\n E-Mail: $email\n Message:\n $message";
-$header = "From: $name";
-	
-if($_POST){
-	if($name == '' || $email == '' || $message == ''){
-		$feedback = 'Fill out the fields';
-	}else{
-		mail($to, $subject, $body, $header);
-		$feedback = 'Thanks!';
-	}
-}
-?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -57,7 +38,7 @@ if($_POST){
 
 		<!-- Main -->
 			<div id="main">
-
+								<h1><strong>Web under construction...</strong></h1>
 				<!-- One -->
 					<section id="one">
 						<header class="major">
@@ -89,20 +70,29 @@ if($_POST){
 							<article class="6u 12u$(xsmall) work-item">
 								<a href="images/fulls/sample-1.png" class="image fit thumb"><img src="images/thumbs/sample-1.png" alt="" /></a>
 								<h3>Spatial Sandbox</h3>
-								<p>An open space game designed for full freedom gameplay and todemonstrate my knowledge with Unity3D.</p>
+								<p>An open space game designed for full freedom gameplay and to demonstrate my knowledge with Unity3D.</p>
 								<a href="https://github.com/DGMonkeyKing/Solar-System-Simulation" target="_blank">Link to the source</a>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/Frogger.jpg" class="image fit thumb"><img src="images/thumbs/Frogger.jpg" alt="" /></a>
+								<a href="images/fulls/Frogger.jpg" class="image fit thumbs"><img src="images/thumbs/Frogger.jpg" alt="" /></a>
 								<h3>Frogger Game</h3>
 								<p>The old-school Frogger game develop with the engine of Galaga (In Javascript).</p>
-								<a href="https://github.com/DGMonkeyKing/Frogger" target="_blank">Link to the source</a>
+								<a href="https://github.com/DGMonkeyKing/Frogger" target="_blank" style="float:left;">Link to the source</a>
+								<a href="games/frogger/index.html" style="float:right;">GIVE IT A TRY!</a>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
 								<a href="images/fulls/mainTitle.png" class="image fit thumb"><img src="images/thumbs/mainTitle.png" alt="" /></a>
 								<h3>Super Mario Game</h3>
 								<p>A Super Mario Game powered by Quintus engine to try this engine.</p>
 								<a href="https://github.com/DGMonkeyKing/Super-Mario" target="_blank">Link to the source</a>
+								<a href="games/super-mario/index.html" style="float:right;">GIVE IT A TRY!</a>
+							</article>
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/memoryGame.png" class="image fit thumb"><img src="images/thumbs/memoryGame.png" alt="" /></a>
+								<h3>Memory Game</h3>
+								<p>A very simple memory game developed to catch ease with Javascript.</p>
+								<a href="https://github.com/DGMonkeyKing/Memory-Game" target="_blank">Link to the source</a>
+								<a href="games/memory-game/index.html" style="float:right;">GIVE IT A TRY!</a>
 							</article>
 						</div>
 						<ul class="actions">
@@ -115,7 +105,7 @@ if($_POST){
 						<h2>Get In Touch</h2>
 						<p>If you liked what you saw, don't hesitate to contact me. I'm currently looking for a job, so let's get in touch!</p>
 						<div class="row">
-							<div class="8u 12u$(small)">
+		<!--					<div class="8u 12u$(small)" display="none">
 								<form action="?" method="post">
 									<?php if(!empty($feedback)) { ?>
 									<p id="feedback"><?php echo $feedback; ?></p>
@@ -132,6 +122,7 @@ if($_POST){
 									</ul>
 								</form>
 							</div>
+		-->
 							<div class="4u$ 12u$(small)">
 								<ul class="labeled-icons">
 									<li>
