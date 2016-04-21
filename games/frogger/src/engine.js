@@ -30,7 +30,7 @@ var Game = new function() {
   this.initialize = function(canvasElementId,sprite_data,callback) {
     this.canvas = document.getElementById(canvasElementId);
 
-    this.playerOffset = 10;
+    this.playerOffset = 0;
     this.canvasMultiplier= 1;
     this.setupMobile();
 
@@ -119,13 +119,13 @@ var Game = new function() {
 
     if(h >= this.canvas.height * 1.75 || w >= this.canvas.height * 1.75) {
       this.canvasMultiplier = 2;
-      this.canvas.width = w / 2;
-      this.canvas.height = h / 2;
-      this.canvas.style.width = w + "px";
-      this.canvas.style.height = h + "px";
+  //    this.canvas.width = w / 2;
+  //    this.canvas.height = h / 2;
+  //    this.canvas.style.width = w + "px";
+  //    this.canvas.style.height = h + "px";
     } else {
-      this.canvas.width = w;
-      this.canvas.height = h;
+  //    this.canvas.width = w;
+  //    this.canvas.height = h;
     }
 
     this.canvas.style.position='absolute';
@@ -148,14 +148,14 @@ var SpriteSheet = new function() {
   };
 
   this.draw = function(ctx,sprite,x,y,frame) {
-    var s = this.map[sprite];
-    if(!frame) frame = 0;
-    ctx.drawImage(this.image,
-                     s.sx + frame * s.w, 
-                     s.sy, 
-                     s.w, s.h, 
-                     Math.floor(x), Math.floor(y),
-                     s.w, s.h);
+	var s = this.map[sprite];
+	if(!frame) frame = 0;
+	ctx.drawImage(this.image,
+						 s.sx + frame * s.w, 
+						 s.sy, 
+						 s.w, s.h, 
+						 Math.floor(x), Math.floor(y),
+						 s.w, s.h);
   };
 
   return this;
@@ -387,9 +387,9 @@ Level.prototype.draw = function(ctx) { };
 
 var TouchControls = function() {
 
-  var gutterWidth = 10;
+  var gutterWidth = 5;
   var unitWidth = Game.width/5;
-  var blockWidth = unitWidth-gutterWidth;
+  var blockWidth = unitWidth-gutterWidth*2;
 
   this.drawSquare = function(ctx,x,y,txt,on) {
     ctx.globalAlpha = on ? 0.9 : 0.6;
@@ -411,10 +411,12 @@ var TouchControls = function() {
     ctx.save();
 
     var yLoc = Game.height - unitWidth;
-    this.drawSquare(ctx,gutterWidth,yLoc,"\u25C0", Game.keys['left']);
-    this.drawSquare(ctx,unitWidth + gutterWidth,yLoc,"\u25B6", Game.keys['right']);
-    this.drawSquare(ctx,4*unitWidth,yLoc,"A",Game.keys['fire']);
-
+    this.drawSquare(ctx,gutterWidth,yLoc,"\u25C4", Game.keys['left']);
+    this.drawSquare(ctx,unitWidth + gutterWidth,yLoc,"\u25BA", Game.keys['right']);
+    this.drawSquare(ctx,4*unitWidth + gutterWidth,yLoc,"\u25B2",Game.keys['up']);
+    this.drawSquare(ctx,3*unitWidth + gutterWidth,yLoc,"\u25BC",Game.keys['down']);
+	this.drawSquare(ctx,2*unitWidth + gutterWidth,yLoc,"A",Game.keys['fire']);
+	
     ctx.restore();
   };
 
@@ -425,6 +427,8 @@ var TouchControls = function() {
 
     e.preventDefault();
     Game.keys['left'] = false;
+	Game.keys['up'] = false;
+	Game.keys['down'] = false;
     Game.keys['right'] = false;
     for(var i=0;i<e.targetTouches.length;i++) {
       touch = e.targetTouches[i];
@@ -435,13 +439,19 @@ var TouchControls = function() {
       if(x > unitWidth && x < 2*unitWidth) {
         Game.keys['right'] = true;
       } 
+	  if(x > 3*unitWidth && x < 4*unitWidth) {
+        Game.keys['down'] = true;
+      } 
+	  if(x > 4*unitWidth) {
+        Game.keys['up'] = true;
+      } 
     }
 
     if(e.type == 'touchstart' || e.type == 'touchend') {
       for(i=0;i<e.changedTouches.length;i++) {
         touch = e.changedTouches[i];
         x = touch.pageX / Game.canvasMultiplier - Game.canvas.offsetLeft;
-        if(x > 4 * unitWidth) {
+        if(x > 2 * unitWidth && x < 3*unitWidth) {
           Game.keys['fire'] = (e.type == 'touchstart');
         }
       }

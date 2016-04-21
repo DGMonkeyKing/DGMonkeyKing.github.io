@@ -1708,6 +1708,10 @@
 	section.special, article.special {
 		text-align: center;
 	}
+	
+	article p {
+		margin-bottom: 1.5em;
+	}
 
 	header p {
 		color: #b2b2b2;
@@ -2432,7 +2436,7 @@
 			color: #b2b2b2 !important;
 			cursor: default;
 		}
-
+	
 /* Work Item */
 
 	.work-item {
@@ -2444,14 +2448,13 @@
 		}
 
 		.work-item h3 {
-			font-size: 1em;
+			font-size: 1.5em;
 			margin: 0 0 0.5em 0;
 		}
 
 		.work-item p {
 			font-size: 0.8em;
 			line-height: 1.5em;
-			margin: 0;
 		}
 
 /* Header */

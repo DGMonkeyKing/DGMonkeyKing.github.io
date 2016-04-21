@@ -25,6 +25,15 @@
 				else if(e.innerHTML == 'Full Portfolio') e.innerHTML = 'That´s Enough';
 				else if(e.innerHTML == 'That´s Enough') e.innerHTML = 'Full Portfolio';
 			 }
+			 function autofitIframe(id){
+				if (!window.opera && document.all && document.getElementById){
+					id.style.height=id.contentWindow.document.body.scrollHeight;
+					id.style.width=id.document.body.scrollWidth;
+				} else if(document.getElementById) {
+					id.style.height=id.contentDocument.body.scrollHeight+"px";
+					id.style.width=id.body.scrollWidth+"px";
+				}
+			}
 		</script>
 	</head>
 	<body id="top">
@@ -32,7 +41,8 @@
 		<!-- Header -->
 			<header id="header">
 				<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-				<h1><strong>David Gómez</strong> </br> Freelancer videogame developer</br>
+				<h1><strong>David Gómez</strong></h1>
+				<h1>Freelancer videogame developer</br>
 				and restless student of computer science.</h1>
 			</header>
 
@@ -71,28 +81,28 @@
 								<a href="images/fulls/sample-1.png" class="image fit thumb"><img src="images/thumbs/sample-1.png" alt="" /></a>
 								<h3>Spatial Sandbox</h3>
 								<p>An open space game designed for full freedom gameplay and to demonstrate my knowledge with Unity3D.</p>
-								<a href="https://github.com/DGMonkeyKing/Solar-System-Simulation" target="_blank">Link to the source</a>
+								<a href="https://github.com/DGMonkeyKing/Solar-System-Simulation" target="_blank" class="button">Link to the source</a>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
 								<a href="images/fulls/Frogger.jpg" class="image fit thumbs"><img src="images/thumbs/Frogger.jpg" alt="" /></a>
 								<h3>Frogger Game</h3>
 								<p>The old-school Frogger game develop with the engine of Galaga (In Javascript).</p>
-								<a href="https://github.com/DGMonkeyKing/Frogger" target="_blank" style="float:left;">Link to the source</a>
-								<a href="games/frogger/index.html" style="float:right;">GIVE IT A TRY!</a>
+								<a href="https://github.com/DGMonkeyKing/Frogger" target="_blank" style="float:left;" class="button">Link to the source</a>
+								<a id="frogger-button" href="games/frogger/index.html" style="float:right;" class="button">GIVE IT A TRY!</a>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
 								<a href="images/fulls/mainTitle.png" class="image fit thumb"><img src="images/thumbs/mainTitle.png" alt="" /></a>
 								<h3>Super Mario Game</h3>
 								<p>A Super Mario Game powered by Quintus engine to try this engine.</p>
-								<a href="https://github.com/DGMonkeyKing/Super-Mario" target="_blank">Link to the source</a>
-								<a href="games/super-mario" style="float:right;">GIVE IT A TRY!</a>
+								<a href="https://github.com/DGMonkeyKing/Super-Mario" target="_blank" class="button">Link to the source</a>
+								<a href="games/super-mario" style="float:right;" class="button">GIVE IT A TRY!</a>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
 								<a href="images/fulls/memoryGame.png" class="image fit thumb"><img src="images/thumbs/memoryGame.png" alt="" /></a>
 								<h3>Memory Game</h3>
 								<p>A very simple memory game developed to catch ease with Javascript.</p>
-								<a href="https://github.com/DGMonkeyKing/Memory-Game" target="_blank">Link to the source</a>
-								<a href="games/memory-game/index.html" style="float:right;">GIVE IT A TRY!</a>
+								<a href="https://github.com/DGMonkeyKing/Memory-Game" target="_blank" class="button">Link to the source</a>
+								<a href="games/memory-game/index.html" style="float:right;" class="button">GIVE IT A TRY!</a>
 							</article>
 						</div>
 						<ul class="actions">
