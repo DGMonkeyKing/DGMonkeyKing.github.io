@@ -1750,9 +1750,9 @@
 	}
 
 	label {
-		color: #787878;
+		color: #CBCBCB;
 		display: block;
-		font-size: 0.9em;
+		font-size: 2em;
 		font-weight: 400;
 		margin: 0 0 1em 0;
 	}
@@ -2513,11 +2513,11 @@
 		}
 
 			#footer .icons a {
-				color: rgba(255, 255, 255, 0.4);
+				color: rgba(255, 255, 255, 1);
 			}
 
 		#footer .copyright {
-			color: rgba(255, 255, 255, 0.4);
+			color: rgba(255, 255, 255, 1);
 			font-size: 0.8em;
 			list-style: none;
 			margin: 1em 0 0 0;
@@ -2525,7 +2525,7 @@
 		}
 
 			#footer .copyright li {
-				border-left: solid 1px rgba(255, 255, 255, 0.25);
+				border-left: solid 1px rgba(255, 255, 255, 1);
 				display: inline-block;
 				line-height: 1em;
 				margin-left: 0.75em;
@@ -3045,6 +3045,26 @@
 
 	}
 
+	
+    #tooltip1 {
+		position: relative; 
+	}
+    #tooltip1 a span { 
+		display: none; color: rgba(0, 0, 0, 0.5); 
+	}
+    #tooltip1 a:hover span { 
+		display: flex;
+		position: absolute; 
+		width: 200px;
+		background-color: rgba(0, 0, 0, 0.5); 
+		color: rgba(0, 0, 0, 1); 
+		border-radius: 67px 67px 67px 67px;
+		-moz-border-radius: 67px 67px 67px 67px;
+		-webkit-border-radius: 67px 67px 67px 67px;
+		border: 5px groove #c7c7c7;
+		padding: 0 5px; 
+	}
+	
 /* XSmall */
 
 	@media screen and (max-width: 480px) {

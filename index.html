@@ -81,32 +81,47 @@
 						<h1>All I am working on...</h1>
 						<h3>Here are the projects I'm working on. I will try to keep update the ones which are not uploaded on Github.</h3>
 						<div class="row">
-							<article class="6u 12u$(xsmall) work-item">
+							<article id="spatial-sandbox" class="6u 12u$(xsmall) work-item">
 								<a href="images/fulls/sample-1.png" class="image fit thumb"><img src="images/thumbs/sample-1.png" alt="" /></a>
 								<h3>Spatial Sandbox</h3>
 								<p>An open space game designed for full freedom gameplay and to demonstrate my knowledge with Unity3D.</p>
 								<a href="https://github.com/DGMonkeyKing/Solar-System-Simulation" target="_blank" >Link to the source</a>
 							</article>
-							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/Frogger.jpg" class="image fit thumbs"><img src="images/thumbs/Frogger.jpg" alt="" /></a>
+							<article id="frogger" class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/Frogger.jpg" class="image fit thumb"><img src="images/thumbs/Frogger.jpg" alt="" /></a>
 								<h3>Frogger Game</h3>
 								<p>The old-school Frogger game develop with the engine of Galaga (In Javascript).</p>
 								<a href="https://github.com/DGMonkeyKing/Frogger" target="_blank" style="float:left;" >Link to the source</a>
 								<a id="frogger-button" href="games/frogger/index.html" style="float:right;" >GIVE IT A TRY!</a>
 							</article>
-							<article class="6u 12u$(xsmall) work-item">
+							<article id="super-mario" class="6u 12u$(xsmall) work-item">
 								<a href="images/fulls/mainTitle.png" class="image fit thumb"><img src="images/thumbs/mainTitle.png" alt="" /></a>
+								<a href="images/fulls/memoryGame.png" ><img alt="" /></a>
 								<h3>Super Mario Game</h3>
 								<p>A Super Mario Game powered by Quintus engine to try this engine.</p>
 								<a href="https://github.com/DGMonkeyKing/Super-Mario" target="_blank" >Link to the source</a>
 								<a href="games/super-mario" style="float:right;" >GIVE IT A TRY!</a>
 							</article>
-							<article class="6u 12u$(xsmall) work-item">
+							<article id="memory-game" class="6u 12u$(xsmall) work-item">
 								<a href="images/fulls/memoryGame.png" class="image fit thumb"><img src="images/thumbs/memoryGame.png" alt="" /></a>
 								<h3>Memory Game</h3>
 								<p>A very simple memory game developed to catch ease with Javascript.</p>
 								<a href="https://github.com/DGMonkeyKing/Memory-Game" target="_blank" >Link to the source</a>
 								<a href="games/memory-game/index.html" style="float:right;" >GIVE IT A TRY!</a>
+							</article>
+							<article id="galaga-game" style="display:none;" class="fullport 6u 12u$(xsmall) work-item">
+								<a href="images/fulls/galagaGame.png" class="image fit thumb"><img src="images/thumbs/galagaGame.png" alt="" /></a>
+								<h3>Galaga Game</h3>
+								<p>An spacialship adventure genuine Galaga-style game.</p>
+								<a href="https://github.com/DGMonkeyKing/Galaga-Game" target="_blank" >Link to the source</a>
+								<a href="games/galaga-game/Builds.html" style="float:right;" >GIVE IT A TRY!</a>
+							</article>
+							<article id="acbtg" style="display:none;" class="fullport 6u 12u$(xsmall) work-item">
+								<a href="videos/videos.html" data-poptrox="iframe,1042x740" class="image fit thumb"><img src="images/thumbs/acbtg.png" alt="" /></a>
+								<h3>Another Choosen by the Goddess</h3>
+								<p>An adventure game based on Zelda's games.</p>
+								<a href="descarga.php?file=AnotherChoosenByTheGoddess.zip" target="_blank">Download the game!</a>
+								<a href="games/acbtg/Build.html" style="float:right;" >GIVE IT A TRY!</a>
 							</article>
 						</div>
 						<ul class="actions">
@@ -119,24 +134,27 @@
 						<h1>Get In Touch</h1>
 						<h3>If you liked what you saw, don't hesitate to contact me. I'm currently looking for a job, so let's get in touch!</h3>
 						<div class="row">
-		<!--					<div class="8u 12u$(small)" display="none">
-								<form action="?" method="post">
-									<?php if(!empty($feedback)) { ?>
-									<p id="feedback"><?php echo $feedback; ?></p>
-									<?php } ?>
+							<div class="8u 12u$(small)" display="none">
+								<form id="contactform" method="post" name="contact">
 									<div class="row uniform 50%">
 										<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
 										<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email*" /></div>
 										<div class="12u$"><input type="text" name="subject" id="subject" placeholder="Subject*" /></div>
 										<div class="12u$"><textarea name="message" id="message" placeholder="Message*" rows="4"></textarea></div>
+										<div class="12u$"><textarea name="comments" id="comments" placeholder="Any comment..." rows="2"></textarea></div>
+										<input type="text" name="_gotcha" style="display:none" />
 									</div>
 									<p>* Fields are obligatory.</p>
 									<ul class="actions">
 										<li><input type="submit" name="submit" value="Submit" /></li>
 									</ul>
 								</form>
+								<script>
+									var contactform =  document.getElementById('contactform');
+									contactform.setAttribute('action', '//formspree.io/' + 'david' + 'new' + '33' + '@' + 'gmail' + '.' + 'com');
+								</script>
 							</div>
-		-->
+		
 							<div class="4u$ 12u$(small)">
 								<ul class="labeled-icons">
 									<li>
@@ -510,13 +528,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		<!-- Footer -->
 			<footer id="footer">
 				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 					<li><a href="https://github.com/DGMonkeyKing" target="_blank" class="icon fa-github"><span class="label">Github</span></a></li>
 					<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
 					<li><a href="mailto:davidnew33@gmail.com" class="icon fa-envelope-o"><span class="label">Email me!</span></a></li>
 				</ul>
 				<ul class="copyright">
-					<li>&copy; David Gomez Blanco</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li>&copy; David Gomez Blanco</li>
 				</ul>
 			</footer>
 
