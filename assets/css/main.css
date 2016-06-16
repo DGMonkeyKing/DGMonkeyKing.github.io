@@ -18,6 +18,7 @@
 
 	body {
 		line-height: 1;
+		
 	}
 
 	ol, ul {
@@ -1560,7 +1561,7 @@
 		}
 
 	body, input, select, textarea {
-		color: #a2a2a2;
+		color: #515151;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 16pt;
 		font-weight: 400;
@@ -1584,7 +1585,7 @@
 		}
 
 	strong, b {
-		color: #787878;
+		color: #ffffff;
 		font-weight: 400;
 	}
 
@@ -1597,7 +1598,7 @@
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #787878;
+		color: rgba(255, 255, 255, 1);
 		font-weight: 400;
 		line-height: 1em;
 		margin: 0 0 1em 0;
@@ -1614,21 +1615,25 @@
 	}
 
 	h2 {
+		color: rgba(255, 255, 255, 0.9);
 		font-size: 1.5em;
 		line-height: 1.5em;
 	}
 
 	h3 {
+		color: rgba(255, 255, 255, 0.85);
 		font-size: 1.25em;
 		line-height: 1.5em;
 	}
 
 	h4 {
+		color: rgba(255, 255, 255, 0.8);
 		font-size: 1.1em;
 		line-height: 1.5em;
 	}
 
 	h5 {
+		color: rgba(255, 255, 255, 1);
 		font-size: 0.9em;
 		line-height: 1.5em;
 	}
@@ -1750,7 +1755,7 @@
 	}
 
 	label {
-		color: #CBCBCB;
+		color: rgba(0, 0, 0, 0.8);
 		display: block;
 		font-size: 2em;
 		font-weight: 400;
@@ -1775,6 +1780,10 @@
 		padding: 0 0.75em;
 		text-decoration: none;
 		width: 100%;
+	}
+	
+	textarea, input[type="text"], input[type="email"] {
+		background: rgba(230, 230, 230, 0.8);
 	}
 
 		input[type="text"]:invalid,
@@ -2456,7 +2465,15 @@
 			font-size: 0.8em;
 			line-height: 1.5em;
 		}
-
+		
+	#top{
+		background: url("../../images/nintend.png") no-repeat center center fixed; 
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: 100%;
+	}
+		
+		
 /* Header */
 
 	#header {
@@ -3043,6 +3060,14 @@
 					margin-top: -1em;
 				}
 
+	}
+	
+	p {
+		color: rgba(255, 255, 255, 0.7);
+	}
+	
+	ul {
+		color: rgba(255, 255, 255, 0.6);
 	}
 
 	
