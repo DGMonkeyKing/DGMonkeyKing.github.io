@@ -1783,7 +1783,7 @@
 	}
 	
 	textarea, input[type="text"], input[type="email"] {
-		background: rgba(230, 230, 230, 0.8);
+		background: rgba(230, 230, 230, 0.4);
 	}
 
 		input[type="text"]:invalid,
@@ -2339,7 +2339,7 @@
 		background-color: transparent;
 		border-radius: 0.35em;
 		border: solid 3px #efefef;
-		color: #787878 !important;
+		color: #E1E1E1 !important;
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 400;
