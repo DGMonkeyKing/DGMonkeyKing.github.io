@@ -40,7 +40,7 @@
 					
 		<!-- Header -->
 			<header id="header">
-				<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+			<!--	<img class="image avatar" src="images/thumbs/foto_carnet.png" alt="" />-->
 				<h1><strong>David Gómez</strong></h1>
 				<h1>Freelancer videogame developer</br>
 				and restless computer science engineer.</h1>
@@ -51,6 +51,7 @@
 			<!--<h1><strong>Web under construction...</strong></h1>-->
 				<a href="#one" style="display: inline-block; margin: 5px;" class="button">About me</a>	
 				<a href="#two" style="display: inline-block; margin: 5px;" class="button">Working on</a>
+				<a href="#five" style="display: inline-block; margin: 5px;" class="button">Artistic stuffs</a>
 				<a href="#three" style="display: inline-block; margin: 5px;" class="button">Contact me</a>
 				<a href="#four" style="display: inline-block; margin: 5px;" class="button">CV</a>				
 				<!-- One -->
@@ -68,8 +69,11 @@
 						(<a href="http://luna.inf.um.es/2015/results.php">link to the contest results.</a>).</br></br>
 						Thanks to the abilities and capacity I demonstrate in the contest, a professor of the Computing Department of my University took me as
 						an intern to collaborate in projects related with parallel programming and library porting while I was finishing my studies.</br> </br>
+						But development is not all I am interested about... Art, painting and music are also things I am focus on. Modeling of characters, maps and levels or 
+						sound tracks for videogames are just some of the things I love to do in my freetime.</br></br>
+			<!--			I've worked for UC3M as developer an tech department -->
 						I am currently working in various projects related with the thing listed above, but why don't you take 
-						a look yourself? Below I list my projects that can be found in Github as well.</br></br>
+						a look yourself? Below I list my projects that can be found in Github and Pinterest as well.</br></br>
 						<strong>I invite you to browse the projects and to contact me!</strong></p>
 						<ul class="actions">
 							<li><a id="learn-more-button" href="javascript:showhideID('learnmore', 'learn-more-button')" class="button">Learn More</a></li>
@@ -127,7 +131,31 @@
 							<li><a id="full-port-button" href="javascript:showhideCLASS('fullport', 'full-port-button')" class="button">Full Portfolio</a></li>
 						</ul>
 					</section>
-
+<!-- Five -->
+					<section id="five">
+						<h1>Some artistic stuffs...</h1>
+						<h3>Paintings, draws and modeling were update here. The most artistic part of the games.</h3>
+						<div class="row">
+							<article id="violet" class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/girl.jpg" class="image fit thumb"><img src="images/thumbs/girl-cut.jpg" alt="" /></a>
+								<h3>Violet</h3>
+								<p>Character design.</p>
+							</article>	
+							<article id="tiger" class="6u 12u$(xsmall) work-item" style="float: right;">
+								<a href="images/fulls/pokemon.jpg" class="image fit thumb"><img src="images/thumbs/pokemon.jpg" alt="" /></a>
+								<h3>Siberian tiger Pokemon</h3>
+								<p>Character design.</p>
+							</article>
+							<article id="submarine-tiles" class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/underwater.jpg" class="image fit thumb"><img src="images/thumbs/underwater-cut.jpg" alt="" /></a>
+								<h3>Underwater map custom</h3>
+								<p>Map and tiles design.</p>
+							</article>
+						</div>
+						<ul class="actions">
+							<li><a id="full-art-button" href="javascript:showhideCLASS('fullart', 'full-art-button')" class="button">Full Portfolio</a></li>
+						</ul>
+					</section>
 				<!-- Three -->
 					<section id="three">
 						<h1>Get In Touch</h1>
@@ -169,327 +197,6 @@
 							</div>
 						</div>
 					</section>
-
-				<!-- Four -->
-				<!--
-					<section id="four">
-						<h2>Elements</h2>
-
-						<section>
-							<h4>Text</h4>
-							<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-							This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-							This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-							<hr />
-							<header>
-								<h4>Heading with a Subtitle</h4>
-								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-							</header>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<header>
-								<h5>Heading with a Subtitle</h5>
-								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-							</header>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<hr />
-							<h2>Heading Level 2</h2>
-							<h3>Heading Level 3</h3>
-							<h4>Heading Level 4</h4>
-							<h5>Heading Level 5</h5>
-							<h6>Heading Level 6</h6>
-							<hr />
-							<h5>Blockquote</h5>
-							<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-							<h5>Preformatted</h5>
-							<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-print 'Iteration ' + i;
-deck.shuffle();
-i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-						</section>
-
-						<section>
-							<h4>Lists</h4>
-							<div class="row">
-								<div class="6u 12u$(xsmall)">
-									<h5>Unordered</h5>
-									<ul>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Sagittis adipiscing lorem eleifend.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ul>
-									<h5>Alternate</h5>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Sagittis adipiscing lorem eleifend.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ul>
-								</div>
-								<div class="6u$ 12u$(xsmall)">
-									<h5>Ordered</h5>
-									<ol>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Etiam vel felis at lorem sed viverra.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Etiam vel felis at lorem sed viverra.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ol>
-									<h5>Icons</h5>
-									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-										<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-										<li><a href="#" class="icon fa-tumblr"><span class="label">Tumblr</span></a></li>
-									</ul>
-								</div>
-							</div>
-							<h5>Actions</h5>
-							<ul class="actions">
-								<li><a href="#" class="button special">Default</a></li>
-								<li><a href="#" class="button">Default</a></li>
-							</ul>
-							<ul class="actions small">
-								<li><a href="#" class="button special small">Small</a></li>
-								<li><a href="#" class="button small">Small</a></li>
-							</ul>
-							<div class="row">
-								<div class="6u 12u$(small)">
-									<ul class="actions vertical">
-										<li><a href="#" class="button special">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</div>
-								<div class="6u$ 12u$(small)">
-									<ul class="actions vertical small">
-										<li><a href="#" class="button special small">Small</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-								</div>
-								<div class="6u 12u$(small)">
-									<ul class="actions vertical">
-										<li><a href="#" class="button special fit">Default</a></li>
-										<li><a href="#" class="button fit">Default</a></li>
-									</ul>
-								</div>
-								<div class="6u$ 12u$(small)">
-									<ul class="actions vertical small">
-										<li><a href="#" class="button special small fit">Small</a></li>
-										<li><a href="#" class="button small fit">Small</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-
-						<section>
-							<h4>Table</h4>
-							<h5>Default</h5>
-							<div class="table-wrapper">
-								<table>
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item One</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Two</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Three</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Four</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Five</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-
-							<h5>Alternate</h5>
-							<div class="table-wrapper">
-								<table class="alt">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item One</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Two</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Three</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Four</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Five</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-						</section>
-
-						<section>
-							<h4>Buttons</h4>
-							<ul class="actions">
-								<li><a href="#" class="button special">Special</a></li>
-								<li><a href="#" class="button">Default</a></li>
-							</ul>
-							<ul class="actions">
-								<li><a href="#" class="button big">Big</a></li>
-								<li><a href="#" class="button">Default</a></li>
-								<li><a href="#" class="button small">Small</a></li>
-							</ul>
-							<ul class="actions fit">
-								<li><a href="#" class="button special fit">Fit</a></li>
-								<li><a href="#" class="button fit">Fit</a></li>
-							</ul>
-							<ul class="actions fit small">
-								<li><a href="#" class="button special fit small">Fit + Small</a></li>
-								<li><a href="#" class="button fit small">Fit + Small</a></li>
-							</ul>
-							<ul class="actions">
-								<li><a href="#" class="button special icon fa-download">Icon</a></li>
-								<li><a href="#" class="button icon fa-download">Icon</a></li>
-							</ul>
-							<ul class="actions">
-								<li><span class="button special disabled">Special</span></li>
-								<li><span class="button disabled">Default</span></li>
-							</ul>
-						</section>
-
-						<section>
-							<h4>Form</h4>
-							<form method="post" action="#">
-								<div class="row uniform 50%">
-									<div class="6u 12u$(xsmall)">
-										<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-									</div>
-									<div class="6u$ 12u$(xsmall)">
-										<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-									</div>
-									<div class="12u$">
-										<div class="select-wrapper">
-											<select name="demo-category" id="demo-category">
-												<option value="">- Category -</option>
-												<option value="1">Manufacturing</option>
-												<option value="1">Shipping</option>
-												<option value="1">Administration</option>
-												<option value="1">Human Resources</option>
-											</select>
-										</div>
-									</div>
-									<div class="4u 12u$(small)">
-										<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-										<label for="demo-priority-low">Low Priority</label>
-									</div>
-									<div class="4u 12u$(small)">
-										<input type="radio" id="demo-priority-normal" name="demo-priority">
-										<label for="demo-priority-normal">Normal Priority</label>
-									</div>
-									<div class="4u$ 12u(small)">
-										<input type="radio" id="demo-priority-high" name="demo-priority">
-										<label for="demo-priority-high">High Priority</label>
-									</div>
-									<div class="6u 12u$(small)">
-										<input type="checkbox" id="demo-copy" name="demo-copy">
-										<label for="demo-copy">Email me a copy of this message</label>
-									</div>
-									<div class="6u$ 12u$(small)">
-										<input type="checkbox" id="demo-human" name="demo-human" checked>
-										<label for="demo-human">I am a human and not a robot</label>
-									</div>
-									<div class="12u$">
-										<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-									</div>
-									<div class="12u$">
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="special" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</div>
-								</div>
-							</form>
-						</section>
-
-						<section>
-							<h4>Image</h4>
-							<h5>Fit</h5>
-							<div class="box alt">
-								<div class="row 50% uniform">
-									<div class="12u$"><span class="image fit"><img src="images/fulls/05.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
-									<div class="4u$"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/04.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/05.jpg" alt="" /></span></div>
-									<div class="4u$"><span class="image fit"><img src="images/thumbs/06.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
-									<div class="4u$"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
-								</div>
-							</div>
-							<h5>Left &amp; Right</h5>
-							<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-							<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						</section>
-
-					</section>
-				-->
-				
 			<!-- Four -->
 				<section id="four">
 					<strong><h1>Curriculum Vitae</h1>
@@ -512,19 +219,21 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<strong><h3>KNOWLEDGE AS A COMPUTER ENGINEER</h3>
 					<ul>
 						<li>Windows and Linux Systems user. <strong>Bash Command Line</strong> and scripting lenguages.</li>
-						<li>High knowledge on: <strong>C, C++, Java, Javascript, C#, HTML,CSS, MySQL, Octave</strong> and <strong>Matlab</strong>.</li>
+						<li>High knowledge on: <strong>C, C++, Java, Javascript, C#, HTML,CSS, MySQL, SQLServer, Octave</strong> and <strong>Matlab</strong> as well as <strong>Google Scripting</strong>.</li>
 						<li>Knowledge in other lenguages: <strong>Python, Jess, Prolog, Ruby, Ruby on Rails</strong> and <strong>Objective-C</strong>.</li>
-						<li>Enterprise Software and database connectivity with <strong>JavaEE</strong>.</li>
+						<li>Enterprise Software and database connectivity with <strong>JavaEE</strong> using <strong>JSP</strong>.</li>
 						<li>Wide experience in APIs as <strong>OpenGL, OpenCL, CUDA, OpenMP, OpenACC</strong> and <strong>MPI</strong> (used for parallel programing and graphic enviroments)</li>
 						<li>Experience with IDEs: <strong>Eclipse, Android Studio, Visual Studio</strong> and <strong>MonoDeveloper</strong>.</li>
-						<li>Experience with <strong>Unity3D, Unreal Engine</strong> and <strong>Quintus</strong></li>
+						<li>Experience with <strong>Unity3D, Unreal Engine, Game Maker, RPGMaker</strong> and <strong>Quintus</strong></li>
 					</ul>
 					<strong><h3>LENGUAGES</h3>
 					<h4>English: B2.1</h4>
 					<strong><h3>CAREER PATH</h3>
 					<strong><h4>Web App for management of the inner competition (UC3M)</h4>
-					<p>Use of Eclipse, JavaEE, SQL Server and login systems.</br>
-					<a href="http://espaciox.uc3m.es/GesCompi/" target="_blank">GesCompi</a></p>
+					<p>Use of Eclipse, JavaEE, JSP, SQL Server and login systems.</br>
+					<a href="http://espaciox.uc3m.es/GesCompi2/" target="_blank">GesCompi</a></p>
+					<strong><h4>Google Scripting tools for Carlos III University</h4>
+					<p>Use of Google scripts to develop tools of management and solutions</p>
 					<strong><h4>Educational Staff-member of <a href="https://www.rockbotic.es/" target="_blank">Rockbotic</a></h4>
 					<p>Offer curses in robotics and videogames to young people of differents ages.</p>
 					<strong><h3>OTHER INTERESTING FACTS</h3>
@@ -537,11 +246,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			</div>
 
 		<!-- Footer -->
-			<footer id="footer">
+			<footer id="footer" style="background-color: rgba(0,0,0,0.6);padding-top: 25px;">
 				<ul class="icons">
-					<li><a href="https://github.com/DGMonkeyKing" target="_blank" class="icon fa-github"><span class="label">Github</span></a></li>
-					<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
-					<li><a href="mailto:davidnew33@gmail.com" class="icon fa-envelope-o"><span class="label">Email me!</span></a></li>
+					<li><a href="https://github.com/DGMonkeyKing" target="_blank" class="icon fa-github fa-2x"><span class="label">Github</span></a></li>
+					<li><a href="https://es.pinterest.com/davidnew33/mines-owns/" target="_blank" class="icon fa-pinterest-p fa-2x"><span class="label"></span></a></li>
+					<!--<li><a href="#" class="icon fa-linkedin fa-2x"><span class="label">Linkedin</span></a></li>-->
+					<li><a href="mailto:davidnew33@gmail.com" class="icon fa-envelope-o fa-2x"><span class="label">Email me!</span></a></li>
 				</ul>
 				<ul class="copyright">
 					<li>&copy; David Gomez Blanco</li>
@@ -555,7 +265,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
+			<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 	</body>
 </html>
 

@@ -2467,7 +2467,7 @@
 		}
 		
 	#top{
-		background: url("../../images/background.jpg") repeat center center fixed; 
+		background: url("../../images/background.jpg") repeat center center fixed;
 	}
 		
 		
@@ -2563,6 +2563,7 @@
 		max-width: 54em;
 		padding: 8em 4em 4em 4em;
 		width: calc(100% - 35%);
+		background-color: rgba(0,0,0,0.6);
 	}
 
 		#main > section {
