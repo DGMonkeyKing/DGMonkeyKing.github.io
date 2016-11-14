@@ -3,7 +3,7 @@
 	var settings = {
 
 		// Parallax background effect?
-			parallax: true,
+			parallax: false,
 
 		// Parallax factor (lower = more intense, higher = less intense).
 			parallaxFactor: 20
@@ -93,13 +93,55 @@
 			// Lightbox gallery.
 				$window.on('load', function() {
 
-					$('#two').poptrox({
+					$('#galaga-game').poptrox({
 						caption: function($a) { return $a.next('h3').text(); },
 						overlayColor: '#2c2c2c',
 						overlayOpacity: 0.85,
 						popupCloserText: '',
 						popupLoaderText: '',
-						selector: '.work-item a.image',
+						selector: 'a.image',
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: false,
+						usePopupNav: true,
+						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+					});
+					
+					$('#memory-game').poptrox({
+						caption: function($a) { return $a.next('h3').text(); },
+						overlayColor: '#2c2c2c',
+						overlayOpacity: 0.85,
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: 'a.image',
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: false,
+						usePopupNav: true,
+						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+					});
+					
+					$('#super-mario').poptrox({
+						caption: function($a) { return $a.next('h3').text(); },
+						overlayColor: '#2c2c2c',
+						overlayOpacity: 0.85,
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: 'a.image',
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: false,
+						usePopupNav: true,
+						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+					});
+					
+					$('#frogger').poptrox({
+						caption: function($a) { return $a.next('h3').text(); },
+						overlayColor: '#2c2c2c',
+						overlayOpacity: 0.85,
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: 'a.image',
 						usePopupCaption: true,
 						usePopupDefaultStyling: false,
 						usePopupEasyClose: false,
@@ -107,6 +149,33 @@
 						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
 					});
 
+					$('#spatial-sandbox').poptrox({
+						caption: function($a) { return $a.next('h3').text(); },
+						overlayColor: '#2c2c2c',
+						overlayOpacity: 0.85,
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: 'a.image',
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: false,
+						usePopupNav: true,
+						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+					});
+					
+					$('#acbtg').poptrox({
+						caption: function($a) { return $a.next('h3').text(); },
+						overlayColor: '#2c2c2c',
+						overlayOpacity: 0.85,
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: 'a.image',
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: false,
+						usePopupNav: true,
+						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+					});
 				});
 
 	});
