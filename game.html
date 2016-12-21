@@ -47,7 +47,7 @@
 			
 				waiting = null;
 				var div = document.getElementById("word");
-				var property= "kanji";//pickRandomProperty(json);
+				var property= pickRandomProperty(json);
 				var good = pickRandomProperty(json[property]);
 				var show = good;
 				correct = json[property][good];
@@ -67,7 +67,7 @@
 					lt.innerHTML = correct;
 					list.push(correct);
 				}else{
-	//				property=pickRandomProperty(json);
+					property=pickRandomProperty(json);
 					good = pickRandomProperty(json[property]);
 					show = good;
 					if(!romanji) show = json[property][good];
@@ -81,7 +81,7 @@
 					lb.innerHTML = correct;
 					list.push(correct);
 				}else{
-	//				property=pickRandomProperty(json);
+					property=pickRandomProperty(json);
 					do{
 						good = pickRandomProperty(json[property]);
 						show = good;
@@ -97,7 +97,7 @@
 					rt.innerHTML = correct;
 					list.push(correct);
 				}else{
-	//				property=pickRandomProperty(json);
+					property=pickRandomProperty(json);
 					good = pickRandomProperty(json[property]);
 					show = good;
 					if(!romanji) show = json[property][good];
@@ -117,7 +117,7 @@
 					rb.innerHTML = correct;
 					list.push(correct);
 				}else{
-	//				property=pickRandomProperty(json);
+					property=pickRandomProperty(json);
 					good = pickRandomProperty(json[property]);
 					show = good;
 					if(!romanji) show = json[property][good];
