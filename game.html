@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>David Gómez Site</title>
+		<meta charset="unicode" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script type="text/javascript">
+			var json;
+			$.getJSON("assets/data/jap.json", function(data){
+				json = data;
+			});
+			var correct;
+			var waiting;
+			function showhideID(id, button) {
+				var e = document.getElementById(id);
+				e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+				e =	document.getElementById(button);
+				e.innerHTML = (e.innerHTML == 'Learn More') ? 'Interesting...' : 'Learn More';
+			}
+			function showhideCLASS(classs, button) {
+				var e = document.getElementsByClassName(classs);
+				for(var i = 0; i < e.length; i++)
+					e[i].style.display = (e[i].style.display == 'block') ? 'none' : 'block';
+
+				e = document.getElementById(button);
+				if(e.innerHTML == 'Learn More') e.innerHTML = 'Interesting...';
+				else if(e.innerHTML == 'Interesting...') e.innerHTML = 'Learn More';
+				else if(e.innerHTML == 'Full Portfolio') e.innerHTML = "That's Enough";
+				else if(e.innerHTML == "That's Enough") e.innerHTML = 'Full Portfolio';
+			}
+			function autofitIframe(id){
+				if (!window.opera && document.all && document.getElementById){
+					id.style.height=id.contentWindow.document.body.scrollHeight;
+					id.style.width=id.document.body.scrollWidth;
+				} else if(document.getElementById) {
+					id.style.height=id.contentDocument.body.scrollHeight+"px";
+					id.style.width=id.body.scrollWidth+"px";
+				}
+			}
+			function japaneseTool(){
+				e = document.getElementById("start");
+				e.innerHTML = 'Pass...';
+			
+				waiting = null;
+				var div = document.getElementById("word");
+				var property= pickRandomProperty(json);
+				var good = pickRandomProperty(json[property]);
+				var show = good;
+				correct = json[property][good];
+				var romanji = (Math.random() > 0.5);
+				if(romanji){
+					show = json[property][good];
+					correct = good;
+				} 
+				div.innerHTML = show;
+				var list = [];
+				
+				var inwhich = Math.floor(Math.random() * 4) + 1 ;
+				
+				var lt = document.getElementById("left-top");
+				lt.style.backgroundColor = "initial";
+				if(inwhich == 1){
+					lt.innerHTML = correct;
+					list.push(correct);
+				}else{
+					property=pickRandomProperty(json);
+					good = pickRandomProperty(json[property]);
+					show = good;
+					if(!romanji) show = json[property][good];
+					lt.innerHTML = show;
+					list.push(show);
+				}
+
+				var lb = document.getElementById("left-bottom");
+				lb.style.backgroundColor = "initial";
+				if(inwhich == 2){
+					lb.innerHTML = correct;
+					list.push(correct);
+				}else{
+					property=pickRandomProperty(json);
+					do{
+						good = pickRandomProperty(json[property]);
+						show = good;
+						if(!romanji) show = json[property][good];
+						lb.innerHTML = show;
+					}while(list.indexOf(show)>=0)
+					list.push(show);
+				}
+				
+				var rt = document.getElementById("right-top");
+				rt.style.backgroundColor = "initial";
+				if(inwhich == 3){
+					rt.innerHTML = correct;
+					list.push(correct);
+				}else{
+					property=pickRandomProperty(json);
+					good = pickRandomProperty(json[property]);
+					show = good;
+					if(!romanji) show = json[property][good];
+					rt.innerHTML = show;
+					do{
+						good = pickRandomProperty(json[property]);
+						show = good;
+						if(!romanji) show = json[property][good];
+						rt.innerHTML = show;
+					}while(list.indexOf(show)>=0)
+					list.push(show);
+				}
+				
+				var rb = document.getElementById("right-bottom");
+				rb.style.backgroundColor = "initial";
+				if(inwhich == 4){
+					rb.innerHTML = correct;
+					list.push(correct);
+				}else{
+					property=pickRandomProperty(json);
+					good = pickRandomProperty(json[property]);
+					show = good;
+					if(!romanji) show = json[property][good];
+					rb.innerHTML = show;
+					do{
+						good = pickRandomProperty(json[property]);
+						show = good;
+						if(!romanji) show = json[property][good];
+						rb.innerHTML = show;
+					}while(list.indexOf(show)>=0)
+					list.push(show);
+				}
+			}
+			function pickRandomProperty(obj) {
+				var result;
+				var count = 0;
+				for (var prop in obj)
+					if (Math.random() < 1/++count)
+						result = prop;
+				return result;
+			}
+			function check(item){
+				if(!waiting){
+					var div = document.getElementById(item);
+					if(div.innerHTML == correct){
+						div.style.backgroundColor = "green";
+					}else{
+						div.style.backgroundColor = "red";
+						var lt = document.getElementById("left-top");
+						var lb = document.getElementById("left-bottom");
+						var rt = document.getElementById("right-top");
+						var rb = document.getElementById("right-bottom");
+						if(lt.innerHTML == correct) lt.style.backgroundColor = "green";
+						else if(lb.innerHTML == correct) lb.style.backgroundColor = "green";
+						else if(rt.innerHTML == correct) rt.style.backgroundColor = "green";
+						else rb.style.backgroundColor = "green";
+					}
+					waiting = setTimeout(japaneseTool,1500);
+				}
+			}
+		</script>
+	</head>
+	<body id="top">
+					
+		<!-- Header -->
+			<header id="header">
+			<!--	<img class="image avatar" src="images/thumbs/foto_carnet.png" alt="" />-->
+				<h1><strong>David Gómez</strong></h1>
+				<h1>Freelancer videogame developer</br>
+				and restless computer science engineer.</h1>
+			</header>
+
+		<!-- Main -->
+			<div id="main">
+			<!--<h1><strong>Web under construction...</strong></h1>-->
+				<h1>Japanese Vocabulary Game</h1>
+				<h3>Here are a little game to learn some japanese vocabulary. Press Start button and try to guess the good answer.</h3>
+				<div id="word" class="row" style="display: block; margin: auto; font-size: 30px; text-align: center; padding-top: 12px; color: white; height: 60px;" >
+				</div>
+				<div id="gamedesk" class="row" style="display: block; margin: auto; width:75%; border: solid white 2px; height: 250px;padding: 4px;">
+					<div style="width:50%; height:100%; padding: 0px">
+						<div class="answer" id="left-top" onclick="javascript:check('left-top')">
+						</div>
+						<div class="answer"id="left-bottom" onclick="javascript:check('left-bottom')">
+						</div>
+					</div>
+					<div style="width:50%; height:100%; padding: 0px">
+						<div class="answer" id="right-top" onclick="javascript:check('right-top')">
+						</div>
+						<div class="answer" id="right-bottom" onclick="javascript:check('right-bottom')">
+						</div>
+					</div>      
+				</div>
+				<br>
+				<a id="start" href="javascript:japaneseTool()" style="width: 20%; display: block; margin: auto;" class="button">Start</a>	
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" style="background-color: rgba(0,0,0,0.6);padding-top: 25px;">
+				<ul class="icons">
+					<li><a href="https://github.com/DGMonkeyKing" target="_blank" class="icon fa-github fa-2x"><span class="label">Github</span></a></li>
+					<li><a href="https://es.pinterest.com/davidnew33/mines-owns/" target="_blank" class="icon fa-pinterest-p fa-2x"><span class="label"></span></a></li>
+					<!--<li><a href="#" class="icon fa-linkedin fa-2x"><span class="label">Linkedin</span></a></li>-->
+					<li><a href="mailto:davidnew33@gmail.com" class="icon fa-envelope-o fa-2x"><span class="label">Email me!</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; David Gómez Blanco</li>
+				</ul>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+			<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+	</body>
+</html>
+
+<!-- Author of the background image: toxicsquall -> http://www.flickriver.com/photos/toxicsquall/5053258764/-->

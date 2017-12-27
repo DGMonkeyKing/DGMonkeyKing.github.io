@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>David Gómez Site</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script type="text/javascript">
+			function showhideID(id, button) {
+				var e = document.getElementById(id);
+				e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+				e =	document.getElementById(button);
+				e.innerHTML = (e.innerHTML == 'Learn More') ? 'Interesting...' : 'Learn More';
+			}
+			function showhideCLASS(classs, button) {
+				var e = document.getElementsByClassName(classs);
+				for(var i = 0; i < e.length; i++)
+					e[i].style.display = (e[i].style.display == 'block') ? 'none' : 'block';
+
+				e = document.getElementById(button);
+				if(e.innerHTML == 'Learn More') e.innerHTML = 'Interesting...';
+				else if(e.innerHTML == 'Interesting...') e.innerHTML = 'Learn More';
+				else if(e.innerHTML == 'Full Portfolio') e.innerHTML = 'That´s Enough';
+				else if(e.innerHTML == 'That´s Enough') e.innerHTML = 'Full Portfolio';
+			}
+		</script>
+	</head>
+	<body id="top">
+					
+		<!-- Header -->
+			<header id="header">
+			<!--	<img class="image avatar" src="images/thumbs/foto_carnet.png" alt="" />-->
+				<h1><strong>David Gómez</strong></h1>
+				<h1>Freelancer videogame developer</br>
+				and restless computer science engineer.</h1>
+			</header>
+
+		<!-- Main -->
+			<div id="main">
+			<!--<h1><strong>Web under construction...</strong></h1>-->
+				<a href="#one" style="display: inline-block; margin: 5px;" class="button">About me</a>	
+				<a href="#two" style="display: inline-block; margin: 5px;" class="button">Working on</a>
+				<a href="#five" style="display: inline-block; margin: 5px;" class="button">Artistic stuffs</a>
+				<a href="#three" style="display: inline-block; margin: 5px;" class="button">Contact me</a>
+				<a href="#four" style="display: inline-block; margin: 5px;" class="button">CV</a>	
+				<a href="game.html" style="display: inline-block; margin: 5px;" class="button">Japanese</a>
+
+				<!-- One -->
+					<section id="one">
+						<header class="major">
+							<h2>Hello there! Welcome to my site<br />
+							and let me introduce myself...</h2>
+						</header>
+						<p>For ages I have been a videogames
+						lover and, whenever I have some free time, I spend it on develop a game-idea or fill my head 
+						with new ones by gaming. Still, I do not only focus on videogames, since I am also quite 
+						interested in parallel programming and machine learning or A.I.</p>
+						<p id="learnmore" style="display:none;">During my third year, I won the bronze medal in a nationwide parallel programing 
+						contest in pairs in which I had to participate by myself representing my University 
+						(<a href="http://luna.inf.um.es/2015/results.php">link to the contest results.</a>).</br></br>
+						Thanks to the abilities and capacity I demonstrate in the contest, a professor of the Computing Department of my University took me as
+						an intern to collaborate in projects related with parallel programming and library porting while I was finishing my studies.</br> </br>
+						But development is not all I am interested about... Art, painting and music are also things I am focus on. Modeling of characters, maps and levels or 
+						sound tracks for videogames are just some of the things I love to do in my freetime.</br></br>
+			<!--			I've worked for UC3M as developer an tech department -->
+						I am currently working in various projects related with the thing listed above, but why don't you take 
+						a look yourself? Below I list my projects that can be found in Github and Pinterest as well. Also, I own a <a href="https://www.youtube.com/channel/UCKHCSXhwcQfWvOQSfP4gUBg" target="_blank">Youtube's channel</a> where I upload
+						artistic creations related with pixelart (With improvement hopes)</br></br>
+						<strong>I invite you to browse the projects and to contact me!</strong></p>
+						<ul class="actions">
+							<li><a id="learn-more-button" href="javascript:showhideID('learnmore', 'learn-more-button')" class="button">Learn More</a></li>
+						</ul>
+					</section>
+
+				<!-- Two -->
+					<section id="two">
+						<h1>All I am working on...</h1>
+						<h3>Here are the projects I'm working on. I will try to keep update the ones which are not uploaded on Github.</h3>
+						<div class="row">
+							<article id="who-are-you" class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/mirror.png" class="image fit thumb"><img src="images/thumbs/cover.png" alt="" /></a>
+								<h3>Who are you?</h3>
+								<p>Unravel the meaning of your dream in order to change your life...</p>
+								<a href="https://github.com/DGMonkeyKing/Solar-System-Simulation" target="_blank" >Link to the source</a>
+								<a id="who-are-you-button" href="https://dgmkpixy.itch.io/who-are-you" style="float:right;" target="_blank" >GIVE IT A TRY!</a>
+							</article>
+							<article id="frogger" class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/Frogger.jpg" class="image fit thumb"><img src="images/thumbs/Frogger.jpg" alt="" /></a>
+								<h3>Frogger Game</h3>
+								<p>The old-school Frogger game develop with the engine of Galaga (In Javascript).</p>
+								<a href="https://github.com/DGMonkeyKing/Frogger" target="_blank" style="float:left;" >Link to the source</a>
+								<a id="frogger-button" href="games/frogger/index.html" style="float:right;" >GIVE IT A TRY!</a>
+							</article>
+							<article id="super-mario" class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/mainTitle.png" class="image fit thumb"><img src="images/thumbs/mainTitle.png" alt="" /></a>
+								<h3>Super Mario Game</h3>
+								<p>A Super Mario Game powered by Quintus engine to try this engine.</p>
+								<a href="https://github.com/DGMonkeyKing/Super-Mario" target="_blank" >Link to the source</a>
+								<a href="games/super-mario" style="float:right;" >GIVE IT A TRY!</a>
+							</article>
+							<article id="memory-game" class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/memoryGame.png" class="image fit thumb"><img src="images/thumbs/memoryGame.png" alt="" /></a>
+								<h3>Memory Game</h3>
+								<p>A very simple memory game developed to catch ease with Javascript.</p>
+								<a href="https://github.com/DGMonkeyKing/Memory-Game" target="_blank" >Link to the source</a>
+								<a href="games/memory-game/index.html" style="float:right;" >GIVE IT A TRY!</a>
+							</article>
+							<article id="galaga-game" style="display:none;" class="fullport 6u 12u$(xsmall) work-item">
+								<a href="images/fulls/galagaGame.png" class="image fit thumb"><img src="images/thumbs/galagaGame.png" alt="" /></a>
+								<h3>Galaga Game</h3>
+								<p>An spacialship adventure genuine Galaga-style game.</p>
+								<a href="https://github.com/DGMonkeyKing/Galaga-Game" target="_blank" >Link to the source</a>
+								<a href="games/galaga-game/Builds.html" style="float:right;" >GIVE IT A TRY!</a>
+							</article>
+							<article id="acbtg" style="display:none;" class="fullport 6u 12u$(xsmall) work-item">
+								<a href="videos/videos.html" data-poptrox="iframe,1042x740" class="image fit thumb"><img src="images/thumbs/acbtg.png" alt="" /></a>
+								<h3>Another Choosen by the Goddess</h3>
+								<p>An adventure game based on Zelda's games.</p>
+								<a href="https://drive.google.com/open?id=0B3cPNZBRyZgxNlUxSDVkUGNtWms" target="_blank">Download the game!</a> 
+								<a href="games/acbtg/Build.html" style="float:right;" >GIVE IT A TRY!</a>
+							</article>
+						</div>
+						<ul class="actions">
+							<li><a id="full-port-button" href="javascript:showhideCLASS('fullport', 'full-port-button')" class="button">Full Portfolio</a></li>
+						</ul>
+					</section>
+<!-- Five -->
+					<section id="five">
+						<h1>Some artistic stuffs...</h1>
+						<h3>Paintings, draws and modeling were update here. The most artistic part of the games.</h3>
+						<div class="row">
+							<article id="violet" class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/girl.jpg" class="image fit thumb"><img src="images/thumbs/girl-cut.jpg" alt="" /></a>
+								<h3>Violet</h3>
+								<p>Character design.</p>
+							</article>	
+							<article id="tiger" class="6u 12u$(xsmall) work-item" style="float: right;">
+								<a href="images/fulls/pokemon.jpg" class="image fit thumb"><img src="images/thumbs/pokemon.jpg" alt="" /></a>
+								<h3>Siberian tiger Pokemon</h3>
+								<p>Character design.</p>
+							</article>
+							<article id="submarine-tiles" class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/underwater.jpg" class="image fit thumb"><img src="images/thumbs/underwater-cut.jpg" alt="" /></a>
+								<h3>Underwater map custom</h3>
+								<p>Map and tiles design.</p>
+							</article>
+							<article id="olivia" class="6u 12u$(xsmall) work-item">
+								<a href="images/fulls/olivia.png" class="image fit thumb"><img src="images/thumbs/olivia.png" alt="" /></a>
+								<h3>Olivia</h3>
+								<p>Character design. Traditional drawing.</p>
+							</article>
+							<article id="olivia-pop" style="display:none;" class="fullart 6u 12u$(xsmall) work-item">
+								<a href="images/fulls/olivia-pop.png" class="image fit thumb"><img src="images/thumbs/olivia-pop.png" alt="" /></a>
+								<h3>Olivia</h3>
+								<p>POP version. Character design. Digital drawing.</p>
+							</article>
+							<article id="magicgirl" style="display:none;" class="fullart 6u 12u$(xsmall) work-item">
+								<a href="images/fulls/magicgirl.png" class="image fit thumb"><img src="images/thumbs/magicgirl.png" alt="" /></a>
+								<h3>Magic Girl</h3>
+								<p>Working with deformation and poitn of view. Character design. Digital drawing.</p>
+							</article>
+						<!--	<article id="jecht-pixel" style="display:none;" class="fullart 6u 12u$(xsmall) work-item">
+								<a href="images/fulls/jecht-pixel.png" class="image fit thumb"><img src="images/thumbs/jecht-pixel.png" alt="" /></a>
+								<h3>Jecht (Pixelart)</h3>
+								<p>Pixelart of one of my favourite characters.</p>
+							</article>-->
+						</div>
+						<ul class="actions">
+							<li><a id="full-art-button" href="https://es.pinterest.com/DGMKPixy/mines-owns/" target="_blank" class="button">Full Portfolio</a></li>
+						</ul>
+					</section>
+				<!-- Three -->
+					<section id="three">
+						<h1>Get In Touch</h1>
+						<h3>If you liked what you saw, don't hesitate to contact me. I'm currently looking for a job, so let's get in touch!</h3>
+						<div class="row">
+							<div class="8u 12u$(small)" display="none">
+								<form id="contactform" method="post" name="contact">
+									<div class="row uniform 50%">
+										<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
+										<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email*" /></div>
+										<div class="12u$"><input type="text" name="subject" id="subject" placeholder="Subject*" /></div>
+										<div class="12u$"><textarea name="message" id="message" placeholder="Message*" rows="4"></textarea></div>
+										<div class="12u$"><textarea name="comments" id="comments" placeholder="Any comment..." rows="2"></textarea></div>
+										<input type="text" name="_gotcha" style="display:none" />
+									</div>
+									<p>* Fields are obligatory.</p>
+									<ul class="actions">
+										<li><input type="submit" name="submit" value="Submit" /></li>
+									</ul>
+								</form>
+								<script>
+									var contactform =  document.getElementById('contactform');
+									contactform.setAttribute('action', '//formspree.io/' + 'david' + 'new' + '33' + '@' + 'gmail' + '.' + 'com');
+								</script>
+							</div>
+		
+							<div class="4u$ 12u$(small)">
+								<ul class="labeled-icons">
+									<li>
+										<h3 class="icon fa-home"><span class="label">Address</span></h3>
+										Madrid, 28031<br />
+										Spain
+									</li>
+									<li>
+										<h3 class="icon fa-envelope-o"><span class="label">Email</span></h3>
+										<a href="mailto:davidnew33@gmail.com">davidnew33@gmail.com</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+			<!-- Four -->
+				<section id="four">
+					<strong><h1>Curriculum Vitae</h1>
+					<strong><h3>ACADEMIC EDUCATION</h3>
+					<h4>University studies</h4>
+					<p>Universidad Complutense de Madrid </br>
+					Computer Science Degree</p>
+					<h4>Master University studies</h4>
+					<p>Universidad Complutense de Madrid </br>
+					Computer Science Master</p>
+					<strong><h3>ADDITIONAL PREPARATION</h3>
+					<strong><h4>Colaboration grant for a Research Project</h4>
+					<p>Department of Computing and Automatic of UCM </br>
+					<a href="https://artecs.dacya.ucm.es/" target="_blank">ArTeCS Group</a></p>
+					<strong><h4>Leisure and free time instructor (272 hours)</h4>
+					<p>Zape School (152 teoric hours and 160 practice hours) </br>
+					Qualified Leisure and free time instructor</p>
+					<strong><h4>Certificate in ITIL® Foundation Certificate in IT Service Management</h4>
+					<p>Certificate of the Best Practices in the Management of an IT Company</br></p>
+					<strong><h4>First Certificate in English by Cambridge</h4>
+					<p>B2 Level Certification</br></p>
+					<strong><h3>EXPERIENCE AS INSTRUCTOR</h3>
+					<strong><h4>San Beato de Rozas School(Móstoles)</h4>
+					<p>15 days with childrens from 4 to 13 years (lunchtime and free time)</p>
+					<strong><h4>Salzillo Valle-Inclán School(Móstoles)</h4>
+					<p>15 days with childrens from 4 to 13 years (lunchtime and free time)</p>	
+					<strong><h3>KNOWLEDGE AS A COMPUTER ENGINEER</h3>
+					<ul>
+						<li>Windows and Linux Systems user. <strong>Bash Command Line</strong> and scripting lenguages.</li>
+						<li>High knowledge on: <strong>C, C++, Java, Javascript, PHP, C#, HTML, CSS, MySQL, SQLServer, Octave</strong> and <strong>Matlab</strong> as well as <strong>Google Scripting</strong>.</li>
+						<li>Knowledge in other lenguages: <strong>Python, Jess, Prolog, Ruby, Ruby on Rails</strong> and <strong>Objective-C</strong>.</li>
+						<li>Enterprise Software and database connectivity with <strong>JavaEE</strong> using <strong>JSP</strong>.</li>
+						<li>Also knowledge on: <strong>Apache Spark</strong>, <strong>MapReduce</strong>, <strong>Maude</strong>, <strong>Haskell</strong> and <strong>Prolog</strong>.</li>
+						<li>Wide experience in APIs as <strong>OpenGL, OpenCL, CUDA, OpenMP, OpenACC</strong> and <strong>MPI</strong> (used for parallel programing and graphic enviroments)</li>
+						<li>Experience with IDEs: <strong>Eclipse, Android Studio, Visual Studio</strong> and <strong>MonoDeveloper</strong>.</li>
+						<li>Experience with <strong>Unity3D, Unreal Engine, Game Maker, RPGMaker</strong> and <strong>Quintus</strong></li>
+					</ul>
+					<strong><h3>LENGUAGES</h3>
+					<h4>Spanish: Native</h4>
+					<h4>English: B2 (FCE)</h4>
+					<h4>Japanese: Basic knowledge</h4>
+					<strong><h3>CAREER PATH</h3>
+					<strong><h4>Researcher & developer Machine Learning in Tecnitia Technologies</h4>
+					<p>Currently working. Some of my tasks are:
+					<ul>
+						<li>Request and requirements analysis about <strong>Machine Learning</strong> tasks for inner project purposes.</li>
+						<li>Estimation and calculation of reponse time.</li>
+						<li>Performance testing on <strong>Machine Learning</strong> processes both physical machines and cloud.</li>
+						<li>Evaluation and testing of new algorythms (Supervised learning, Intel DAAL, Google Tensor Flow, among others).</li>
+						<li>Algorythm development and optimization.</li>
+						<li>Development recommendations for voice recognition and Machine Learning.</li>
+					</ul></p>
+					<strong><h4>Web App for management of the inner competition (UC3M)</h4>
+					<p>Use of Eclipse, JavaEE, JSP, SQL Server and login systems.</br>
+					<a href="http://espaciox.uc3m.es/GesCompi2/" target="_blank">GesCompi</a></p>
+					<strong><h4>Google Scripting tools for Carlos III University</h4>
+					<p>Use of Google scripts to develop tools of management and solutions</p>
+					<strong><h4>Educational Staff-member of <a href="http://rockbotic.com/" target="_blank">Rockbotic</a></h4>
+					<p>Offer curses in robotics and videogames to young people of differents ages.</p>
+					<strong><h3>OTHER INTERESTING FACTS</h3>
+					<p><strong>Third place in the parallel programming contest held nationwide in Córdoba on 2015</br>
+					<a href="http://luna.inf.um.es/2015/results.php" target="_blank">Link to the contest's ranking</a></p>
+					<p><strong>Access to my personal repository with some of the projects I am currently working on.</br>
+					<a href="http://www.github.com/DGMonkeyKing" target="_blank">Link to my personal repository</a></p>
+					<p><strong>Knowledge on design, drawing and art, both for videogames and illustration. You can find my works on my personal portfolio, accesible via <a href="https://es.pinterest.com/davidnew33/mines-owns/" target="_blank">Pinterest</a>.</p>
+				</section>
+				
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" style="background-color: rgba(0,0,0,0.6);padding-top: 25px;">
+				<ul class="icons">
+					<li><a href="https://es.linkedin.com/in/david-gómez-blanco-63629a11a" target="_blank" class="icon fa-linkedin fa-2x"><span class="label">Linkedin</span></a></li>
+					<li><a href="https://github.com/DGMonkeyKing" target="_blank" class="icon fa-github fa-2x"><span class="label">Github</span></a></li>
+					<li><a href="https://es.pinterest.com/davidnew33/mines-owns/" target="_blank" class="icon fa-pinterest-p fa-2x"><span class="label"></span></a></li>
+					<li><a href="https://www.youtube.com/channel/UCKHCSXhwcQfWvOQSfP4gUBg" target="_blank" class="icon fa-youtube fa-2x"><span class="label"></span></a></li>
+					<li><a href="mailto:davidnew33@gmail.com" class="icon fa-envelope-o fa-2x"><span class="label">Email me!</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; David Gómez Blanco</li>
+				</ul>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+			<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+	</body>
+</html>
+
+<!-- Author of the background image: toxicsquall -> http://www.flickriver.com/photos/toxicsquall/5053258764/-->
