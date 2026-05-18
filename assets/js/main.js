@@ -163,14 +163,14 @@
 			// Reusable project overlay.
 				var $projectOverlay = $('#project-overlay'),
 					$projectDialog = $projectOverlay.find('.project-overlay__dialog'),
-					$projectImage = $projectOverlay.find('.project-overlay__image'),
+					$projectMedia = $projectOverlay.find('.project-overlay__media'),
 					$projectCounter = $projectOverlay.find('.project-overlay__counter'),
 					$projectTitle = $('#project-overlay-title'),
 					$projectDescription = $('#project-overlay-description'),
 					$projectCodeLink = $projectOverlay.find('[data-project-overlay-code]'),
 					$projectDemoLink = $projectOverlay.find('[data-project-overlay-demo]'),
-					projectImages = [],
-					projectImageIndex = 0,
+					projectMediaItems = [],
+					projectMediaIndex = 0,
 					$lastProjectTrigger = null;
 
 				function setProjectOverlayLink($targetLink, $sourceLink) {
@@ -189,26 +189,59 @@
 						$targetLink.removeAttr('rel');
 				}
 
-				function renderProjectImage() {
-					if (!projectImages.length)
+				function getProjectMediaType(src, explicitType) {
+					var type = (explicitType || '').toLowerCase();
+
+					if (type === 'image' || type === 'video')
+						return type;
+
+					if (/\.(mp4|webm)(\?.*)?$/i.test(src))
+						return 'video';
+
+					return 'image';
+				}
+
+				function renderProjectMedia() {
+					if (!projectMediaItems.length)
 						return;
 
-					var image = projectImages[projectImageIndex];
+					var media = projectMediaItems[projectMediaIndex],
+						mediaElement;
 
-					$projectImage
-						.attr('src', image.src)
-						.attr('alt', image.alt);
+					$projectMedia.empty();
 
-					$projectCounter.text((projectImageIndex + 1) + ' / ' + projectImages.length);
-					$projectOverlay.toggleClass('project-overlay--single-image', projectImages.length < 2);
+					if (media.type === 'video') {
+						mediaElement = $('<video />', {
+							class: 'project-overlay__media-item',
+							src: media.src,
+							muted: true,
+							loop: true,
+							autoplay: true,
+							playsinline: true,
+							'aria-label': media.alt
+						});
+						mediaElement.prop('muted', true);
+						mediaElement.prop('playsInline', true);
+					}
+					else {
+						mediaElement = $('<img />', {
+							class: 'project-overlay__media-item',
+							src: media.src,
+							alt: media.alt
+						});
+					}
+
+					$projectMedia.append(mediaElement);
+					$projectCounter.text((projectMediaIndex + 1) + ' / ' + projectMediaItems.length);
+					$projectOverlay.toggleClass('project-overlay--single-media', projectMediaItems.length < 2);
 				}
 
 				function moveProjectCarousel(direction) {
-					if (projectImages.length < 2)
+					if (projectMediaItems.length < 2)
 						return;
 
-					projectImageIndex = (projectImageIndex + direction + projectImages.length) % projectImages.length;
-					renderProjectImage();
+					projectMediaIndex = (projectMediaIndex + direction + projectMediaItems.length) % projectMediaItems.length;
+					renderProjectMedia();
 				}
 
 				function openProjectOverlay($projectCard) {
@@ -216,33 +249,37 @@
 						$codeLink = $metadata.find('[data-project-code]'),
 						$demoLink = $metadata.find('[data-project-demo]');
 
-					projectImages = [];
-					$metadata.find('[data-project-images] li').each(function() {
-						var $imageData = $(this),
-							src = $imageData.data('src');
+					projectMediaItems = [];
+					$metadata.find('[data-project-media] li, [data-project-images] li').each(function() {
+						var $mediaData = $(this),
+							src = $mediaData.data('src');
 
 						if (src)
-							projectImages.push({
+							projectMediaItems.push({
+								type: getProjectMediaType(src, $mediaData.data('type')),
 								src: src,
-								alt: $imageData.data('alt') || $metadata.find('[data-project-title]').text()
+								alt: $mediaData.data('alt') || $metadata.find('[data-project-title]').text()
 							});
 					});
 
-					if (!projectImages.length) {
-						var $fallbackImage = $projectCard.find('img').first();
-						projectImages.push({
-							src: $fallbackImage.attr('src'),
+					if (!projectMediaItems.length) {
+						var $fallbackImage = $projectCard.find('img').first(),
+							fallbackSrc = $fallbackImage.attr('src');
+
+						projectMediaItems.push({
+							type: getProjectMediaType(fallbackSrc),
+							src: fallbackSrc,
 							alt: $fallbackImage.attr('alt')
 						});
 					}
 
-					projectImageIndex = 0;
+					projectMediaIndex = 0;
 					$lastProjectTrigger = $projectCard.find('.project-card__thumb');
 					$projectTitle.text($metadata.find('[data-project-title]').text());
 					$projectDescription.text($metadata.find('[data-project-description]').text());
 					setProjectOverlayLink($projectCodeLink, $codeLink);
 					setProjectOverlayLink($projectDemoLink, $demoLink);
-					renderProjectImage();
+					renderProjectMedia();
 
 					$projectOverlay
 						.addClass('is-visible')
@@ -259,6 +296,7 @@
 						.removeClass('is-visible')
 						.attr('aria-hidden', 'true');
 					$body.removeClass('project-overlay-is-open');
+					$projectMedia.empty();
 
 					if ($lastProjectTrigger && $lastProjectTrigger.length)
 						$lastProjectTrigger.focus();

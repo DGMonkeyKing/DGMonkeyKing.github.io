@@ -2624,9 +2624,15 @@ strong > h3{
 			position: relative;
 		}
 
-		.project-overlay__image {
-			display: block;
+		.project-overlay__media {
 			height: 22em;
+			overflow: hidden;
+			width: 100%;
+		}
+
+		.project-overlay__media-item {
+			display: block;
+			height: 100%;
 			object-fit: cover;
 			width: 100%;
 		}
@@ -2664,7 +2670,7 @@ strong > h3{
 			right: 0.75em;
 		}
 
-		.project-overlay--single-image .project-overlay__nav {
+		.project-overlay--single-media .project-overlay__nav {
 			display: none;
 		}
 
@@ -2712,7 +2718,7 @@ strong > h3{
 			max-height: calc(100vh - 2em);
 		}
 
-		.project-overlay__image {
+		.project-overlay__media {
 			height: 16em;
 		}
 
