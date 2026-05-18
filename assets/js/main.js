@@ -277,8 +277,8 @@
 					$lastProjectTrigger = $projectCard.find('.project-card__thumb');
 					$projectTitle.text($metadata.find('[data-project-title]').text());
 					$projectDescription.text($metadata.find('[data-project-description]').text());
-					setProjectOverlayLink($projectCodeLink, $codeLink);
-					setProjectOverlayLink($projectDemoLink, $demoLink);
+					if($codeLink.length > 0 && $codeLink.attr('href')) setProjectOverlayLink($projectCodeLink, $codeLink);
+					if($demoLink.length > 0 && $demoLink.attr('href')) setProjectOverlayLink($projectDemoLink, $demoLink);
 					renderProjectMedia();
 
 					$projectOverlay
