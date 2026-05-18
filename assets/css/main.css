@@ -2601,14 +2601,11 @@ strong > h3{
 			border-radius: 999px;
 			color: #ffffff;
 			cursor: pointer;
-			display: block;
 			font-size: 1.8em;
 			height: 1.6em;
-			left: 0.75em;
 			line-height: 1.35em;
-			margin: 0.75em 0 -3.55em 0.75em;
-			position: -webkit-sticky;
-			position: sticky;
+			position: absolute;
+			right: 0.75em;
 			top: 0.75em;
 			width: 1.6em;
 			z-index: 2;
