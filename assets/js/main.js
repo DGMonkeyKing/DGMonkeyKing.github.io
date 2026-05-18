@@ -157,92 +157,128 @@
 
 		// Main Sections: Two.
 
-			// Lightbox gallery.
-				$window.on('load', function() {
+			// Reusable project overlay.
+				var $projectOverlay = $('#project-overlay'),
+					$projectDialog = $projectOverlay.find('.project-overlay__dialog'),
+					$projectImage = $projectOverlay.find('.project-overlay__image'),
+					$projectCounter = $projectOverlay.find('.project-overlay__counter'),
+					$projectTitle = $('#project-overlay-title'),
+					$projectDescription = $('#project-overlay-description'),
+					$projectCodeLink = $projectOverlay.find('[data-project-overlay-code]'),
+					$projectDemoLink = $projectOverlay.find('[data-project-overlay-demo]'),
+					projectImages = [],
+					projectImageIndex = 0,
+					$lastProjectTrigger = null;
 
-					$('#galaga-game').poptrox({
-						caption: function($a) { return $a.next('h3').text(); },
-						overlayColor: '#2c2c2c',
-						overlayOpacity: 0.85,
-						popupCloserText: '',
-						popupLoaderText: '',
-						selector: 'a.image',
-						usePopupCaption: true,
-						usePopupDefaultStyling: false,
-						usePopupEasyClose: false,
-						usePopupNav: true,
-						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
-					});
-					
-					$('#memory-game').poptrox({
-						caption: function($a) { return $a.next('h3').text(); },
-						overlayColor: '#2c2c2c',
-						overlayOpacity: 0.85,
-						popupCloserText: '',
-						popupLoaderText: '',
-						selector: 'a.image',
-						usePopupCaption: true,
-						usePopupDefaultStyling: false,
-						usePopupEasyClose: false,
-						usePopupNav: true,
-						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
-					});
-					
-					$('#super-mario').poptrox({
-						caption: function($a) { return $a.next('h3').text(); },
-						overlayColor: '#2c2c2c',
-						overlayOpacity: 0.85,
-						popupCloserText: '',
-						popupLoaderText: '',
-						selector: 'a.image',
-						usePopupCaption: true,
-						usePopupDefaultStyling: false,
-						usePopupEasyClose: false,
-						usePopupNav: true,
-						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
-					});
-					
-					$('#frogger').poptrox({
-						caption: function($a) { return $a.next('h3').text(); },
-						overlayColor: '#2c2c2c',
-						overlayOpacity: 0.85,
-						popupCloserText: '',
-						popupLoaderText: '',
-						selector: 'a.image',
-						usePopupCaption: true,
-						usePopupDefaultStyling: false,
-						usePopupEasyClose: false,
-						usePopupNav: true,
-						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+				function setProjectOverlayLink($targetLink, $sourceLink) {
+					$targetLink
+						.attr('href', $sourceLink.attr('href'))
+						.text($sourceLink.text());
+
+					if ($sourceLink.attr('target'))
+						$targetLink.attr('target', $sourceLink.attr('target'));
+					else
+						$targetLink.removeAttr('target');
+
+					if ($sourceLink.attr('rel'))
+						$targetLink.attr('rel', $sourceLink.attr('rel'));
+					else
+						$targetLink.removeAttr('rel');
+				}
+
+				function renderProjectImage() {
+					if (!projectImages.length)
+						return;
+
+					var image = projectImages[projectImageIndex];
+
+					$projectImage
+						.attr('src', image.src)
+						.attr('alt', image.alt);
+
+					$projectCounter.text((projectImageIndex + 1) + ' / ' + projectImages.length);
+					$projectOverlay.toggleClass('project-overlay--single-image', projectImages.length < 2);
+				}
+
+				function moveProjectCarousel(direction) {
+					if (projectImages.length < 2)
+						return;
+
+					projectImageIndex = (projectImageIndex + direction + projectImages.length) % projectImages.length;
+					renderProjectImage();
+				}
+
+				function openProjectOverlay($projectCard) {
+					var $metadata = $projectCard.find('.project-metadata'),
+						$codeLink = $metadata.find('[data-project-code]'),
+						$demoLink = $metadata.find('[data-project-demo]');
+
+					projectImages = [];
+					$metadata.find('[data-project-images] li').each(function() {
+						var $imageData = $(this),
+							src = $imageData.data('src');
+
+						if (src)
+							projectImages.push({
+								src: src,
+								alt: $imageData.data('alt') || $metadata.find('[data-project-title]').text()
+							});
 					});
 
-					$('#spatial-sandbox').poptrox({
-						caption: function($a) { return $a.next('h3').text(); },
-						overlayColor: '#2c2c2c',
-						overlayOpacity: 0.85,
-						popupCloserText: '',
-						popupLoaderText: '',
-						selector: 'a.image',
-						usePopupCaption: true,
-						usePopupDefaultStyling: false,
-						usePopupEasyClose: false,
-						usePopupNav: true,
-						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
-					});
-					
-					$('#acbtg').poptrox({
-						caption: function($a) { return $a.next('h3').text(); },
-						overlayColor: '#2c2c2c',
-						overlayOpacity: 0.85,
-						popupCloserText: '',
-						popupLoaderText: '',
-						selector: 'a.image',
-						usePopupCaption: true,
-						usePopupDefaultStyling: false,
-						usePopupEasyClose: false,
-						usePopupNav: true,
-						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
-					});
+					if (!projectImages.length) {
+						var $fallbackImage = $projectCard.find('img').first();
+						projectImages.push({
+							src: $fallbackImage.attr('src'),
+							alt: $fallbackImage.attr('alt')
+						});
+					}
+
+					projectImageIndex = 0;
+					$lastProjectTrigger = $projectCard.find('.project-card__thumb');
+					$projectTitle.text($metadata.find('[data-project-title]').text());
+					$projectDescription.text($metadata.find('[data-project-description]').text());
+					setProjectOverlayLink($projectCodeLink, $codeLink);
+					setProjectOverlayLink($projectDemoLink, $demoLink);
+					renderProjectImage();
+
+					$projectOverlay
+						.addClass('is-visible')
+						.attr('aria-hidden', 'false');
+					$body.addClass('project-overlay-is-open');
+					$projectDialog.attr('tabindex', '-1').focus();
+				}
+
+				function closeProjectOverlay() {
+					if (!$projectOverlay.hasClass('is-visible'))
+						return;
+
+					$projectOverlay
+						.removeClass('is-visible')
+						.attr('aria-hidden', 'true');
+					$body.removeClass('project-overlay-is-open');
+
+					if ($lastProjectTrigger && $lastProjectTrigger.length)
+						$lastProjectTrigger.focus();
+				}
+
+				$('.project-card__thumb').on('click', function() {
+					openProjectOverlay($(this).closest('.project-card'));
+				});
+
+				$projectOverlay.find('[data-project-close]').on('click', closeProjectOverlay);
+				$projectOverlay.find('[data-project-prev]').on('click', function() { moveProjectCarousel(-1); });
+				$projectOverlay.find('[data-project-next]').on('click', function() { moveProjectCarousel(1); });
+
+				$window.on('keydown', function(event) {
+					if (!$projectOverlay.hasClass('is-visible'))
+						return;
+
+					if (event.key === 'Escape')
+						closeProjectOverlay();
+					else if (event.key === 'ArrowLeft')
+						moveProjectCarousel(-1);
+					else if (event.key === 'ArrowRight')
+						moveProjectCarousel(1);
 				});
 
 	});
