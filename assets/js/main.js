@@ -121,6 +121,7 @@
 					$targetSection
 						.addClass('is-active')
 						.attr('aria-hidden', 'false');
+					$window.trigger('sectionchange', [sectionId]);
 					return;
 				}
 
@@ -141,6 +142,8 @@
 
 					if ($sectionMenu.length)
 						$('html, body').animate({ scrollTop: Math.max(0, $sectionMenu.offset().top - 16) }, 250);
+
+					$window.trigger('sectionchange', [sectionId]);
 				}, sectionTransitionDuration);
 			}
 
@@ -280,6 +283,156 @@
 					else if (event.key === 'ArrowRight')
 						moveProjectCarousel(1);
 				});
+
+
+		// Main Sections: Five.
+
+			// Pinterest-like art gallery with incremental loading and a full-size viewer.
+				var $artSection = $('#five'),
+					$artGrid = $artSection.find('[data-art-grid]'),
+					$artSentinel = $artSection.find('[data-art-sentinel]'),
+					$artOverlay = $('#art-overlay'),
+					$artDialog = $artOverlay.find('.art-overlay__dialog'),
+					$artImage = $artOverlay.find('.art-overlay__image'),
+					$artCounter = $artOverlay.find('.art-overlay__counter'),
+					artworks = [],
+					loadedArtworkCount = 0,
+					activeArtworkIndex = 0,
+					artBatchSize = 6,
+					$lastArtworkTrigger = null,
+					artObserver = null;
+
+				$artSection.find('[data-art-source] li').each(function() {
+					var $artwork = $(this);
+
+					if ($artwork.data('full'))
+						artworks.push({
+							full: $artwork.data('full'),
+							thumb: $artwork.data('thumb') || $artwork.data('full'),
+							alt: $artwork.data('alt') || 'Artwork'
+						});
+				});
+
+				function renderArtworkBatch() {
+					var nextArtworkCount = Math.min(loadedArtworkCount + artBatchSize, artworks.length),
+						fragment = document.createDocumentFragment();
+
+					for (var i = loadedArtworkCount; i < nextArtworkCount; i++) {
+						var artwork = artworks[i],
+							button = document.createElement('button'),
+							image = document.createElement('img');
+
+						button.type = 'button';
+						button.className = 'art-gallery__item';
+						button.setAttribute('data-art-index', i);
+						button.setAttribute('aria-label', 'Open artwork: ' + artwork.alt);
+
+						image.src = artwork.thumb;
+						image.alt = artwork.alt;
+						image.loading = i < artBatchSize ? 'eager' : 'lazy';
+						image.decoding = 'async';
+
+						button.appendChild(image);
+						fragment.appendChild(button);
+					}
+
+					loadedArtworkCount = nextArtworkCount;
+					$artGrid[0].appendChild(fragment);
+					$artSentinel.toggle(loadedArtworkCount < artworks.length);
+				}
+
+				function renderArtworkOverlay() {
+					var artwork = artworks[activeArtworkIndex];
+
+					if (!artwork)
+						return;
+
+					$artImage
+						.attr('src', artwork.full)
+						.attr('alt', artwork.alt);
+					$artCounter.text((activeArtworkIndex + 1) + ' / ' + artworks.length);
+				}
+
+				function moveArtworkOverlay(direction) {
+					if (artworks.length < 2)
+						return;
+
+					activeArtworkIndex = (activeArtworkIndex + direction + artworks.length) % artworks.length;
+					renderArtworkOverlay();
+				}
+
+				function openArtworkOverlay(index, trigger) {
+					activeArtworkIndex = index;
+					$lastArtworkTrigger = $(trigger);
+					renderArtworkOverlay();
+
+					$artOverlay
+						.addClass('is-visible')
+						.attr('aria-hidden', 'false');
+					$body.addClass('art-overlay-is-open');
+					$artDialog.attr('tabindex', '-1').focus();
+				}
+
+				function closeArtworkOverlay() {
+					if (!$artOverlay.hasClass('is-visible'))
+						return;
+
+					$artOverlay
+						.removeClass('is-visible')
+						.attr('aria-hidden', 'true');
+					$body.removeClass('art-overlay-is-open');
+
+					if ($lastArtworkTrigger && $lastArtworkTrigger.length)
+						$lastArtworkTrigger.focus();
+				}
+
+				function maybeLoadMoreArt() {
+					if (!$artSection.hasClass('is-active') || loadedArtworkCount >= artworks.length)
+						return;
+
+					if ($artSentinel.offset().top - $window.scrollTop() < $window.height() + 360)
+						renderArtworkBatch();
+				}
+
+				if (artworks.length && $artGrid.length) {
+					renderArtworkBatch();
+
+					$artGrid.on('click', '.art-gallery__item', function() {
+						openArtworkOverlay(parseInt($(this).attr('data-art-index'), 10), this);
+					});
+
+					$artOverlay.find('[data-art-close]').on('click', closeArtworkOverlay);
+					$artOverlay.find('[data-art-prev]').on('click', function() { moveArtworkOverlay(-1); });
+					$artOverlay.find('[data-art-next]').on('click', function() { moveArtworkOverlay(1); });
+
+					if ('IntersectionObserver' in window) {
+						artObserver = new IntersectionObserver(function(entries) {
+							if (entries[0].isIntersecting && $artSection.hasClass('is-active'))
+								renderArtworkBatch();
+						}, { rootMargin: '360px 0px' });
+
+						artObserver.observe($artSentinel[0]);
+					}
+
+					$window.on('scroll resize', maybeLoadMoreArt);
+					$window.on('sectionchange', function(event, sectionId) {
+						if (sectionId === 'five')
+							maybeLoadMoreArt();
+					});
+				}
+
+				$window.on('keydown', function(event) {
+					if (!$artOverlay.hasClass('is-visible'))
+						return;
+
+					if (event.key === 'Escape')
+						closeArtworkOverlay();
+					else if (event.key === 'ArrowLeft')
+						moveArtworkOverlay(-1);
+					else if (event.key === 'ArrowRight')
+						moveArtworkOverlay(1);
+				});
+
 
 	});
 
