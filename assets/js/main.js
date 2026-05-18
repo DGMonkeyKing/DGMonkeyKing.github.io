@@ -168,8 +168,6 @@
 					$projectTitle = $('#project-overlay-title'),
 					$projectDescription = $('#project-overlay-description'),
 					$projectLinks = $projectOverlay.find('.project-overlay__links'),
-					$projectCodeLink = $projectOverlay.find('[data-project-overlay-code]'),
-					$projectDemoLink = $projectOverlay.find('[data-project-overlay-demo]'),
 					projectMediaItems = [],
 					projectMediaIndex = 0,
 					$lastProjectTrigger = null;
@@ -178,28 +176,20 @@
 					return $sourceLink.length > 0 && !!$sourceLink.attr('href');
 				}
 
-				function setProjectOverlayLink($targetLink, $sourceLink) {
-					$targetLink
-						.attr('href', $sourceLink.attr('href'))
-						.text($sourceLink.text())
-						.removeAttr('hidden');
+				function buildProjectOverlayLink($sourceLink, isPrimary) {
+					var $overlayLink = $('<a />', {
+						class: 'button project-overlay__link' + (isPrimary ? ' special' : ''),
+						href: $sourceLink.attr('href'),
+						text: $sourceLink.text()
+					});
 
 					if ($sourceLink.attr('target'))
-						$targetLink.attr('target', $sourceLink.attr('target'));
-					else
-						$targetLink.removeAttr('target');
+						$overlayLink.attr('target', $sourceLink.attr('target'));
 
 					if ($sourceLink.attr('rel'))
-						$targetLink.attr('rel', $sourceLink.attr('rel'));
-					else
-						$targetLink.removeAttr('rel');
-				}
+						$overlayLink.attr('rel', $sourceLink.attr('rel'));
 
-				function clearProjectOverlayLink($targetLink) {
-					$targetLink
-						.attr('href', '#')
-						.removeAttr('target rel')
-						.attr('hidden', 'hidden');
+					return $overlayLink;
 				}
 
 				function getProjectMediaType(src, explicitType) {
@@ -291,16 +281,18 @@
 					$projectTitle.text($metadata.find('[data-project-title]').text());
 					$projectDescription.text($metadata.find('[data-project-description]').text());
 
-					clearProjectOverlayLink($projectCodeLink);
-					clearProjectOverlayLink($projectDemoLink);
+					$projectLinks
+						.empty()
+						.removeAttr('hidden')
+						.removeClass('project-overlay__links--single');
 
 					if (hasProjectOverlayLink($codeLink))
-						setProjectOverlayLink($projectCodeLink, $codeLink);
+						$projectLinks.append(buildProjectOverlayLink($codeLink, false));
 
 					if (hasProjectOverlayLink($demoLink))
-						setProjectOverlayLink($projectDemoLink, $demoLink);
+						$projectLinks.append(buildProjectOverlayLink($demoLink, true));
 
-					var visibleProjectLinkCount = $projectLinks.find('.project-overlay__link:not([hidden])').length;
+					var visibleProjectLinkCount = $projectLinks.children('.project-overlay__link').length;
 
 					$projectLinks
 						.toggleClass('project-overlay__links--single', visibleProjectLinkCount === 1)
