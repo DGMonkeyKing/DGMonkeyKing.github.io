@@ -1,0 +1,15 @@
+---
+---
+[
+{% assign art_images = site.static_files | where_exp: "file", "file.path contains '/images/fulls/'" | sort: "path" %}
+{% for image in art_images %}
+{% assign extension = image.extname | downcase %}
+{% if extension == '.jpg' or extension == '.jpeg' or extension == '.png' or extension == '.gif' or extension == '.webp' or extension == '.avif' %}
+	{
+		"full": "{{ image.path | relative_url }}",
+		"thumb": "{{ image.path | relative_url }}",
+		"alt": "{{ image.basename | replace: '-', ' ' | replace: '_', ' ' | capitalize | escape }}"
+	}{% unless forloop.last %},{% endunless %}
+{% endif %}
+{% endfor %}
+]
