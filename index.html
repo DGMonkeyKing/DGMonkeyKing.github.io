@@ -32,25 +32,29 @@
 					
 		<!-- Header -->
 			<header id="header">
-      			<img class="image avatar" src="images/icon.png" alt="">
-				<h1><strong>David <br>Gómez Blanco</strong></h1>
-				<h1>Computer Engineer,<br>
-					Concept and Pixel Artist,<br>
-					Videogame Developer.</strong></h1>
+				<div class="header__content">
+					<img class="image avatar" src="images/icon.png" alt="David Gómez Blanco avatar">
+					<p class="header__eyebrow">Portfolio personal</p>
+					<h1 class="header__title">
+						<span>David</span>
+						<span>Gómez Blanco</span>
+					</h1>
+					<p class="header__tagline">Computer Engineer, Concept and Pixel Artist, Videogame Developer.</p>
+				</div>
 			</header>
 
 		<!-- Main -->
 			<div id="main">
-			<!--<h1><strong>Web under construction...</strong></h1>>
-				<a href="#one" style="display: inline-block; margin: 5px;" class="button">About me</a>	
-				<a href="#two" style="display: inline-block; margin: 5px;" class="button">Working on</a>
-				<a href="#five" style="display: inline-block; margin: 5px;" class="button">Artistic stuffs</a>
-				<a href="#three" style="display: inline-block; margin: 5px;" class="button">Contact me</a>
-				<a href="#four" style="display: inline-block; margin: 5px;" class="button">CV</a>	
-				<a href="game.html" style="display: inline-block; margin: 5px;" class="button">Japanese</a-->
+				<nav class="section-menu" aria-label="Main sections">
+					<button type="button" class="section-menu__button is-active" data-section="one" aria-controls="one" aria-selected="true">About me</button>
+					<button type="button" class="section-menu__button" data-section="two" aria-controls="two" aria-selected="false">Projects</button>
+					<button type="button" class="section-menu__button" data-section="five" aria-controls="five" aria-selected="false">Art</button>
+					<button type="button" class="section-menu__button" data-section="three" aria-controls="three" aria-selected="false">Contact</button>
+					<button type="button" class="section-menu__button" data-section="four" aria-controls="four" aria-selected="false">CV</button>
+				</nav>
 
 				<!-- One -->
-					<section id="one">
+					<section id="one" class="content-section is-active" aria-hidden="false">
 						<header class="major">
 							<h2>Hello there! Let me introduce myself...</h2>
 						</header>
@@ -76,7 +80,7 @@
 					</section>
 
 				<!-- Two -->
-					<section id="two">
+					<section id="two" class="content-section" aria-hidden="true">
 						<h1>All I am working on...</h1>
 						<h3>Here are the projects I'm working on. I will try to keep update the ones which are not uploaded on Github.</h3>
 						<div class="row">
@@ -128,7 +132,7 @@
 						</ul>
 					</section>
 <!-- Five -->
-					<section id="five">
+					<section id="five" class="content-section" aria-hidden="true">
 						<h1>Some artistic stuffs...</h1>
 						<h3>Paintings, draws and modeling were update here. The most artistic part of the games.</h3>
 						<div class="row">
@@ -158,7 +162,7 @@
 						</ul>
 					</section>
 				<!-- Three -->
-					<section id="three">
+					<section id="three" class="content-section" aria-hidden="true">
 						<h1>Get In Touch</h1>
 						<h3>If you liked what you saw, don't hesitate to contact me. I'm currently looking for a job, so let's get in touch!</h3>
 						<div class="row">
@@ -199,7 +203,7 @@
 						</div>
 					</section>
 			<!-- Four -->
-				<section id="four">
+				<section id="four" class="content-section" aria-hidden="true">
 					<strong><h1>Curriculum Vitae</h1>
 					<strong><h3>ACADEMIC EDUCATION</h3>
 					<h4>University studies</h4>
@@ -278,7 +282,7 @@
 			</div>
 
 		<!-- Footer -->
-			<footer id="footer" style="background-color: rgba(0,0,0,0.6);padding-top: 25px;">
+			<footer id="footer">
 				<ul class="icons">
 					<li><a href="https://es.linkedin.com/in/david-gómez-blanco-63629a11a" target="_blank" class="icon fa-linkedin fa-2x"><span class="label">Linkedin</span></a></li>
 					<li><a href="https://github.com/DGMonkeyKing" target="_blank" class="icon fa-github fa-2x"><span class="label">Github</span></a></li>
