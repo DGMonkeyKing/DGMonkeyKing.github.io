@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV – David Gómez Blanco</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage: #7a8c6e;
+      --sage-dark: #5c6b52;
+      --sage-light: #c8d4bc;
+      --sidebar-bg: #8d9e80;
+      --text-dark: #2b2b2b;
+      --text-mid: #4a4a4a;
+      --text-light: #6a6a6a;
+      --white: #ffffff;
+      --off-white: #f9f7f4;
+      --border: #d4dcc8;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: #e8e8e4;
+      color: var(--text-dark);
+      font-size: 9pt;
+      line-height: 1.5;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: var(--off-white);
+      display: grid;
+      grid-template-columns: 1fr 62mm;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.18);
+    }
+
+    /* ── LEFT COLUMN ── */
+    .main {
+      padding: 14mm 10mm 12mm 14mm;
+      background: var(--off-white);
+    }
+
+    .header {
+      margin-bottom: 9mm;
+      padding-bottom: 6mm;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28pt;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text-dark);
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .header .subtitle {
+      font-size: 9pt;
+      color: var(--text-light);
+      font-style: italic;
+      margin-top: 3px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Section headings */
+    .section-title {
+      font-size: 7.5pt;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 5mm;
+      padding-bottom: 2px;
+    }
+
+    section { margin-bottom: 8mm; }
+
+    /* Experience entries */
+    .entry {
+      display: grid;
+      grid-template-columns: 22mm 1fr;
+      gap: 0 6mm;
+      margin-bottom: 6mm;
+      position: relative;
+    }
+
+    .entry::before {
+      content: '';
+      position: absolute;
+      left: 21mm;
+      top: 3px;
+      bottom: -6mm;
+      width: 1.5px;
+      background: var(--sage-light);
+    }
+
+    .entry:last-child::before { display: none; }
+
+    .entry-date {
+      font-size: 7.5pt;
+      color: var(--text-light);
+      line-height: 1.4;
+      padding-top: 1px;
+      padding-right: 10px;
+      text-align: right;
+    }
+
+    .entry-content { padding-left: 4mm; }
+
+    .entry-title {
+      font-size: 9pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-dark);
+      margin-bottom: 1px;
+    }
+
+    .entry-company {
+      font-size: 8.5pt;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .entry-company strong {
+      color: var(--text-mid);
+      font-weight: 600;
+    }
+
+    .entry-bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    .entry-bullets li {
+      font-size: 8pt;
+      color: var(--text-mid);
+      padding-left: 10px;
+      position: relative;
+      margin-bottom: 2px;
+      line-height: 1.45;
+    }
+
+    .entry-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--sage);
+      font-size: 8pt;
+    }
+
+    /* Education */
+    .edu-entry {
+      display: grid;
+      grid-template-columns: 22mm 1fr;
+      gap: 0 6mm;
+      margin-bottom: 4mm;
+    }
+
+    .edu-date {
+      font-size: 7.5pt;
+      color: var(--text-light);
+      text-align: right;
+      padding-top: 1px;
+    }
+
+    .edu-content { padding-left: 4mm; }
+
+    .edu-degree {
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-dark);
+    }
+
+    .edu-school {
+      font-size: 8pt;
+      color: var(--text-mid);
+    }
+
+    /* Creations */
+    .creations-list {
+      list-style: none;
+    }
+
+    .creations-list li {
+      font-size: 8pt;
+      color: var(--text-mid);
+      padding-left: 10px;
+      position: relative;
+      margin-bottom: 3px;
+    }
+
+    .creations-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--sage);
+    }
+
+    .creations-list a {
+      color: var(--sage-dark);
+      text-decoration: none;
+    }
+
+    .footer-note {
+      font-size: 7.5pt;
+      color: var(--text-light);
+      font-style: italic;
+      margin-top: 4mm;
+    }
+
+    /* ── RIGHT SIDEBAR ── */
+    .sidebar {
+      background: var(--sidebar-bg);
+      padding: 14mm 7mm 12mm 7mm;
+      color: var(--white);
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-bottom: 8mm;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 7.5pt;
+      line-height: 1.5;
+      margin-bottom: 4px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .contact-list li .icon {
+      flex-shrink: 0;
+      width: 13px;
+      height: 13px;
+      margin-top: 1px;
+      opacity: 0.85;
+    }
+
+    .contact-list a {
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .sidebar-section {
+      margin-bottom: 7mm;
+    }
+
+    .sidebar-title {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 4mm;
+      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .sidebar-text {
+      font-size: 7.5pt;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.55;
+    }
+
+    .skill-list, .lang-list {
+      list-style: none;
+    }
+
+    .skill-list li, .lang-list li {
+      font-size: 7.5pt;
+      color: rgba(255,255,255,0.92);
+      padding-left: 10px;
+      position: relative;
+      margin-bottom: 3px;
+      line-height: 1.45;
+    }
+
+    .skill-list li::before, .lang-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: white; }
+      .page {
+        box-shadow: none;
+        width: 100%;
+        margin: 0;
+      }
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══════════════ MAIN COLUMN ═══════════════ -->
+  <main class="main">
+
+    <header class="header">
+      <h1>David Gómez Blanco</h1>
+      <p class="subtitle">Senior Software Engineer</br> C# • Java • Scalable Systems • Mobile & Live Products</p>
+    </header>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <div class="section-title">Experience</div>
+
+      <div class="entry">
+        <div class="entry-date">Mar 2023<br/>Present</div>
+        <div class="entry-content">
+          <div class="entry-title">Senior Software &amp; AI Developer</div>
+          <div class="entry-company"><strong>The Angry Kraken</strong> | Madrid, Madrid, Spain</div>
+          <ul class="entry-bullets">
+            <li>Led the architecture and development of large-scale mobile applications using Unity and C#, designing systems focused on long-term maintainability, scalability, and live product evolution.</li>
+            <li>Owned complete features and systems end-to-end, from technical design and implementation to production deployment and post-release maintenance.</li>
+            <li>Developed internal editor tooling and automation systems that reduced repetitive tasks, accelerated development workflows, and enabled non-technical teams to contribute directly to production pipelines.</li>
+            <li>Mentored and collaborated closely with other developers, providing guidance on software engineering practices, debugging, optimization, and system design.</li>
+            <li>Designed and implemented asynchronous and multithreaded systems for remote/local asset loading, gameplay responsiveness, and runtime stability.</li>
+            <li>Performed profiling, debugging, and optimization across Android devices, improving memory usage, loading times, runtime performance, and application stability.</li>
+            <li>Contributed to live mobile products reaching over 10M+ downloads.</li>
+            <li>Integrated and maintained third-party platform services including monetization systems and in-app purchases within live production environments.</li>
+            <li>Participated in technical planning, architecture discussions, and long-term system design decisions throughout the full development lifecycle.</li>
+            <li>Developed web-based playable ads and interactive experiences using web technologies including JavaScript.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">Oct 2022<br/>Mar 2023</div>
+        <div class="entry-content">
+          <div class="entry-title">Unity Developer</div>
+          <div class="entry-company"><strong>Ionic Studios – Freelance</strong> | Ontario, Canadá</div>
+          <ul class="entry-bullets">
+            <li>Developed and redesigned gameplay systems and core application features for a multiplayer PC title using Unity and C#.</li>
+            <li>Refactored legacy codebases to improve maintainability, readability, and long-term scalability.</li>
+            <li>Designed reusable systems and development tools to support rapid feature iteration.</li>
+            <li>Collaborated remotely within an international multidisciplinary team across multiple time zones.</li>
+            <li>Took ownership of feature implementation, debugging, and system integration in a fast-paced development environment.</li>
+            <li>Documented technical systems and development workflows to improve team collaboration and maintainability.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">Mar 2019<br/>Oct 2022</div>
+        <div class="entry-content">
+          <div class="entry-title">Unity &amp; Tech Developer</div>
+          <div class="entry-company"><strong>Lab Cave Games</strong> | Madrid, Madrid, Spain</div>
+          <ul class="entry-bullets">
+            <li>Developed and maintained live mobile applications with over 10M+ downloads across Android and iOS platforms using Unity and C#.</li>
+            <li>Worked within high-throughput production pipelines based on reusable game frameworks, rapidly adapting, stabilizing, and deploying multiple mobile products.</li>
+            <li>Diagnosed and resolved gameplay, performance, and production issues, transforming unstable templates into production-ready applications.</li>
+            <li>Integrated and maintained third-party services including monetization systems, advertisements, analytics, and mobile platform integrations.</li>
+            <li>Collaborated with CI/CD workflows using Jenkins-based automated build systems connected to Android publishing pipelines.</li>
+            <li>Developed internal automation tools for game metadata and asset management, reducing repetitive manual tasks and improving publishing efficiency.</li>
+            <li>Performed profiling, debugging, and optimization tasks to improve application stability, runtime performance, and overall user experience.</li>
+            <li>Collaborated with multidisciplinary teams throughout the full software development lifecycle in fast-paced live production environments.</li>
+            <li>Worked alongside cloud-integrated workflows and AWS-connected services within large-scale mobile production ecosystems.</li>
+            <li>Assisted onboarding processes for new team members and supported knowledge sharing across development teams.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">Oct 2017<br/>Dec 2018</div>
+        <div class="entry-content">
+          <div class="entry-title">Software Developer</div>
+          <div class="entry-company"><strong>VIPERA Plc</strong> | Madrid, Spain / Milan, Italy</div>
+          <ul class="entry-bullets">
+            <li>Developed enterprise software solutions using Java EE within payment and financial service environments supporting major payment providers including Mastercard and Visa.</li>
+            <li>Integrated and maintained REST and SOAP APIs for communication between distributed enterprise systems.</li>
+            <li>Designed and developed modular components using Eclipse IDE and OSGi-based architectures.</li>
+            <li>Collaborated with senior engineering teams across Madrid and Milan in an international enterprise development environment.</li>
+            <li>Participated in technical discussions, code reviews, and architecture-oriented development workflows within highly professional engineering teams.</li>
+            <li>Implemented and validated software requirements through extensive testing, debugging, and unit test development.</li>
+            <li>Worked with API development and testing tools including Postman to validate integrations and system behaviors.</li>
+            <li>Contributed to software systems where reliability, security, and maintainability were critical business requirements.</li>
+            <li>Collaborated closely with senior developers and technical leads to translate functional requirements into production-ready software solutions.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">Nov 2016<br/>Oct 2017</div>
+        <div class="entry-content">
+          <div class="entry-title">Developer &amp; Researcher</div>
+          <div class="entry-company"><strong>Tecnitia Technologies</strong> | Madrid, Madrid, Spain</div>
+          <ul class="entry-bullets">
+            <li>Researched and evaluated machine learning and computer vision solutions for internal R&D projects.</li>
+            <li>Conducted performance testing and analysis across local and cloud-based environments.</li>
+            <li>Implemented and optimized supervised and unsupervised learning algorithms.</li>
+            <li>Collaborated on recommendation systems and speech recognition related technologies.</li>
+            <li>Analyzed technical requirements and proposed implementation approaches for experimental software projects.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <div class="section-title">Education</div>
+
+      <!--div class="edu-entry">
+        <div class="edu-date">Oct 2018<br/>Jul 2019</div>
+        <div class="edu-content">
+          <div class="edu-degree">Máster en Concept Art</div>
+          <div class="edu-school">Voxel School</div>
+        </div>
+      </div-->
+
+      <div class="edu-entry">
+        <div class="edu-date">Sep 2016<br/>Jun 2018</div>
+        <div class="edu-content">
+          <div class="edu-degree">Máster en Ingeniería Informática</div>
+          <div class="edu-school">Universidad Complutense de Madrid</div>
+        </div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-date">Sep 2012<br/>Jun 2016</div>
+        <div class="edu-content">
+          <div class="edu-degree">Grado en Ingeniería Informática</div>
+          <div class="edu-school">Universidad Complutense de Madrid</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MY CREATIONS 
+    <section>
+      <div class="section-title">My Creations</div>
+      <ul class="creations-list">
+        <li><strong>Shaders &amp; VFX:</strong> <a href="https://www.shadertoy.com/user/DGMKPixy">https://www.shadertoy.com/user/DGMKPixy</a></li>
+        <li><strong>Art:</strong> <a href="https://www.artstation.com/dgmkpixy">https://www.artstation.com/dgmkpixy</a></li>
+      </ul>
+      <p class="footer-note">All links can be found on my LinkedIn page at the contact zone.</p>
+    </section>
+    -->
+  </main>
+
+  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <aside class="sidebar">
+
+    <ul class="contact-list">
+      <li>
+        <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+
+        <a href="mailto:davidnew33@gmail.com">
+          davidnew33@gmail.com
+        </a>
+      </li>
+      <li>
+        <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        </svg>
+        +34 696 908 648
+      </li>
+      <li>
+        <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+        </svg>
+        Madrid, España
+      </li>
+      <li>
+        <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>
+        </svg>
+        <a href="https://www.linkedin.com/in/david-g%C3%B3mez-blanco-63629a11a/">https://www.linkedin.com/in/david-g%C3%B3mez-blanco-63629a11a/</a>
+      </li>
+    </ul>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Languages</div>
+      <ul class="lang-list">
+        <li>Spanish | Native</li>
+        <li>English | Advanced / Professional</li>
+        <li>Japanese | Elementary</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Summary</div>
+      <p class="sidebar-text">Senior Software Engineer with 7+ years of experience developing
+         and maintaining large-scale mobile and interactive applications using C# and Java. 
+         Strong background in software architecture, performance optimization, tooling, and 
+         full software development lifecycle. Experienced in building live products with 
+         millions of users, improving engineering workflows through internal tools, and 
+         delivering scalable, maintainable solutions in multidisciplinary environments. 
+         Passionate about solving complex technical problems and driving high-quality 
+         software development.</p>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Programming Languages</div>
+      <ul class="skill-list">
+        <li>C#</li>
+        <li>Java</li>
+        <li>C++/C</li>
+        <li>JavaScript</li>
+        <li>HTML/CSS</li>
+        <li>Python</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Software Engineering</div>
+      <ul class="skill-list">
+        <li>System Design</li>
+        <li>Object-Oriented Programming</li>
+        <li>Software Architecture</li>
+        <li>Design Patterns</li>
+        <li>Multithreading & Concurrency</li>
+        <li>Performance Optimization</li>
+        <li>Debugging & Profiling</li>
+        <li>REST APIs</li>
+        <li>Full Software Development Lifecycle (SDLC)</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Technologies & Tools</div>
+      <ul class="skill-list">
+        <li>Unity</li>
+        <li>Eclipse IDE</li>
+        <li>Jenkins</li>
+        <li>Git</li>
+        <li>Docker</li>
+        <li>Android/iOS</li>
+        <li>REST/SOAP APIs</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Additional</div>
+      <ul class="skill-list">
+        <li>Internal Tooling Development</li>
+        <li>CI/CD Pipelines</li>
+        <li>Cross-Platform Development</li>
+        <li>Agile & Multidisciplinary Collaboration</li>
+      </ul>
+    </div>
+
+  </aside>
+</div>
+</body>
+</html>
