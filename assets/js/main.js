@@ -88,6 +88,73 @@
 
 				}
 
+		// Persistent section navigation.
+			var $sectionMenu = $('.section-menu'),
+				$sectionButtons = $sectionMenu.find('.section-menu__button'),
+				$sections = $('#main > .content-section'),
+				sectionTransitionDuration = 220,
+				sectionTransitionTimer;
+
+			function activateSection(sectionId, updateHash) {
+				var $targetSection = $('#' + sectionId),
+					$currentSection = $sections.filter('.is-active');
+
+				if (!$currentSection.length)
+					$currentSection = $sections.filter('.is-exiting');
+
+				if (!$targetSection.length || $targetSection.is($currentSection))
+					return;
+
+				window.clearTimeout(sectionTransitionTimer);
+				$sections.not($currentSection).removeClass('is-active is-exiting').attr('aria-hidden', 'true');
+
+				$sectionButtons
+					.removeClass('is-active')
+					.attr('aria-selected', 'false');
+
+				$sectionButtons
+					.filter('[data-section="' + sectionId + '"]')
+					.addClass('is-active')
+					.attr('aria-selected', 'true');
+
+				if (!$currentSection.length) {
+					$targetSection
+						.addClass('is-active')
+						.attr('aria-hidden', 'false');
+					return;
+				}
+
+				$currentSection
+					.removeClass('is-active')
+					.addClass('is-exiting')
+					.attr('aria-hidden', 'true');
+
+				sectionTransitionTimer = window.setTimeout(function() {
+					$currentSection.removeClass('is-exiting');
+					$targetSection
+						.removeClass('is-exiting')
+						.addClass('is-active')
+						.attr('aria-hidden', 'false');
+
+					if (updateHash && window.history && window.history.replaceState)
+						window.history.replaceState(null, '', '#' + sectionId);
+
+					if ($sectionMenu.length)
+						$('html, body').animate({ scrollTop: Math.max(0, $sectionMenu.offset().top - 16) }, 250);
+				}, sectionTransitionDuration);
+			}
+
+			$sectionButtons.on('click', function() {
+				activateSection($(this).data('section'), true);
+			});
+
+			if (window.location.hash) {
+				var initialSection = window.location.hash.substring(1);
+
+				if ($sections.filter('#' + initialSection).length)
+					activateSection(initialSection, false);
+			}
+
 		// Main Sections: Two.
 
 			// Lightbox gallery.
