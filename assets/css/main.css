@@ -2485,6 +2485,251 @@ strong > h3{
 			line-height: 1.5em;
 		}
 		
+/* Projects */
+
+	.projects-grid {
+		align-items: stretch;
+	}
+
+	.project-card {
+		display: flex;
+		flex-direction: column;
+	}
+
+		.project-card__thumb {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			background: transparent;
+			border: 0;
+			color: inherit;
+			cursor: pointer;
+			font: inherit;
+			overflow: hidden;
+			padding: 0;
+		}
+
+			.project-card__thumb:after {
+				content: 'Details';
+			}
+
+			.project-card__thumb:focus {
+				outline: none;
+			}
+
+			.project-card__thumb:focus-visible {
+				box-shadow: 0 0 0 3px #49bf9d;
+			}
+
+			.project-card__thumb img {
+				width: 100%;
+			}
+
+		.project-card__actions {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75em;
+			margin-top: auto;
+			padding-top: 0.75em;
+		}
+
+		.project-card__button,
+		.project-overlay__link {
+			min-width: 0;
+			width: 100%;
+		}
+
+	body.project-overlay-is-open {
+		overflow: hidden;
+	}
+
+	.project-overlay {
+		align-items: center;
+		display: flex;
+		inset: 0;
+		justify-content: center;
+		opacity: 0;
+		padding: 2em;
+		pointer-events: none;
+		position: fixed;
+		transition: opacity 0.25s ease;
+		z-index: 10000;
+	}
+
+		.project-overlay.is-visible {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.project-overlay__backdrop {
+			-webkit-backdrop-filter: blur(8px);
+			backdrop-filter: blur(8px);
+			background: rgba(8, 12, 18, 0.86);
+			inset: 0;
+			position: absolute;
+		}
+
+		.project-overlay__dialog {
+			background: #15191f;
+			border: solid 1px rgba(255, 255, 255, 0.13);
+			border-radius: 0.7em;
+			box-shadow: 0 1.5em 4em rgba(0, 0, 0, 0.45);
+			color: rgba(255, 255, 255, 0.86);
+			max-height: calc(100vh - 4em);
+			max-width: 880px;
+			overflow: auto;
+			position: relative;
+			transform: translateY(1em) scale(0.98);
+			transition: transform 0.25s ease;
+			width: 100%;
+		}
+
+		.project-overlay.is-visible .project-overlay__dialog {
+			transform: translateY(0) scale(1);
+		}
+
+		.project-overlay__dialog:focus {
+			outline: none;
+		}
+
+		.project-overlay__close {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			background: rgba(17, 17, 17, 0.84);
+			border: solid 1px rgba(255, 255, 255, 0.2);
+			border-radius: 999px;
+			color: #ffffff;
+			cursor: pointer;
+			font-size: 1.8em;
+			height: 1.6em;
+			line-height: 1.35em;
+			position: absolute;
+			right: 0.75em;
+			top: 0.75em;
+			width: 1.6em;
+			z-index: 2;
+		}
+
+			.project-overlay__close:hover,
+			.project-overlay__close:focus {
+				border-color: #49bf9d;
+				color: #49bf9d;
+				outline: none;
+			}
+
+		.project-overlay__carousel {
+			background: #0d1117;
+			min-height: 18em;
+			position: relative;
+		}
+
+		.project-overlay__image {
+			display: block;
+			height: 22em;
+			object-fit: cover;
+			width: 100%;
+		}
+
+		.project-overlay__nav {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			background: rgba(17, 17, 17, 0.72);
+			border: solid 1px rgba(255, 255, 255, 0.18);
+			border-radius: 999px;
+			color: #ffffff;
+			cursor: pointer;
+			font-size: 2.25em;
+			height: 1.55em;
+			line-height: 1.25em;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 1.55em;
+		}
+
+			.project-overlay__nav:hover,
+			.project-overlay__nav:focus {
+				background: #49bf9d;
+				border-color: #49bf9d;
+				outline: none;
+			}
+
+		.project-overlay__nav--prev {
+			left: 0.75em;
+		}
+
+		.project-overlay__nav--next {
+			right: 0.75em;
+		}
+
+		.project-overlay--single-image .project-overlay__nav {
+			display: none;
+		}
+
+		.project-overlay__counter {
+			background: rgba(17, 17, 17, 0.78);
+			border-radius: 999px;
+			bottom: 1em;
+			color: rgba(255, 255, 255, 0.9);
+			font-size: 0.85em;
+			padding: 0.25em 0.8em;
+			position: absolute;
+			right: 1em;
+		}
+
+		.project-overlay__content {
+			padding: 2em;
+		}
+
+			.project-overlay__content h2 {
+				color: #ffffff;
+				font-size: 2em;
+				margin-bottom: 0.5em;
+			}
+
+			.project-overlay__content p {
+				font-size: 1em;
+				line-height: 1.7em;
+				margin-bottom: 1.5em;
+			}
+
+		.project-overlay__links {
+			display: grid;
+			gap: 0.8em;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+	@media screen and (max-width: 736px) {
+
+		.project-overlay {
+			align-items: stretch;
+			padding: 1em;
+		}
+
+		.project-overlay__dialog {
+			max-height: calc(100vh - 2em);
+		}
+
+		.project-overlay__image {
+			height: 16em;
+		}
+
+		.project-overlay__content {
+			padding: 1.35em;
+		}
+
+		.project-overlay__content h2 {
+			font-size: 1.55em;
+		}
+
+		.project-overlay__links {
+			grid-template-columns: 1fr;
+		}
+
+	}
+
 	#top{
 		background: #111;
 	}
