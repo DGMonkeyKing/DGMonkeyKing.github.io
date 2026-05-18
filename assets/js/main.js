@@ -167,26 +167,29 @@
 					$projectCounter = $projectOverlay.find('.project-overlay__counter'),
 					$projectTitle = $('#project-overlay-title'),
 					$projectDescription = $('#project-overlay-description'),
-					$projectCodeLink = $projectOverlay.find('[data-project-overlay-code]'),
-					$projectDemoLink = $projectOverlay.find('[data-project-overlay-demo]'),
+					$projectLinks = $projectOverlay.find('.project-overlay__links'),
 					projectMediaItems = [],
 					projectMediaIndex = 0,
 					$lastProjectTrigger = null;
 
-				function setProjectOverlayLink($targetLink, $sourceLink) {
-					$targetLink
-						.attr('href', $sourceLink.attr('href'))
-						.text($sourceLink.text());
+				function hasProjectOverlayLink($sourceLink) {
+					return $sourceLink.length > 0 && !!$sourceLink.attr('href');
+				}
+
+				function buildProjectOverlayLink($sourceLink, isPrimary) {
+					var $overlayLink = $('<a />', {
+						class: 'button project-overlay__link' + (isPrimary ? ' special' : ''),
+						href: $sourceLink.attr('href'),
+						text: $sourceLink.text()
+					});
 
 					if ($sourceLink.attr('target'))
-						$targetLink.attr('target', $sourceLink.attr('target'));
-					else
-						$targetLink.removeAttr('target');
+						$overlayLink.attr('target', $sourceLink.attr('target'));
 
 					if ($sourceLink.attr('rel'))
-						$targetLink.attr('rel', $sourceLink.attr('rel'));
-					else
-						$targetLink.removeAttr('rel');
+						$overlayLink.attr('rel', $sourceLink.attr('rel'));
+
+					return $overlayLink;
 				}
 
 				function getProjectMediaType(src, explicitType) {
@@ -277,8 +280,24 @@
 					$lastProjectTrigger = $projectCard.find('.project-card__thumb');
 					$projectTitle.text($metadata.find('[data-project-title]').text());
 					$projectDescription.text($metadata.find('[data-project-description]').text());
-					if($codeLink.length > 0 && $codeLink.attr('href')) setProjectOverlayLink($projectCodeLink, $codeLink);
-					if($demoLink.length > 0 && $demoLink.attr('href')) setProjectOverlayLink($projectDemoLink, $demoLink);
+
+					$projectLinks
+						.empty()
+						.removeAttr('hidden')
+						.removeClass('project-overlay__links--single');
+
+					if (hasProjectOverlayLink($codeLink))
+						$projectLinks.append(buildProjectOverlayLink($codeLink, false));
+
+					if (hasProjectOverlayLink($demoLink))
+						$projectLinks.append(buildProjectOverlayLink($demoLink, true));
+
+					var visibleProjectLinkCount = $projectLinks.children('.project-overlay__link').length;
+
+					$projectLinks
+						.toggleClass('project-overlay__links--single', visibleProjectLinkCount === 1)
+						.attr('hidden', visibleProjectLinkCount === 0 ? 'hidden' : null);
+
 					renderProjectMedia();
 
 					$projectOverlay
@@ -329,6 +348,7 @@
 				var $artSection = $('#five'),
 					$artGrid = $artSection.find('[data-art-grid]'),
 					$artSentinel = $artSection.find('[data-art-sentinel]'),
+					$artSource = $artSection.find('[data-art-manifest]'),
 					$artOverlay = $('#art-overlay'),
 					$artDialog = $artOverlay.find('.art-overlay__dialog'),
 					$artImage = $artOverlay.find('.art-overlay__image'),
@@ -340,16 +360,39 @@
 					$lastArtworkTrigger = null,
 					artObserver = null;
 
-				$artSection.find('[data-art-source] li').each(function() {
-					var $artwork = $(this);
+				function normaliseArtwork(rawArtwork) {
+					if (!rawArtwork || !rawArtwork.full)
+						return null;
 
-					if ($artwork.data('full'))
-						artworks.push({
-							full: $artwork.data('full'),
-							thumb: $artwork.data('thumb') || $artwork.data('full'),
-							alt: $artwork.data('alt') || 'Artwork'
-						});
-				});
+					return {
+						full: rawArtwork.full,
+						thumb: rawArtwork.thumb || rawArtwork.full,
+						alt: rawArtwork.alt || 'Artwork'
+					};
+				}
+
+				function loadArtworkManifest() {
+					var manifestUrl = $artSource.data('art-manifest');
+
+					if (!manifestUrl || !window.fetch)
+						return $.Deferred().resolve([]).promise();
+
+					return $.Deferred(function(deferred) {
+						fetch(manifestUrl, { cache: 'no-cache' })
+							.then(function(response) {
+								if (!response.ok)
+									throw new Error('Unable to load artwork manifest.');
+
+								return response.json();
+							})
+							.then(function(manifestArtworks) {
+								deferred.resolve($.map(manifestArtworks, normaliseArtwork));
+							})
+							.catch(function() {
+								deferred.resolve([]);
+							});
+					}).promise();
+				}
 
 				function renderArtworkBatch() {
 					var nextArtworkCount = Math.min(loadedArtworkCount + artBatchSize, artworks.length),
@@ -432,7 +475,14 @@
 						renderArtworkBatch();
 				}
 
-				if (artworks.length && $artGrid.length) {
+				function initialiseArtworkGallery(manifestArtworks) {
+					artworks = manifestArtworks;
+
+					if (!artworks.length || !$artGrid.length) {
+						$artSentinel.hide();
+						return;
+					}
+
 					renderArtworkBatch();
 
 					$artGrid.on('click', '.art-gallery__item', function() {
@@ -458,6 +508,8 @@
 							maybeLoadMoreArt();
 					});
 				}
+
+				loadArtworkManifest().done(initialiseArtworkGallery);
 
 				$window.on('keydown', function(event) {
 					if (!$artOverlay.hasClass('is-visible'))
