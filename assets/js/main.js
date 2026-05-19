@@ -140,8 +140,7 @@
 					if (updateHash && window.history && window.history.replaceState)
 						window.history.replaceState(null, '', '#' + sectionId);
 
-					if ($sectionMenu.length)
-						$('html, body').animate({ scrollTop: Math.max(0, $sectionMenu.offset().top - 16) }, 250);
+					$('html, body').animate({ scrollTop: 0 }, 250);
 
 					$window.trigger('sectionchange', [sectionId]);
 				}, sectionTransitionDuration);
