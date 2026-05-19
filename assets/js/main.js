@@ -160,6 +160,53 @@
 
 		// Main Sections: Two.
 
+			// Horizontal-order masonry layout for projects.
+				var $projectsGrid = $('.projects-grid'),
+					projectMasonryColumns = 2,
+					projectMasonryGap = 24,
+					projectMasonryResizeTimer;
+
+				function layoutProjectsMasonry() {
+					if (!$projectsGrid.length)
+						return;
+
+					var grid = $projectsGrid[0],
+						isSingleColumn = window.matchMedia('(max-width: 736px)').matches,
+						columns = isSingleColumn ? 1 : projectMasonryColumns,
+						gridWidth = $projectsGrid.innerWidth(),
+						columnWidth = columns > 1 ? (gridWidth - projectMasonryGap * (columns - 1)) / columns : gridWidth,
+						columnHeights = [],
+						$cards = $projectsGrid.children('.project-card:visible');
+
+					if (!gridWidth || !$cards.length) {
+						$projectsGrid.css('height', '');
+						return;
+					}
+
+					$cards.each(function(index) {
+						var column = index % columns,
+							left = column * (columnWidth + projectMasonryGap),
+							top = columnHeights[column] || 0,
+							$card = $(this);
+
+						$card.css({
+							left: left + 'px',
+							position: 'absolute',
+							top: top + 'px',
+							width: columnWidth + 'px'
+						});
+
+						columnHeights[column] = top + $card.outerHeight(true);
+					});
+
+					$projectsGrid.css('height', Math.max.apply(Math, columnHeights));
+				}
+
+				function requestProjectMasonryLayout() {
+					window.clearTimeout(projectMasonryResizeTimer);
+					projectMasonryResizeTimer = window.setTimeout(layoutProjectsMasonry, 60);
+				}
+
 			// Reusable project overlay.
 				var $projectOverlay = $('#project-overlay'),
 					$projectDialog = $projectOverlay.find('.project-overlay__dialog'),
@@ -340,6 +387,17 @@
 					else if (event.key === 'ArrowRight')
 						moveProjectCarousel(1);
 				});
+
+				$window.on('load resize', requestProjectMasonryLayout);
+				$window.on('sectionchange', function(event, sectionId) {
+					if (sectionId === 'two')
+						requestProjectMasonryLayout();
+				});
+				$('#full-port-button').on('click', function() {
+					window.setTimeout(requestProjectMasonryLayout, 0);
+				});
+				$projectsGrid.find('img').on('load', requestProjectMasonryLayout);
+				requestProjectMasonryLayout();
 
 
 		// Main Sections: Five.

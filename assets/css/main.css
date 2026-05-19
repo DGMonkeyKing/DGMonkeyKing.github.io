@@ -2489,11 +2489,13 @@ strong > h3{
 
 	.projects-grid {
 		align-items: stretch;
+		position: relative;
 	}
 
 	.project-card {
 		display: flex;
 		flex-direction: column;
+		margin: 0 0 1.5em;
 	}
 
 		.project-card__thumb {
