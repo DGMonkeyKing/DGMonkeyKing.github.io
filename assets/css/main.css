@@ -2488,12 +2488,19 @@ strong > h3{
 /* Projects */
 
 	.projects-grid {
-		align-items: stretch;
+		column-count: 2;
+		column-gap: 1.5em;
+		display: block;
+		width: 100%;
 	}
 
 	.project-card {
 		display: flex;
 		flex-direction: column;
+		break-inside: avoid;
+		margin: 0 0 1.5em;
+		page-break-inside: avoid;
+		width: 100%;
 	}
 
 		.project-card__thumb {
@@ -2716,6 +2723,10 @@ strong > h3{
 			}
 
 	@media screen and (max-width: 736px) {
+
+		.projects-grid {
+			column-count: 1;
+		}
 
 		.project-overlay {
 			align-items: stretch;
