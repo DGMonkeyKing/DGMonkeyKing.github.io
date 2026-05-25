@@ -4150,3 +4150,52 @@ strong > h3{
 		}
 
 	}
+
+/* Shaders */
+
+	.shader-section {
+		--shader-panel: rgba(13, 18, 24, 0.78);
+		--shader-line: rgba(255, 255, 255, 0.12);
+		--shader-text: rgba(255, 255, 255, 0.74);
+		color: var(--shader-text);
+	}
+
+		.shader-list {
+			display: grid;
+			gap: 1em;
+			margin-top: 1.25em;
+		}
+
+		.shader-item {
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+			background: var(--shader-panel);
+			border: 1px solid var(--shader-line);
+			border-radius: 1.15em;
+			box-shadow: 0 0.65em 1.8em rgba(0, 0, 0, 0.16);
+			padding: clamp(0.95em, 2vw, 1.35em);
+		}
+
+			.shader-item h2 {
+				color: #ffffff;
+				font-size: 1.05em;
+				font-weight: 700;
+				margin: 0 0 0.8em 0;
+			}
+
+			.shader-item iframe {
+				aspect-ratio: 16 / 9;
+				border: 0;
+				display: block;
+				height: auto;
+				max-width: 100%;
+				width: 100%;
+			}
+
+	@media screen and (max-width: 736px) {
+
+		.shader-item {
+			border-radius: 1em;
+		}
+
+	}
