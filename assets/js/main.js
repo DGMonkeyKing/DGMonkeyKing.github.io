@@ -581,6 +581,134 @@
 				});
 
 
+
+		// Main Sections: Seven.
+
+			// Template-based MP3 music players with minimal custom controls.
+				var $musicSection = $('#seven'),
+					$musicList = $musicSection.find('[data-music-list]'),
+					musicTemplate = document.getElementById('music-track-template'),
+					$musicData = $('#music-tracks-data'),
+					musicPlayers = [];
+
+				function formatMusicTime(seconds) {
+					if (!isFinite(seconds) || seconds < 0)
+						seconds = 0;
+
+					var roundedSeconds = Math.floor(seconds),
+						minutes = Math.floor(roundedSeconds / 60),
+						remainingSeconds = roundedSeconds % 60;
+
+					return minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+				}
+
+				function pauseOtherTracks(activeAudio) {
+					$.each(musicPlayers, function(index, player) {
+						if (player.audio !== activeAudio)
+							player.audio.pause();
+					});
+				}
+
+				function renderMusicTracks() {
+					if (!$musicList.length || !musicTemplate || !$musicData.length)
+						return;
+
+					var tracks = [];
+
+					try {
+						tracks = JSON.parse($musicData.text());
+					} catch (error) {
+						tracks = [];
+					}
+
+					$.each(tracks, function(index, track) {
+						if (!track || !track.src)
+							return;
+
+						var trackFragment = document.importNode(musicTemplate.content, true),
+							$track = $(trackFragment).find('[data-music-player]'),
+							$trackTitle = $track.find('[data-music-title]'),
+							$trackSource = $track.find('[data-music-source]');
+
+						$trackTitle.text(track.title || 'Untitled track');
+						$trackSource.attr('src', track.src).attr('type', track.type || 'audio/mpeg');
+						$musicList.append(trackFragment);
+					});
+				}
+
+				function initialiseMusicPlayers() {
+					renderMusicTracks();
+
+					$musicList.find('[data-music-player]').each(function() {
+						var $player = $(this),
+							audio = $player.find('[data-music-audio]')[0],
+							$toggle = $player.find('[data-music-toggle]'),
+							$progress = $player.find('[data-music-progress]'),
+							$current = $player.find('[data-music-current]'),
+							$duration = $player.find('[data-music-duration]');
+
+						if (!audio)
+							return;
+
+						musicPlayers.push({ audio: audio, $toggle: $toggle });
+
+						function updateProgress() {
+							var duration = audio.duration || 0,
+								progressValue = duration ? (audio.currentTime / duration) * 100 : 0;
+
+							$progress.val(progressValue);
+							$current.text(formatMusicTime(audio.currentTime));
+							$duration.text(formatMusicTime(duration));
+						}
+
+						function updatePlayState() {
+							var isPaused = audio.paused || audio.ended;
+
+							$toggle
+								.text(isPaused ? 'Play' : 'Pause')
+								.attr('aria-label', isPaused ? 'Reproducir canción' : 'Pausar canción');
+							$player.toggleClass('is-playing', !isPaused);
+						}
+
+						$toggle.on('click', function() {
+							if (audio.paused || audio.ended) {
+								pauseOtherTracks(audio);
+								var playRequest = audio.play();
+
+								if (playRequest && playRequest.catch)
+									playRequest.catch(updatePlayState);
+							} else {
+								audio.pause();
+							}
+						});
+
+						$progress.on('input change', function() {
+							if (!audio.duration)
+								return;
+
+							audio.currentTime = (parseFloat($progress.val()) / 100) * audio.duration;
+							updateProgress();
+						});
+
+						$(audio).on('loadedmetadata timeupdate durationchange', updateProgress);
+						$(audio).on('play pause ended', updatePlayState);
+						updateProgress();
+						updatePlayState();
+					});
+				}
+
+				initialiseMusicPlayers();
+
+				$window.on('sectionchange', function(event, sectionId) {
+					if (sectionId === 'seven')
+						return;
+
+					$.each(musicPlayers, function(index, player) {
+						player.audio.pause();
+					});
+				});
+
+
 	});
 
 })(jQuery);
