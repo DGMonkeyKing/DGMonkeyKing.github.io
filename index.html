@@ -54,6 +54,7 @@
 					<button type="button" class="section-menu__button" data-section="two" aria-controls="two" aria-selected="false">Projects</button>
 					<button type="button" class="section-menu__button" data-section="five" aria-controls="five" aria-selected="false">Art</button>
 					<button type="button" class="section-menu__button" data-section="six" aria-controls="six" aria-selected="false">Shaders</button>
+					<button type="button" class="section-menu__button" data-section="seven" aria-controls="seven" aria-selected="false">Música</button>
 					<!--button type="button" class="section-menu__button" data-section="three" aria-controls="three" aria-selected="false">Contact</button-->
 					<button type="button" class="section-menu__button" data-section="four" aria-controls="four" aria-selected="false">CV</button>
 				</nav>
@@ -488,6 +489,43 @@
 								</a>
 							</article>
 						</div>
+					</section>
+
+					<section id="seven" class="content-section music-section" aria-hidden="true">
+						<h1>Música</h1>
+						<h3>Tracks y pequeñas piezas sonoras preparadas para reproducirse directamente desde archivos MP3.</h3>
+						<div class="music-list" data-music-list role="list" aria-label="Lista de canciones reproducibles"></div>
+
+						<template id="music-track-template">
+							<article class="music-track" data-music-player role="listitem">
+								<div class="music-track__header">
+									<span class="music-track__eyebrow">Track</span>
+									<h2 data-music-title></h2>
+								</div>
+								<div class="music-player">
+									<button type="button" class="music-player__toggle" data-music-toggle aria-label="Reproducir canción">Play</button>
+									<div class="music-player__timeline">
+										<input class="music-player__progress" data-music-progress type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso de la canción" />
+										<div class="music-player__time" aria-live="polite">
+											<span data-music-current>0:00</span>
+											<span data-music-duration>0:00</span>
+										</div>
+									</div>
+									<audio data-music-audio preload="metadata">
+										<source data-music-source src="" type="audio/mpeg" />
+										Your browser does not support the audio element.
+									</audio>
+								</div>
+							</article>
+						</template>
+
+						<script type="application/json" id="music-tracks-data">
+						[
+							{ "title": "Main Theme - Super Mario Prototype", "src": "games/super-mario/audio/music_main.mp3" },
+							{ "title": "Level Complete - Super Mario Prototype", "src": "games/super-mario/audio/music_level_complete.mp3" },
+							{ "title": "Game Over - Super Mario Prototype", "src": "games/super-mario/audio/music_die.mp3" }
+						]
+						</script>
 					</section>
 
 				<!-- Three >
