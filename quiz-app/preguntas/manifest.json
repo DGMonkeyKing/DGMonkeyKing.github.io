@@ -1,0 +1,40 @@
+{
+  "temas": [
+    {
+      "id": "tema_1_constitucion",
+      "titulo": "Tema 1",
+      "nombre": "La Constitución Española de 1978",
+      "archivos": [
+        { "file": "parte1_estructura_titulo_preliminar.csv", "nombre": "Estructura y Título Preliminar" },
+        { "file": "parte2_derechos_deberes_fundamentales.csv", "nombre": "Derechos y deberes fundamentales" },
+        { "file": "parte3_elaboracion_de_las_leyes.csv", "nombre": "Elaboración de las leyes" },
+        { "file": "parte4_organizacion_territorial.csv", "nombre": "Organización territorial del Estado" },
+        { "file": "parte5_reforma_constitucional.csv", "nombre": "Reforma constitucional" }
+      ]
+    },
+    {
+      "id": "tema_2_lpac_i",
+      "titulo": "Tema 2",
+      "nombre": "Ley 39/2015 (I): Disposiciones generales, interesados, actividad y actos",
+      "archivos": [
+        { "file": "lpac_parte1_disposiciones_generales_interesados.csv", "nombre": "Disposiciones generales e interesados" },
+        { "file": "lpac_parte2_actividad_normas_generales.csv", "nombre": "Actividad: normas generales" },
+        { "file": "lpac_parte3_terminos_plazos.csv", "nombre": "Términos y plazos" },
+        { "file": "lpac_parte4_actos_requisitos_eficacia.csv", "nombre": "Actos: requisitos y eficacia" },
+        { "file": "lpac_parte5_nulidad_anulabilidad.csv", "nombre": "Nulidad y anulabilidad" }
+      ]
+    },
+    {
+      "id": "tema_3_lpac_ii",
+      "titulo": "Tema 3",
+      "nombre": "Ley 39/2015 (II): Procedimiento común y revisión de actos",
+      "archivos": [
+        { "file": "lpac2_parte1_garantias_iniciacion.csv", "nombre": "Garantías e iniciación" },
+        { "file": "lpac2_parte2_ordenacion_instruccion.csv", "nombre": "Ordenación e instrucción" },
+        { "file": "lpac2_parte3_finalizacion_tramitacion_simplificada.csv", "nombre": "Finalización y tramitación simplificada" },
+        { "file": "lpac2_parte4_ejecucion_revision_oficio.csv", "nombre": "Ejecución y revisión de oficio" },
+        { "file": "lpac2_parte5_recursos_administrativos.csv", "nombre": "Recursos administrativos" }
+      ]
+    }
+  ]
+}
