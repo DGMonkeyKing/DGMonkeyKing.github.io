@@ -35,6 +35,38 @@
         { "file": "lpac2_parte4_ejecucion_revision_oficio.csv", "nombre": "Ejecución y revisión de oficio" },
         { "file": "lpac2_parte5_recursos_administrativos.csv", "nombre": "Recursos administrativos" }
       ]
+    },
+    {
+      "id": "tema_4_l40_i",
+      "titulo": "Tema 4",
+      "nombre": "Ley 40/2015 (I): De los órganos de las Administraciones Públicas",
+      "archivos": [
+        { "file": "l40_parte1_organos_administrativos_competencia.csv", "nombre": "Órganos administrativos y Competencia" },
+        { "file": "l40_parte2_organos_colegiados_funcionamiento.csv", "nombre": "Órganos colegiados y Funcionamiento" },
+        { "file": "l40_parte3_organos_colegiados_age.csv", "nombre": "Órganos colegiados y AGE" },
+        { "file": "l40_parte4_abstencion_recusacion.csv", "nombre": "Abstención y Recusación" }
+      ]
+    },
+    {
+      "id": "tema_5_l40_ii",
+      "titulo": "Tema 5",
+      "nombre": "Ley 40/2015 (II): Funcionamiento electrónico del sector público",
+      "archivos": [
+        { "file": "l40_e_parte1_sede_portal_identificacion.csv", "nombre": "Sede Portal e Identificacion" },
+        { "file": "l40_e_parte2_actuacion_automatizada_firma.csv", "nombre": "Actuacion automatizada y Firma" },
+        { "file": "l40_e_parte3_intercambio_archivo_ubicacion.csv", "nombre": "Intercambio de archivos y Ubicacion" }
+      ]
+    },
+    {
+      "id": "tema_6_lopd",
+      "titulo": "Tema 6",
+      "nombre": "Ley Orgánica 3/2018: Protección de Datos Personales y garantía de los derechos digitales",
+      "archivos": [
+        { "file": "lopd_parte1_disposiciones_generales.csv", "nombre": "Disposiciones generales" },
+        { "file": "lopd_parte2_principios.csv", "nombre": "Principios de protección de datos" },
+        { "file": "lopd_parte3_derechos_personas.csv", "nombre": "Derechos de las personas" },
+        { "file": "lopd_parte4_encargado_dpd.csv", "nombre": "Encargado del tratamiento y Delegado de protección de datos" }
+      ]
     }
   ]
 }
