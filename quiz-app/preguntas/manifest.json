@@ -79,6 +79,30 @@
         { "file": "madrid_parte4_acceso_procedimiento.csv", "nombre": "Derecho de acceso a la información pública: Procedimiento" },
         { "file": "madrid_parte5_uc3m_portal_procedimiento.csv", "nombre": "Portal de transparencia y procedimiento de ejercicio del derecho de acceso a la información pública en la Universidad Carlos III de Madrid" }
       ]
+    },
+    {
+      "id": "tema_8_loiemh",
+      "titulo": "Tema 8",
+      "nombre": "Ley Orgánica 3/2007, para la igualdad efectiva de mujeres y hombres",
+      "archivos": [
+        { "file": "loiemh_parte1_objeto_ambito", "nombre": "Objeto y ámbito de la Ley" },
+        { "file": "loiemh_parte2_principio_igualdad_tutela.csv", "nombre": "El principio de igualdad y la tutela contra la discriminación" },
+        { "file": "loiemh_parte3_normativa_uc3m_genero_acoso.csv", "nombre": "Regulación en materia de igualdad, identidad y expresión de género, no discriminación y prevención y actuación contra el acoso de la Universidad Carlos III de Madrid" },
+        { "file": "loiemh_parte4_iiiplan_principios_generales.csv", "nombre": "III Plan de Igualdad de la Universidad Carlos III de Madrid: Principios Generales" },
+        { "file": "loiemh_parte5_iiiplan_objetivos_estructura.csv", "nombre": "Objetivos y estructura general del Plan: ejes, objetivos generales, líneas de acción, objetivos específicos y medidas" }
+      ]
+    },
+    {
+      "id": "tema_9_trebep",
+      "titulo": "Tema 9",
+      "nombre": "Real Decreto Legislativo 5/2015, Ley del Estatuto Básico del Empleado Público",
+      "archivos": [
+        { "file": "trebep_parte1_personal_servicio_aapp.csv", "nombre": "Personal al servicio de las Administraciones Públicas" },
+        { "file": "trebep_parte2_derechos_empleados.csv", "nombre": "Derechos y deberes de los empleados públicos" },
+        { "file": "trebep_parte3_codigo_conducta.csv", "nombre": "Código de conducta de los empleados públicos" },
+        { "file": "trebep_parte4_adquisicion_perdida_relacion_servicio.csv", "nombre": "Adquisición y pérdida de la relación de servicio" },
+        { "file": "trebep_parte5_situaciones_administrativas.csv", "nombre": "Situaciones administrativas" }
+      ]
     }
   ]
 }
