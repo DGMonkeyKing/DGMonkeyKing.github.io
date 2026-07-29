@@ -93,8 +93,8 @@
       ]
     },
     {
-      "id": "tema_9_trebep",
-      "titulo": "Tema 9",
+      "id": "tema_10_trebep",
+      "titulo": "Tema 10",
       "nombre": "Real Decreto Legislativo 5/2015, Ley del Estatuto Básico del Empleado Público",
       "archivos": [
         { "file": "trebep_parte1_personal_servicio_aapp.csv", "nombre": "Personal al servicio de las Administraciones Públicas" },
@@ -102,6 +102,19 @@
         { "file": "trebep_parte3_codigo_conducta.csv", "nombre": "Código de conducta de los empleados públicos" },
         { "file": "trebep_parte4_adquisicion_perdida_relacion_servicio.csv", "nombre": "Adquisición y pérdida de la relación de servicio" },
         { "file": "trebep_parte5_situaciones_administrativas.csv", "nombre": "Situaciones administrativas" }
+      ]
+    },
+    {
+      "id": "tema_11_rd364",
+      "titulo": "Tema 11",
+      "nombre": "Real Decreto 364/1995, Reglamento General de Ingreso del personal al servicio de la Administración General del Estado y de Provisión de Puestos de Trabajo y Promoción Profesional de los Funcionarios Civiles de la Administración General del Estado",
+      "archivos": [
+        { "file": "rd364_parte1_ingreso_cuerpos_escalas.csv", "nombre": "Ingreso en Cuerpos o Escalas de funcionarios" },
+        { "file": "rd364_parte2_provision_concurso_libre_designacion.csv", "nombre": "Provisión de puestos de trabajo" },
+        { "file": "rd364_parte3_otras_formas_provision.csv", "nombre": "Otras formas de provisión de puestos de trabajo" },
+        { "file": "rd364_parte4_carrera_promocion_interna.csv", "nombre": "Carrera profesional y Promoción interna" },
+        { "file": "l531984_parte5_principios_ambito.csv", "nombre": "Ley 53/1984: Principio y ámbito" },
+        { "file": "l531984_parte6_actividades_publicas_privadas.csv", "nombre": "Ley 53/1984: Actividades públicas y privadas" }
       ]
     }
   ]
