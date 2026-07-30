@@ -124,6 +124,28 @@ function letterFor(i) {
   return ["A", "B", "C", "D"][i];
 }
 
+function buildDisplayOptions(q) {
+  return shuffle(
+    q.opciones.map((texto, i) => ({
+      texto,
+      csvIndex: i + 1,
+    }))
+  ).map((option, i) => ({
+    ...option,
+    displayIndex: i + 1,
+  }));
+}
+
+function displayOptionsForCurrentQuestion() {
+  const s = state.session;
+  const q = currentQuestion();
+  if (!s.displayOptions || s.displayQuestionId !== q.id) {
+    s.displayQuestionId = q.id;
+    s.displayOptions = buildDisplayOptions(q);
+  }
+  return s.displayOptions;
+}
+
 function formatScore(n) {
   return (Math.round(n * 100) / 100).toFixed(2);
 }
@@ -265,7 +287,7 @@ async function startExam() {
     kind: "exam",
     queue,
     index: 0,
-    answers: [], // { question, selected (1-4|null), correct }
+    answers: [], // { question, selected (índice CSV 1-4|null), selectedDisplayIndex, correct }
     answered: false,
     selected: null,
     startedAt: Date.now(),
@@ -292,6 +314,8 @@ function renderQuiz() {
     return;
   }
 
+  const displayOptions = displayOptionsForCurrentQuestion();
+
   app.innerHTML = `
     ${masthead()}
     <main>
@@ -305,12 +329,12 @@ function renderQuiz() {
           </div>
           <p class="q-card__text">${escapeHtml(q.pregunta)}</p>
           <div class="options" id="options" role="group" aria-label="Opciones de respuesta">
-            ${q.opciones
+            ${displayOptions
               .map(
-                (op, i) => `
-              <button class="option" data-action="answer" data-index="${i + 1}">
-                <span class="option__letter">${letterFor(i)}</span>
-                <span>${escapeHtml(op)}</span>
+                (op) => `
+              <button class="option" data-action="answer" data-index="${op.csvIndex}" data-display-index="${op.displayIndex}">
+                <span class="option__letter">${letterFor(op.displayIndex - 1)}</span>
+                <span>${escapeHtml(op.texto)}</span>
               </button>
             `
               )
@@ -390,12 +414,19 @@ function handleAnswer(selectedIndex) {
   if (s.answered) return;
   const q = currentQuestion();
   const isCorrect = selectedIndex === q.correcta;
+  const selectedOption = displayOptionsForCurrentQuestion().find((op) => op.csvIndex === selectedIndex);
 
   s.answered = true;
   s.selected = selectedIndex;
 
   if (s.kind === "exam") {
-    s.answers.push({ question: q, selected: selectedIndex, correct: isCorrect });
+    s.answers.push({
+      question: q,
+      selected: selectedIndex,
+      selectedDisplayIndex: selectedOption ? selectedOption.displayIndex : null,
+      displayOptions: displayOptionsForCurrentQuestion(),
+      correct: isCorrect,
+    });
   } else {
     s.stats.total++;
     if (isCorrect) s.stats.correct++;
@@ -411,7 +442,13 @@ function handleBlank() {
   const q = currentQuestion();
   s.answered = true;
   s.selected = null;
-  s.answers.push({ question: q, selected: null, correct: false });
+  s.answers.push({
+    question: q,
+    selected: null,
+    selectedDisplayIndex: null,
+    displayOptions: displayOptionsForCurrentQuestion(),
+    correct: false,
+  });
   paintAnswerState(q, null);
 }
 
@@ -419,8 +456,8 @@ function paintAnswerState(q, selectedIndex) {
   const s = state.session;
   const optionsEl = document.getElementById("options");
   const buttons = optionsEl.querySelectorAll(".option");
-  buttons.forEach((btn, i) => {
-    const idx = i + 1;
+  buttons.forEach((btn) => {
+    const idx = parseInt(btn.dataset.index, 10);
     btn.disabled = true;
     if (idx === q.correcta) btn.classList.add("is-correct");
     else if (idx === selectedIndex) btn.classList.add("is-wrong");
@@ -469,6 +506,8 @@ function goNext() {
     s.index++;
     s.answered = false;
     s.selected = null;
+    s.displayOptions = null;
+    s.displayQuestionId = null;
     if (s.index >= s.queue.length) {
       finishExam();
       return;
@@ -482,6 +521,8 @@ function goNext() {
   s.current = pickNext(s.pool, prevId);
   s.answered = false;
   s.selected = null;
+  s.displayOptions = null;
+  s.displayQuestionId = null;
   renderQuiz();
 }
 
@@ -508,8 +549,10 @@ function finishExam() {
       pregunta: a.question.pregunta,
       temaNombre: a.question.temaNombre,
       opciones: a.question.opciones,
+      opcionesMuestreadas: a.displayOptions,
       correcta: a.question.correcta,
       seleccionada: a.selected,
+      seleccionadaMuestreo: a.selectedDisplayIndex,
       explicacion: a.question.explicacion,
     })),
   };
@@ -542,13 +585,17 @@ function renderExamSummary(entry) {
         ${entry.detalle
           .map((d) => {
             const cls = d.seleccionada === null ? "blank" : d.seleccionada === d.correcta ? "ok" : "no";
+            const correctaMuestreo = (d.opcionesMuestreadas || []).find((op) => op.csvIndex === d.correcta);
             const tuTexto =
-              d.seleccionada === null ? "Dejada en blanco" : `Tu respuesta: ${letterFor(d.seleccionada - 1)}. ${escapeHtml(d.opciones[d.seleccionada - 1])}`;
+              d.seleccionada === null
+                ? "Dejada en blanco"
+                : `Tu respuesta: ${letterFor((d.seleccionadaMuestreo || d.seleccionada) - 1)} (CSV ${d.seleccionada}). ${escapeHtml(d.opciones[d.seleccionada - 1])}`;
+            const correctaTexto = `Correcta: ${letterFor(((correctaMuestreo && correctaMuestreo.displayIndex) || d.correcta) - 1)} (CSV ${d.correcta}). ${escapeHtml(d.opciones[d.correcta - 1])}`;
             return `
             <div class="review-item ${cls}">
               <p class="review-item__q">${escapeHtml(d.pregunta)}</p>
               <p class="review-item__a">${tuTexto}</p>
-              <p class="review-item__a">Correcta: ${letterFor(d.correcta - 1)}. ${escapeHtml(d.opciones[d.correcta - 1])}</p>
+              <p class="review-item__a">${correctaTexto}</p>
               <p class="review-item__a">${linkify(d.explicacion)}</p>
             </div>
           `;
