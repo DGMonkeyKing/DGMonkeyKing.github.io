@@ -116,6 +116,18 @@
         { "file": "l531984_parte5_principios_ambito.csv", "nombre": "Ley 53/1984: Principio y ámbito" },
         { "file": "l531984_parte6_actividades_publicas_privadas.csv", "nombre": "Ley 53/1984: Actividades públicas y privadas" }
       ]
+    },
+    {
+      "id": "tema_12_lprl",
+      "titulo": "Tema 12",
+      "nombre": "Ley 31/1995 Prevención de Riesgos Laborales",
+      "archivos": [
+        { "file": "lprl_parte1_objeto_ambito_definiciones.csv", "nombre": "Objeto, ámbito de aplicación y definiciones" },
+        { "file": "lprl_parte2_derechos_obligaciones_i.csv", "nombre": "Derechos y obligaciones I" },
+        { "file": "lprl_parte3_derechos_obligaciones_ii.csv", "nombre": "Derechos y obligaciones II" },
+        { "file": "lprl_parte4_servicios_prevencion.csv", "nombre": "Servicios de Prevención" },
+        { "file": "lprl_parte5_consulta_participacion.csv", "nombre": "Consulta y participación de los trabajadores" }
+      ]
     }
   ]
 }
