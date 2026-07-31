@@ -120,13 +120,26 @@
     {
       "id": "tema_12_lprl",
       "titulo": "Tema 12",
-      "nombre": "Ley 31/1995 Prevención de Riesgos Laborales",
+      "nombre": "Ley 31/1995 de Prevención de Riesgos Laborales",
       "archivos": [
         { "file": "lprl_parte1_objeto_ambito_definiciones.csv", "nombre": "Objeto, ámbito de aplicación y definiciones" },
         { "file": "lprl_parte2_derechos_obligaciones_i.csv", "nombre": "Derechos y obligaciones I" },
         { "file": "lprl_parte3_derechos_obligaciones_ii.csv", "nombre": "Derechos y obligaciones II" },
         { "file": "lprl_parte4_servicios_prevencion.csv", "nombre": "Servicios de Prevención" },
         { "file": "lprl_parte5_consulta_participacion.csv", "nombre": "Consulta y participación de los trabajadores" }
+      ]
+    },
+    {
+      "id": "tema_13_losu",
+      "titulo": "Tema 13",
+      "nombre": "Ley Orgánica 2/2023 (I) del Sistema Universitario",
+      "archivos": [
+        { "file": "losu_parte1_disposiciones_funciones_autonomia.csv", "nombre": "Disposiciones generales. Funciones del sistema universitario y autonomía de las universidades" },
+        { "file": "losu_parte2_creacion_organizacion_ensenanzas.csv", "nombre": "Creación y reconocimiento de las universidades. Organización de las enseñanzas" },
+        { "file": "losu_parte3_investigacion_transferencia.csv", "nombre": "Investigación y transferencia e intercambio del conocimiento e innovación" },
+        { "file": "losu_parte4_cooperacion_coordinacion_participacion.csv", "nombre": "Cooperación, coordinación y participación en el sistema universitario" },
+        { "file": "losu_parte5_universidad_sociedad_cultura.csv", "nombre": "Universidad, sociedad y cultura" },
+        { "file": "losu_parte6_internacionalizacion.csv", "nombre": "Internacionalización del sistema universitario" }
       ]
     }
   ]
