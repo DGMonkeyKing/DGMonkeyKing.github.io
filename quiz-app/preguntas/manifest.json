@@ -141,6 +141,17 @@
         { "file": "losu_parte5_universidad_sociedad_cultura.csv", "nombre": "Universidad, sociedad y cultura" },
         { "file": "losu_parte6_internacionalizacion.csv", "nombre": "Internacionalización del sistema universitario" }
       ]
+    },
+    {
+      "id": "tema_14_losu_ii",
+      "titulo": "Tema 14",
+      "nombre": "Ley Orgánica 2/2023 (II) del Sistema Universitario",
+      "archivos": [
+        { "file": "losu2_parte1_estudiantado.csv", "nombre": "El estudiantado en el Sistema Universitario" },
+        { "file": "losu2_parte2_regimen_economico_financiero.csv", "nombre": "Régimen económico y financiero" },
+        { "file": "losu2_parte3_pdi.csv", "nombre": "Personal docente e investigador" },
+        { "file": "losu2_parte4_ptgas.csv", "nombre": "Personal técnico, de gestión y de administración y servicios" }
+      ]
     }
   ]
 }
