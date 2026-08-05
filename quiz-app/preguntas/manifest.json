@@ -152,6 +152,28 @@
         { "file": "losu2_parte3_pdi.csv", "nombre": "Personal docente e investigador" },
         { "file": "losu2_parte4_ptgas.csv", "nombre": "Personal técnico, de gestión y de administración y servicios" }
       ]
+    },
+    {
+      "id": "tema_15_estUC3M",
+      "titulo": "Tema 15",
+      "nombre": "Estatutos de la Universidad Carlos III de Madrid",
+      "archivos": [
+        { "file": "estUC3M_parte1_defensor_universitario.csv", "nombre": "Defensor Universitario" },
+        { "file": "estUC3M_parte2_servicios_universitarios.csv", "nombre": "Servicios universitarios" },
+        { "file": "estUC3M_parte3_regimen_economico_financiero.csv", "nombre": "Régimen económico y financiero de la Universidad" },
+        { "file": "estUC3M_parte4_reforma_estatutos.csv", "nombre": "Reforma de los Estatutos" }
+      ]
+    },
+    {
+      "id": "tema_16_rd822",
+      "titulo": "Tema 16",
+      "nombre": "Real Decreto 822/2021, de la organización de las enseñanzas universitarias y del procedimiento de aseguramiento de su calidad",
+      "archivos": [
+        { "file": "rd822_parte1_capitulos_I_IV.csv", "nombre": "Real Decreto 822/2021 (I)" },
+        { "file": "rd822_parte2_capitulos_V_VII.csv", "nombre": "Real Decreto 822/2021 (II)" },
+        { "file": "normUC3M_matricula_permanencia_evaluacion.csv", "nombre": "Normativas académicas de la Universidad Carlos III de Madrid: matrícula, permanencia, evaluación" },
+        { "file": "ens_oficiales_UC3M.csv", "nombre": "Enseñanzas universitarias oficiales de la Universidad Carlos III de Madrid" }
+      ]
     }
   ]
 }
