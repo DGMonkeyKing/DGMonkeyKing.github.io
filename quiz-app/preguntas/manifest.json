@@ -188,7 +188,7 @@
       ]
     },
     {
-      "id": "tema_18_presu",
+      "id": "tema_18_presu_i",
       "titulo": "Tema 18",
       "nombre": "El presupuesto de la Universidad Carlos III de Madrid (I)",
       "archivos": [
@@ -197,6 +197,34 @@
         { "file": "presu_parte3_creditos_iniciales_financiacion.csv", "nombre": "Créditos iniciales y su financiación" },
         { "file": "presu_parte4_modificaciones.csv", "nombre": "Modificaciones presupuestarias" },
         { "file": "presu_parte5_ejecucion_general.csv", "nombre": "Ejecución general de ingresos" }
+      ]
+    },
+    {
+      "id": "tema_19_presu_ii",
+      "titulo": "Tema 19",
+      "nombre": "El presupuesto de la Universidad Carlos III de Madrid (II)",
+      "archivos": [
+        { "file": "presu_ii_parte1_ejecucion_gastos.csv", "nombre": "Ejecución general de gastos presupuestarios" },
+        { "file": "presu_ii_parte2_normas_gestion_economico.csv", "nombre": "Normas y procedimientos de gestión presupuestaria y económico-financiera" },
+        { "file": "presu_ii_parte3_ordenacion_gasto_pago.csv", "nombre": "Ordenación del gasto y ordenación del pago" },
+        { "file": "presu_ii_parte4_gastos_compra.csv", "nombre": "Gastos para la compra de bienes y servicios" },
+        { "file": "presu_ii_parte5_gastos_transferencias_capital_inversion.csv", "nombre": "Gastos de transferencias corrientes y de capital. Gastos de inversión" },
+        { "file": "presu_ii_parte6_documentos.csv", "nombre": "Documentos contables que intervienen en la gestión presupuestaria" },
+        { "file": "presu_ii_parte7_liquidacion_cierre.csv", "nombre": "Liquidación y cierre del ejercicio" }
+      ]
+    },
+    {
+      "id": "tema_20_csp",
+      "titulo": "Tema 20",
+      "nombre": "Ley 9/2017, Contratos del Sector Público",
+      "archivos": [
+        { "file": "csp_parte1_ambito.csv", "nombre": "Ámbito de aplicación" },
+        { "file": "csp_parte2_tipos_formas_contrato.csv", "nombre": "Delimitación de los tipos contractuales. Perfección y forma del contrato" },
+        { "file": "csp_parte3_organo_contratacion.csv", "nombre": "Órgano de contratación" },
+        { "file": "csp_parte4_objeto_presupuesto_valor_precio.csv", "nombre": "Objeto, presupuesto base de licitación, valor estimado, precio del contrato y su revisión" },
+        { "file": "csp_parte5_preparacion_contratos.csv", "nombre": "De la preparación de los contratos de las Administraciones Públicas" },
+        { "file": "csp_parte6_adjudicacion_contratos.csv", "nombre": "De la adjudicación de los contratos de las Administraciones Públicas: Normas generales. Procedimiento abierto. Procedimiento restringido. Procedimientos con negociación" },
+        { "file": "csp_parte7_uc3m.csv", "nombre": "Especial referencia a la contratación en la Universidad Carlos III de Madrid" }
       ]
     }
   ]
