@@ -186,6 +186,18 @@
         { "file": "rd534_parte4_criterios_especificos.csv", "nombre": "Criterios específicos para la adjudicación de plazas por las universidades públicas" },
         { "file": "regulacion_normativa_acceso_uc3m.csv", "nombre": "Regulación y normativa de acceso y admisión en estudios oficiales en la Universidad Carlos III de Madrid" }
       ]
+    },
+    {
+      "id": "tema_18_presu",
+      "titulo": "Tema 18",
+      "nombre": "El presupuesto de la Universidad Carlos III de Madrid (I)",
+      "archivos": [
+        { "file": "presu_parte1_caracteristicas_estructura.csv", "nombre": "Características y estructura" },
+        { "file": "presu_parte2_ingresos_gastos.csv", "nombre": "Ingresos y gastos" },
+        { "file": "presu_parte3_creditos_iniciales_financiacion.csv", "nombre": "Créditos iniciales y su financiación" },
+        { "file": "presu_parte4_modificaciones.csv", "nombre": "Modificaciones presupuestarias" },
+        { "file": "presu_parte5_ejecucion_general.csv", "nombre": "Ejecución general de ingresos" }
+      ]
     }
   ]
 }
