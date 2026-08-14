@@ -15,6 +15,7 @@ const state = {
   questionCache: new Map(), // temaId -> Promise<Question[]>
   screen: "home", // home | tema-pick | quiz | exam-summary | history
   session: null, // sesión activa (azar / tema / examen)
+  selectedTemaIds: new Set(),
 };
 
 /* ------------------------------------------------------------------------
@@ -181,8 +182,8 @@ function renderHome() {
         </button>
         <button class="mode-card" data-action="go-tema" data-tab="Modo 03">
           <h3>Por tema</h3>
-          <p>Elige un tema concreto del expediente y practica solo con sus preguntas.</p>
-          <span class="go">Elegir tema &rarr;</span>
+          <p>Elige uno o varios temas del expediente y practica solo con sus preguntas.</p>
+          <span class="go">Elegir temas &rarr;</span>
         </button>
       </div>
     </main>
@@ -217,23 +218,19 @@ async function renderTemaPicker() {
     <main>
       <button class="back-link" data-action="go-home">&larr; Volver</button>
       <div class="home-intro">
-        <h2>Elige un tema</h2>
-        <p>Se te preguntará únicamente sobre el contenido de ese tema.</p>
+        <h2>Elige los temas</h2>
+        <p>Selecciona uno o varios temas del expediente. Puedes activar o desactivar cada tema volviendo a hacer clic sobre él.</p>
       </div>
       <div class="tema-list" id="tema-list">
         ${state.manifest.temas
-          .map(
-            (t) => `
-          <button class="tema-row" data-action="start-tema" data-tema="${t.id}">
-            <span class="tema-row__label">
-              <span class="tag">${escapeHtml(t.titulo)}</span>
-              <strong>${escapeHtml(t.nombre)}</strong>
-            </span>
-            <span class="tema-row__count" data-count="${t.id}">cargando&hellip;</span>
-          </button>
-        `
-          )
+          .map((t) => renderTemaPickerRow(t))
           .join("")}
+      </div>
+      <div class="tema-picker-actions">
+        <p class="tema-picker-actions__summary" id="tema-selection-summary">${selectedTemaSummary()}</p>
+        <button class="btn-primary" data-action="start-selected-temas" id="start-selected-temas" ${
+          state.selectedTemaIds.size === 0 ? "disabled" : ""
+        }>Empezar test</button>
       </div>
     </main>
   `;
@@ -245,6 +242,48 @@ async function renderTemaPicker() {
       if (el) el.textContent = `${qs.length} preguntas`;
     });
   });
+}
+
+function renderTemaPickerRow(t) {
+  const selected = state.selectedTemaIds.has(t.id);
+  return `
+    <button class="tema-row ${selected ? "is-selected" : ""}" data-action="toggle-tema" data-tema="${t.id}" aria-pressed="${selected}">
+      <span class="tema-row__label">
+        <span class="tag">${escapeHtml(t.titulo)}</span>
+        <strong>${escapeHtml(t.nombre)}</strong>
+      </span>
+      <span class="tema-row__meta">
+        <span class="tema-row__selected">${selected ? "Seleccionado" : "Seleccionar"}</span>
+        <span class="tema-row__count" data-count="${t.id}">cargando&hellip;</span>
+      </span>
+    </button>
+  `;
+}
+
+function selectedTemaSummary() {
+  const n = state.selectedTemaIds.size;
+  if (n === 0) return "Selecciona al menos un tema para empezar.";
+  if (n === 1) return "1 tema seleccionado.";
+  return `${n} temas seleccionados.`;
+}
+
+function toggleTemaSelection(temaId) {
+  if (state.selectedTemaIds.has(temaId)) state.selectedTemaIds.delete(temaId);
+  else state.selectedTemaIds.add(temaId);
+
+  const row = app.querySelector(`[data-tema="${temaId}"]`);
+  if (row) {
+    const selected = state.selectedTemaIds.has(temaId);
+    row.classList.toggle("is-selected", selected);
+    row.setAttribute("aria-pressed", String(selected));
+    const label = row.querySelector(".tema-row__selected");
+    if (label) label.textContent = selected ? "Seleccionado" : "Seleccionar";
+  }
+
+  const summary = document.getElementById("tema-selection-summary");
+  if (summary) summary.textContent = selectedTemaSummary();
+  const startBtn = document.getElementById("start-selected-temas");
+  if (startBtn) startBtn.disabled = state.selectedTemaIds.size === 0;
 }
 
 /* ------------------------------------------------------------------------
@@ -264,12 +303,14 @@ async function startAzar() {
   renderQuiz();
 }
 
-async function startTema(temaId) {
-  const tema = state.manifest.temas.find((t) => t.id === temaId);
-  const pool = await loadTema(tema);
+async function startTemas(temaIds) {
+  const temas = state.manifest.temas.filter((t) => temaIds.includes(t.id));
+  if (temas.length === 0) return;
+  const questionsByTema = await Promise.all(temas.map(loadTema));
+  const pool = questionsByTema.flat();
   state.session = {
     kind: "tema",
-    temaNombre: tema.nombre,
+    temaNombre: temas.length === 1 ? temas[0].nombre : `${temas.length} temas seleccionados`,
     pool,
     current: pickNext(pool, null),
     answered: false,
@@ -277,6 +318,10 @@ async function startTema(temaId) {
     stats: { correct: 0, wrong: 0, total: 0 },
   };
   renderQuiz();
+}
+
+async function startSelectedTemas() {
+  await startTemas(Array.from(state.selectedTemaIds));
 }
 
 async function startExam() {
@@ -682,8 +727,11 @@ app.addEventListener("click", (e) => {
     case "go-tema":
       renderTemaPicker();
       break;
-    case "start-tema":
-      startTema(el.dataset.tema);
+    case "toggle-tema":
+      toggleTemaSelection(el.dataset.tema);
+      break;
+    case "start-selected-temas":
+      startSelectedTemas();
       break;
     case "answer":
       handleAnswer(parseInt(el.dataset.index, 10));
