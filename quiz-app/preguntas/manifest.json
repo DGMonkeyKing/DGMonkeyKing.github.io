@@ -1,6 +1,14 @@
 {
   "temas": [
     {
+      "id": "_examenes_",
+      "titulo": "Exámenes",
+      "nombre": "Exámenes de otros años",
+      "archivos": [
+        { "file": "preguntas_ejercicio_auxiliar_uc3m_2023.csv", "nombre": "Exámen de 2023" }
+      ]
+    },
+    {
       "id": "tema_1_constitucion",
       "titulo": "Tema 1",
       "nombre": "La Constitución Española de 1978",
