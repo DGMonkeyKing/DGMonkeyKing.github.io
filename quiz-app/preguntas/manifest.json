@@ -23,7 +23,7 @@
     {
       "id": "tema_2_lpac_i",
       "titulo": "Tema 2",
-      "nombre": "Ley 39/2015 (I): Disposiciones generales, interesados, actividad y actos",
+      "nombre": "Ley 39/2015 (I): El Procedimiento Administrativo Común de las AAPP",
       "archivos": [
         { "file": "lpac_parte1_disposiciones_generales_interesados.csv", "nombre": "Disposiciones generales e interesados" },
         { "file": "lpac_parte2_actividad_normas_generales.csv", "nombre": "Actividad: normas generales" },
@@ -35,7 +35,7 @@
     {
       "id": "tema_3_lpac_ii",
       "titulo": "Tema 3",
-      "nombre": "Ley 39/2015 (II): Procedimiento común y revisión de actos",
+      "nombre": "Ley 39/2015 (II): El Procedimiento Administrativo Común de las AAPP",
       "archivos": [
         { "file": "lpac2_parte1_garantias_iniciacion.csv", "nombre": "Garantías e iniciación" },
         { "file": "lpac2_parte2_ordenacion_instruccion.csv", "nombre": "Ordenación e instrucción" },
@@ -47,7 +47,7 @@
     {
       "id": "tema_4_l40_i",
       "titulo": "Tema 4",
-      "nombre": "Ley 40/2015 (I): De los órganos de las Administraciones Públicas",
+      "nombre": "Ley 40/2015 (I)",
       "archivos": [
         { "file": "l40_parte1_organos_administrativos_competencia.csv", "nombre": "Órganos administrativos y Competencia" },
         { "file": "l40_parte2_organos_colegiados_funcionamiento.csv", "nombre": "Órganos colegiados y Funcionamiento" },
@@ -58,7 +58,7 @@
     {
       "id": "tema_5_l40_ii",
       "titulo": "Tema 5",
-      "nombre": "Ley 40/2015 (II): Funcionamiento electrónico del sector público",
+      "nombre": "Ley 40/2015 (II)",
       "archivos": [
         { "file": "l40_e_parte1_sede_portal_identificacion.csv", "nombre": "Sede Portal e Identificacion" },
         { "file": "l40_e_parte2_actuacion_automatizada_firma.csv", "nombre": "Actuacion automatizada y Firma" },
@@ -83,8 +83,8 @@
       "archivos": [
         { "file": "madrid_parte1_disposiciones_generales.csv", "nombre": "Disposiciones generales" },
         { "file": "madrid_parte2_publicidad_activa.csv", "nombre": "Publicidad activa" },
-        { "file": "madrid_parte3_acceso_disposiciones_generales.csv", "nombre": "Derecho de acceso a la información pública: Disposiciones generales" },
-        { "file": "madrid_parte4_acceso_procedimiento.csv", "nombre": "Derecho de acceso a la información pública: Procedimiento" },
+        { "file": "madrid_parte3_acceso_disposiciones_generales.csv", "nombre": "Acceso a la información pública: Disposiciones generales" },
+        { "file": "madrid_parte4_acceso_procedimiento.csv", "nombre": "Acceso a la información pública: Procedimiento" },
         { "file": "madrid_parte5_uc3m_portal_procedimiento.csv", "nombre": "Portal de transparencia y procedimiento de ejercicio del derecho de acceso a la información pública en la Universidad Carlos III de Madrid" }
       ]
     },
