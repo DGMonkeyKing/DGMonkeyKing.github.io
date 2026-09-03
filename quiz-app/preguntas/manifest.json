@@ -95,7 +95,19 @@
       "archivos": [
         { "file": "loiemh_parte1_objeto_ambito.csv", "nombre": "Objeto y ámbito de la Ley" },
         { "file": "loiemh_parte2_principio_igualdad_tutela.csv", "nombre": "El principio de igualdad y la tutela contra la discriminación" },
-        { "file": "loiemh_parte3_normativa_uc3m_genero_acoso.csv", "nombre": "Regulación en materia de igualdad, identidad y expresión de género, no discriminación y prevención y actuación contra el acoso de la Universidad Carlos III de Madrid" },
+        { "file": "loiemh_parte3_regulacion_uc3m_genero_acoso.csv", "nombre": "Regulación en materia de igualdad, identidad y expresión de género, no discriminación y prevención y actuación contra el acoso de la Universidad Carlos III de Madrid" },
+        { "file": "loiemh_parte4_iiiplan_principios_generales.csv", "nombre": "III Plan de Igualdad de la Universidad Carlos III de Madrid: Principios Generales" },
+        { "file": "loiemh_parte5_iiiplan_objetivos_estructura.csv", "nombre": "Objetivos y estructura general del Plan: ejes, objetivos generales, líneas de acción, objetivos específicos y medidas" }
+      ]
+    },
+    {
+      "id": "tema_9_ofimatica",
+      "titulo": "Tema 9",
+      "nombre": "Ley Orgánica 3/2007, para la igualdad efectiva de mujeres y hombres",
+      "archivos": [
+        { "file": "loiemh_parte1_objeto_ambito.csv", "nombre": "Objeto y ámbito de la Ley" },
+        { "file": "loiemh_parte2_principio_igualdad_tutela.csv", "nombre": "El principio de igualdad y la tutela contra la discriminación" },
+        { "file": "loiemh_parte3_regulacion_uc3m_genero_acoso.csv", "nombre": "Regulación en materia de igualdad, identidad y expresión de género, no discriminación y prevención y actuación contra el acoso de la Universidad Carlos III de Madrid" },
         { "file": "loiemh_parte4_iiiplan_principios_generales.csv", "nombre": "III Plan de Igualdad de la Universidad Carlos III de Madrid: Principios Generales" },
         { "file": "loiemh_parte5_iiiplan_objetivos_estructura.csv", "nombre": "Objetivos y estructura general del Plan: ejes, objetivos generales, líneas de acción, objetivos específicos y medidas" }
       ]
