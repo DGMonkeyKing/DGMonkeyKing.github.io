@@ -69,8 +69,11 @@ No hace falta tocar el código: la app lee el manifiesto en tiempo de ejecución
   para repasar cada pregunta).
 - **Por tema**: eliges un tema del listado y solo salen preguntas de ese tema.
 
-Una vez respondida una pregunta la respuesta queda bloqueada (no se puede cambiar) y
-se muestra siempre la explicación de la respuesta correcta antes de continuar.
+En cada pregunta se muestra primero el enunciado y el botón **Mostrar respuestas**,
+para poder responder mentalmente antes de ver las opciones. Al pulsarlo aparecen las
+opciones (y, en modo examen, la opción de dejarla en blanco). Una vez respondida una
+pregunta la respuesta queda bloqueada (no se puede cambiar) y se muestra siempre la
+explicación de la respuesta correcta antes de continuar.
 
 ## Notas técnicas
 
