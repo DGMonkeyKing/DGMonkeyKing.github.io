@@ -297,6 +297,7 @@ async function startAzar() {
     pool,
     current: pickNext(pool, null),
     answered: false,
+    answersRevealed: false,
     selected: null,
     stats: { correct: 0, wrong: 0, total: 0 },
   };
@@ -314,6 +315,7 @@ async function startTemas(temaIds) {
     pool,
     current: pickNext(pool, null),
     answered: false,
+    answersRevealed: false,
     selected: null,
     stats: { correct: 0, wrong: 0, total: 0 },
   };
@@ -334,6 +336,7 @@ async function startExam() {
     index: 0,
     answers: [], // { question, selected (índice CSV 1-4|null), selectedDisplayIndex, correct }
     answered: false,
+    answersRevealed: false,
     selected: null,
     startedAt: Date.now(),
   };
@@ -359,7 +362,8 @@ function renderQuiz() {
     return;
   }
 
-  const displayOptions = displayOptionsForCurrentQuestion();
+  const answersRevealed = s.answersRevealed;
+  const displayOptions = answersRevealed ? displayOptionsForCurrentQuestion() : [];
 
   app.innerHTML = `
     ${masthead()}
@@ -373,20 +377,24 @@ function renderQuiz() {
             <span>${escapeHtml(q.archivoNombre)}</span>
           </div>
           <p class="q-card__text">${escapeHtml(q.pregunta)}</p>
-          <div class="options" id="options" role="group" aria-label="Opciones de respuesta">
-            ${displayOptions
-              .map(
-                (op) => `
-              <button class="option" data-action="answer" data-index="${op.csvIndex}" data-display-index="${op.displayIndex}">
-                <span class="option__letter">${letterFor(op.displayIndex - 1)}</span>
-                <span>${escapeHtml(op.texto)}</span>
-              </button>
-            `
-              )
-              .join("")}
-          </div>
           ${
-            s.kind === "exam"
+            answersRevealed
+              ? `<div class="options" id="options" role="group" aria-label="Opciones de respuesta">
+                  ${displayOptions
+                    .map(
+                      (op) => `
+                    <button class="option" data-action="answer" data-index="${op.csvIndex}" data-display-index="${op.displayIndex}">
+                      <span class="option__letter">${letterFor(op.displayIndex - 1)}</span>
+                      <span>${escapeHtml(op.texto)}</span>
+                    </button>
+                  `
+                    )
+                    .join("")}
+                </div>`
+              : `<button class="show-answers-btn" data-action="show-answers" aria-expanded="false">Mostrar respuestas</button>`
+          }
+          ${
+            s.kind === "exam" && answersRevealed
               ? `<button class="blank-btn" data-action="answer-blank">Dejar en blanco</button>`
               : ""
           }
@@ -454,9 +462,16 @@ function examScore(answers) {
 
 /* --- responder --- */
 
+function showAnswers() {
+  const s = state.session;
+  if (!s || s.answersRevealed) return;
+  s.answersRevealed = true;
+  renderQuiz();
+}
+
 function handleAnswer(selectedIndex) {
   const s = state.session;
-  if (s.answered) return;
+  if (s.answered || !s.answersRevealed) return;
   const q = currentQuestion();
   const isCorrect = selectedIndex === q.correcta;
   const selectedOption = displayOptionsForCurrentQuestion().find((op) => op.csvIndex === selectedIndex);
@@ -483,7 +498,7 @@ function handleAnswer(selectedIndex) {
 
 function handleBlank() {
   const s = state.session;
-  if (s.answered || s.kind !== "exam") return;
+  if (s.answered || !s.answersRevealed || s.kind !== "exam") return;
   const q = currentQuestion();
   s.answered = true;
   s.selected = null;
@@ -550,6 +565,7 @@ function goNext() {
   if (s.kind === "exam") {
     s.index++;
     s.answered = false;
+    s.answersRevealed = false;
     s.selected = null;
     s.displayOptions = null;
     s.displayQuestionId = null;
@@ -565,6 +581,7 @@ function goNext() {
   const prevId = s.current.id;
   s.current = pickNext(s.pool, prevId);
   s.answered = false;
+  s.answersRevealed = false;
   s.selected = null;
   s.displayOptions = null;
   s.displayQuestionId = null;
@@ -735,6 +752,9 @@ app.addEventListener("click", (e) => {
       break;
     case "answer":
       handleAnswer(parseInt(el.dataset.index, 10));
+      break;
+    case "show-answers":
+      showAnswers();
       break;
     case "answer-blank":
       handleBlank();
