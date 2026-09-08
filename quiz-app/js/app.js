@@ -14,7 +14,8 @@ const state = {
   manifest: null,
   questionCache: new Map(), // temaId -> Promise<Question[]>
   screen: "home", // home | tema-pick | quiz | exam-summary | history
-  session: null, // sesión activa (azar / tema / examen)
+  session: null, // sesión activa (azar / tema / práctica / examen)
+  examTimerId: null,
   selectedTemaIds: new Set(),
 };
 
@@ -156,6 +157,7 @@ function formatScore(n) {
    ------------------------------------------------------------------------ */
 
 function renderHome() {
+  clearInterval(state.examTimerId);
   state.screen = "home";
   state.session = null;
   app.innerHTML = `
@@ -174,13 +176,18 @@ function renderHome() {
           Ideal para repasar con calma.</p>
           <span class="go">Empezar &rarr;</span>
         </button>
-        <button class="mode-card" data-action="go-examen" data-tab="Modo 02">
-          <h3>Examen</h3>
+        <button class="mode-card" data-action="go-practica" data-tab="Modo 02">
+          <h3>Práctica</h3>
           <p>${EXAM_SIZE} preguntas repartidas entre todos los temas. Acierto = +1,
-          fallo = &minus;1/3. Queda registro de la nota sobre ${EXAM_SIZE}.</p>
+          fallo = &minus;1/3. Recibe corrección inmediata mientras practicas.</p>
+          <span class="go">Empezar práctica &rarr;</span>
+        </button>
+        <button class="mode-card" data-action="go-examen" data-tab="Modo 03">
+          <h3>Examen</h3>
+          <p>${EXAM_SIZE} preguntas, navegación libre y cronómetro. Responde o modifica cada pregunta antes de finalizar.</p>
           <span class="go">Convocar examen &rarr;</span>
         </button>
-        <button class="mode-card" data-action="go-tema" data-tab="Modo 03">
+        <button class="mode-card" data-action="go-tema" data-tab="Modo 04">
           <h3>Por tema</h3>
           <p>Elige uno o varios temas del expediente y practica solo con sus preguntas.</p>
           <span class="go">Elegir temas &rarr;</span>
@@ -326,18 +333,31 @@ async function startSelectedTemas() {
   await startTemas(Array.from(state.selectedTemaIds));
 }
 
-async function startExam() {
+async function startPractice() {
   const all = await loadAllQuestions();
   const size = Math.min(EXAM_SIZE, all.length);
-  const queue = shuffle(all).slice(0, size);
   state.session = {
-    kind: "exam",
-    queue,
+    kind: "practice",
+    queue: shuffle(all).slice(0, size),
     index: 0,
-    answers: [], // { question, selected (índice CSV 1-4|null), selectedDisplayIndex, correct }
+    answers: [],
     answered: false,
     answersRevealed: false,
     selected: null,
+    startedAt: Date.now(),
+  };
+  renderQuiz();
+}
+
+async function startExam() {
+  const all = await loadAllQuestions();
+  const size = Math.min(EXAM_SIZE, all.length);
+  state.session = {
+    kind: "exam",
+    queue: shuffle(all).slice(0, size),
+    index: 0,
+    answers: Array(size).fill(null), // respuesta por posición: permite editarla
+    optionOrders: Array(size).fill(null),
     startedAt: Date.now(),
   };
   renderQuiz();
@@ -349,21 +369,25 @@ async function startExam() {
 
 function currentQuestion() {
   const s = state.session;
-  return s.kind === "exam" ? s.queue[s.index] : s.current;
+  return ["exam", "practice"].includes(s.kind) ? s.queue[s.index] : s.current;
+}
+
+function examDisplayOptions() {
+  const s = state.session;
+  if (!s.optionOrders[s.index]) s.optionOrders[s.index] = buildDisplayOptions(currentQuestion());
+  return s.optionOrders[s.index];
 }
 
 function renderQuiz() {
   state.screen = "quiz";
   const s = state.session;
   const q = currentQuestion();
+  if (!q) return renderHome();
 
-  if (!q) {
-    renderHome();
-    return;
-  }
-
-  const answersRevealed = s.answersRevealed;
-  const displayOptions = answersRevealed ? displayOptionsForCurrentQuestion() : [];
+  const isExam = s.kind === "exam";
+  const answersRevealed = isExam || s.answersRevealed;
+  const displayOptions = isExam ? examDisplayOptions() : answersRevealed ? displayOptionsForCurrentQuestion() : [];
+  const selected = isExam ? s.answers[s.index] : s.selected;
 
   app.innerHTML = `
     ${masthead()}
@@ -371,56 +395,59 @@ function renderQuiz() {
       <div class="quiz-shell">
         ${renderStatusPanel()}
         <section class="q-card" id="q-card">
-          <div class="stamp-slot" id="stamp-slot"></div>
-          <div class="q-card__meta">
-            <span>${escapeHtml(q.temaNombre)}</span>
-            <span>${escapeHtml(q.archivoNombre)}</span>
-          </div>
+          ${!isExam ? '<div class="stamp-slot" id="stamp-slot"></div>' : ""}
+          <div class="q-card__meta"><span>${escapeHtml(q.temaNombre)}</span><span>${escapeHtml(q.archivoNombre)}</span></div>
           <p class="q-card__text">${escapeHtml(q.pregunta)}</p>
-          ${
-            answersRevealed
-              ? `<div class="options" id="options" role="group" aria-label="Opciones de respuesta">
-                  ${displayOptions
-                    .map(
-                      (op) => `
-                    <button class="option" data-action="answer" data-index="${op.csvIndex}" data-display-index="${op.displayIndex}">
-                      <span class="option__letter">${letterFor(op.displayIndex - 1)}</span>
-                      <span>${escapeHtml(op.texto)}</span>
-                    </button>
-                  `
-                    )
-                    .join("")}
-                </div>`
-              : `<button class="show-answers-btn" data-action="show-answers" aria-expanded="false">Mostrar respuestas</button>`
-          }
-          ${
-            s.kind === "exam" && answersRevealed
-              ? `<button class="blank-btn" data-action="answer-blank">Dejar en blanco</button>`
-              : ""
-          }
+          ${answersRevealed ? `<div class="options" id="options" role="group" aria-label="Opciones de respuesta">${displayOptions.map(op => `
+            <button class="option ${isExam && selected === op.csvIndex ? "is-selected" : ""}" data-action="answer" data-index="${op.csvIndex}" data-display-index="${op.displayIndex}" ${!isExam && s.answered ? "disabled" : ""}>
+              <span class="option__letter">${letterFor(op.displayIndex - 1)}</span><span>${escapeHtml(op.texto)}</span>
+            </button>`).join("")}</div>` : `<button class="show-answers-btn" data-action="show-answers" aria-expanded="false">Mostrar respuestas</button>`}
+          ${s.kind === "practice" && answersRevealed ? `<button class="blank-btn" data-action="answer-blank">Dejar en blanco</button>` : ""}
+          ${isExam ? renderExamNavigation() : ""}
         </section>
       </div>
-    </main>
-  `;
+    </main>`;
+  if (isExam) startExamTimer();
+}
+
+function renderExamNavigation() {
+  const s = state.session;
+  return `<div class="exam-navigation">
+    <button class="btn-quiet" data-action="exam-prev" ${s.index === 0 ? "disabled" : ""}>&larr; Anterior</button>
+    <button class="btn-quiet" data-action="open-question-menu">Preguntas</button>
+    <button class="btn-quiet" data-action="exam-next" ${s.index === s.queue.length - 1 ? "disabled" : ""}>Siguiente &rarr;</button>
+    <button class="btn-primary" data-action="finish-exam">Finalizar examen</button>
+  </div>`;
+}
+
+function formatDuration(ms) {
+  const seconds = Math.floor(ms / 1000);
+  return `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
+}
+
+function startExamTimer() {
+  clearInterval(state.examTimerId);
+  state.examTimerId = setInterval(() => {
+    const timer = document.getElementById("exam-timer");
+    if (timer && state.session?.kind === "exam") timer.textContent = formatDuration(Date.now() - state.session.startedAt);
+  }, 1000);
 }
 
 function renderStatusPanel() {
   const s = state.session;
-  if (s.kind === "exam") {
-    const done = s.index;
+  if (["exam", "practice"].includes(s.kind)) {
+    const isExam = s.kind === "exam";
+    const done = isExam ? s.answers.filter((answer) => answer !== null).length : s.index;
     const pct = Math.round((done / s.queue.length) * 100);
     return `
       <aside class="quiz-status">
         <div class="quiz-status__block">
-          <span class="quiz-status__label">Examen</span>
-          <span class="quiz-status__value">${done + 1} / ${s.queue.length}</span>
+          <span class="quiz-status__label">${isExam ? "Examen" : "Práctica"}</span>
+          <span class="quiz-status__value">${isExam ? `Pregunta ${s.index + 1}` : `${done + 1} / ${s.queue.length}`}</span>
           <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
         </div>
-        <div class="quiz-status__block">
-          <span class="quiz-status__label">Puntuación provisional</span>
-          <span class="quiz-status__value">${formatScore(examScore(s.answers))}</span>
-        </div>
-        <button class="end-session" data-action="abandon-exam">Abandonar examen</button>
+        ${isExam ? `<div class="quiz-status__block"><span class="quiz-status__label">Respondidas</span><span class="quiz-status__value">${done} / ${s.queue.length}</span></div><div class="quiz-status__block"><span class="quiz-status__label">Tiempo</span><span class="quiz-status__value" id="exam-timer">${formatDuration(Date.now() - s.startedAt)}</span></div>` : `<div class="quiz-status__block"><span class="quiz-status__label">Puntuación provisional</span><span class="quiz-status__value">${formatScore(examScore(s.answers))}</span></div>`}
+        <button class="end-session" data-action="abandon-exam">Abandonar ${isExam ? "examen" : "práctica"}</button>
       </aside>
     `;
   }
@@ -471,6 +498,13 @@ function showAnswers() {
 
 function handleAnswer(selectedIndex) {
   const s = state.session;
+  if (s.kind === "exam") {
+    const firstAnswer = s.answers[s.index] === null;
+    s.answers[s.index] = selectedIndex;
+    renderQuiz();
+    if (firstAnswer && s.index < s.queue.length - 1) goExamQuestion(s.index + 1);
+    return;
+  }
   if (s.answered || !s.answersRevealed) return;
   const q = currentQuestion();
   const isCorrect = selectedIndex === q.correcta;
@@ -479,7 +513,7 @@ function handleAnswer(selectedIndex) {
   s.answered = true;
   s.selected = selectedIndex;
 
-  if (s.kind === "exam") {
+  if (s.kind === "practice") {
     s.answers.push({
       question: q,
       selected: selectedIndex,
@@ -498,7 +532,7 @@ function handleAnswer(selectedIndex) {
 
 function handleBlank() {
   const s = state.session;
-  if (s.answered || !s.answersRevealed || s.kind !== "exam") return;
+  if (s.answered || !s.answersRevealed || s.kind !== "practice") return;
   const q = currentQuestion();
   s.answered = true;
   s.selected = null;
@@ -547,7 +581,7 @@ function paintAnswerState(q, selectedIndex) {
     <p class="explanation__text">${linkify(q.explicacion)}</p>
     <div class="q-card__footer">
       <button class="btn-primary" data-action="next">${
-        s.kind === "exam" && s.index >= s.queue.length - 1 ? "Ver resultados" : "Siguiente pregunta"
+        s.kind === "practice" && s.index >= s.queue.length - 1 ? "Ver resultados" : "Siguiente pregunta"
       }</button>
     </div>
   `;
@@ -562,7 +596,7 @@ function goNext() {
   const s = state.session;
   if (!s.answered) return;
 
-  if (s.kind === "exam") {
+  if (s.kind === "practice") {
     s.index++;
     s.answered = false;
     s.answersRevealed = false;
@@ -588,16 +622,50 @@ function goNext() {
   renderQuiz();
 }
 
+
+function goExamQuestion(index) {
+  const s = state.session;
+  if (!s || s.kind !== "exam" || index < 0 || index >= s.queue.length) return;
+  s.index = index;
+  renderQuiz();
+}
+
+function openQuestionMenu() {
+  const s = state.session;
+  if (!s || s.kind !== "exam") return;
+  const dialog = document.createElement("div");
+  dialog.className = "question-menu-backdrop";
+  dialog.innerHTML = `<section class="question-menu" role="dialog" aria-modal="true" aria-labelledby="question-menu-title">
+    <div class="question-menu__header"><h2 id="question-menu-title">Ir a una pregunta</h2><button class="btn-quiet" data-action="close-question-menu">Cerrar</button></div>
+    <p>Selecciona una pregunta. Las que ya tienen respuesta aparecen marcadas.</p>
+    <div class="question-menu__grid">${s.queue.map((_, i) => `<button class="question-menu__number ${s.answers[i] !== null ? "is-answered" : ""} ${i === s.index ? "is-current" : ""}" data-action="go-question" data-question-index="${i}" aria-label="Pregunta ${i + 1}${s.answers[i] !== null ? ", respondida" : ""}">${i + 1}</button>`).join("")}</div>
+  </section>`;
+  app.appendChild(dialog);
+  dialog.querySelector("button").focus();
+}
+
+function closeQuestionMenu() { document.querySelector(".question-menu-backdrop")?.remove(); }
+
 /* ------------------------------------------------------------------------
    Examen: fin y resumen
    ------------------------------------------------------------------------ */
 
 function finishExam() {
   const s = state.session;
-  const correct = s.answers.filter((a) => a.selected !== null && a.correct).length;
-  const wrong = s.answers.filter((a) => a.selected !== null && !a.correct).length;
-  const blank = s.answers.filter((a) => a.selected === null).length;
-  const score = examScore(s.answers);
+  if (!s || !["exam", "practice"].includes(s.kind)) return;
+  clearInterval(state.examTimerId);
+  const answers = s.kind === "exam"
+    ? s.queue.map((question, index) => {
+        const selected = s.answers[index];
+        const displayOptions = s.optionOrders[index] || buildDisplayOptions(question);
+        const selectedOption = displayOptions.find((option) => option.csvIndex === selected);
+        return { question, selected, selectedDisplayIndex: selectedOption ? selectedOption.displayIndex : null, displayOptions, correct: selected === question.correcta };
+      })
+    : s.answers;
+  const correct = answers.filter((a) => a.selected !== null && a.correct).length;
+  const wrong = answers.filter((a) => a.selected !== null && !a.correct).length;
+  const blank = answers.filter((a) => a.selected === null).length;
+  const score = examScore(answers);
 
   const entry = {
     fecha: new Date().toISOString(),
@@ -607,7 +675,7 @@ function finishExam() {
     blank,
     score,
     duracionMs: Date.now() - s.startedAt,
-    detalle: s.answers.map((a) => ({
+    detalle: answers.map((a) => ({
       pregunta: a.question.pregunta,
       temaNombre: a.question.temaNombre,
       opciones: a.question.opciones,
@@ -636,6 +704,7 @@ function renderExamSummary(entry) {
           <div class="good"><div class="n">${entry.correct}</div><div class="l">Aciertos</div></div>
           <div class="bad"><div class="n">${entry.wrong}</div><div class="l">Fallos</div></div>
           <div><div class="n">${entry.blank}</div><div class="l">En blanco</div></div>
+          <div><div class="n">${formatDuration(entry.duracionMs)}</div><div class="l">Tiempo empleado</div></div>
         </div>
         <div class="summary-actions">
           <button class="btn-primary" data-action="go-examen">Repetir examen</button>
@@ -698,7 +767,7 @@ function renderHistory() {
                   (h, i) => `
                 <div class="history-row">
                   <span class="history-row__date">${new Date(h.fecha).toLocaleString("es-ES")}</span>
-                  <span>${h.correct} aciertos &middot; ${h.wrong} fallos &middot; ${h.blank} en blanco</span>
+                  <span>${h.correct} aciertos &middot; ${h.wrong} fallos &middot; ${h.blank} en blanco &middot; ${formatDuration(h.duracionMs || 0)}</span>
                   <span class="history-row__score">${formatScore(h.score)} / ${h.total}</span>
                 </div>
               `
@@ -738,6 +807,9 @@ app.addEventListener("click", (e) => {
     case "go-azar":
       startAzar();
       break;
+    case "go-practica":
+      startPractice();
+      break;
     case "go-examen":
       startExam();
       break;
@@ -765,8 +837,28 @@ app.addEventListener("click", (e) => {
     case "toggle-review":
       toggleReview();
       break;
+    case "exam-prev":
+      goExamQuestion(state.session.index - 1);
+      break;
+    case "exam-next":
+      goExamQuestion(state.session.index + 1);
+      break;
+    case "open-question-menu":
+      openQuestionMenu();
+      break;
+    case "close-question-menu":
+      closeQuestionMenu();
+      break;
+    case "go-question":
+      closeQuestionMenu();
+      goExamQuestion(parseInt(el.dataset.questionIndex, 10));
+      break;
+    case "finish-exam":
+      finishExam();
+      break;
     case "abandon-exam":
-      if (confirm("¿Abandonar el examen? Se perderá el progreso y no se guardará puntuación.")) {
+      if (confirm("¿Abandonar la sesión? Se perderá el progreso y no se guardará puntuación.")) {
+        clearInterval(state.examTimerId);
         renderHome();
       }
       break;

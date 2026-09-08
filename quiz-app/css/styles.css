@@ -817,3 +817,60 @@ main{ flex: 1; padding-top: 28px; }
   .q-card{ padding: 20px 16px 18px; }
   .stamp{ font-size: 11px; padding: 5px 9px; }
 }
+
+/* Exam navigation and question selector */
+.exam-navigation{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--line-strong);
+}
+.exam-navigation .btn-primary{ margin-left: auto; }
+.btn-quiet:disabled{ opacity: .45; cursor: not-allowed; }
+.option.is-selected{
+  border-color: var(--navy);
+  background: rgba(30,58,82,.1);
+  box-shadow: inset 0 0 0 1px var(--navy);
+}
+.option.is-selected .option__letter{ background: var(--navy); border-color: var(--navy); color: var(--paper-raised); }
+.question-menu-backdrop{
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(20,40,56,.5);
+}
+.question-menu{
+  width: min(560px, 100%);
+  max-height: min(720px, calc(100vh - 40px));
+  overflow: auto;
+  background: var(--paper-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-lift);
+  padding: 22px;
+}
+.question-menu__header{ display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.question-menu h2{ font-family:var(--f-display); font-size:24px; margin:0; }
+.question-menu p{ color:var(--ink-soft); font-size:14px; margin:10px 0 18px; }
+.question-menu__grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(42px, 1fr)); gap:8px; }
+.question-menu__number{
+  min-height:40px;
+  background:var(--paper);
+  border:1px solid var(--line-strong);
+  border-radius:var(--radius-s);
+  color:var(--ink);
+  cursor:pointer;
+  font-family:var(--f-mono);
+  font-size:12px;
+}
+.question-menu__number:hover, .question-menu__number.is-current{ border-color:var(--navy); background:rgba(30,58,82,.1); }
+.question-menu__number.is-answered{ background:#F4EFDD; border-color:var(--gold-deep); color:var(--gold-deep); font-weight:600; }
+.question-menu__number.is-current{ box-shadow:inset 0 0 0 1px var(--navy); }
+@media (max-width: 520px){ .exam-navigation .btn-primary{ margin-left:0; } }
