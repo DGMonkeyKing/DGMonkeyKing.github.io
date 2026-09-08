@@ -103,8 +103,13 @@
     {
       "id": "tema_9_ofimatica",
       "titulo": "Tema 9",
-      "nombre": "Principales funciones y utilidades de los Procesadores de texto y las Hojas de cálculo: Word 2019 y Excel 2019. Herramientas Google: Gmail, Drive, Docs, Sheets y Calendar. Correo electrónico: conceptos elementales, funcionamiento y gestión de mensajes.",
-      "archivos": []
+      "nombre": "Ofimática",
+      "archivos": [
+        { "file": "ofimatica_parte1_word2019.csv", "nombre": "Word 2019" },
+        { "file": "ofimatica_parte2_excel2019.csv", "nombre": "Excel 2019" },
+        { "file": "ofimatica_parte3_google.csv", "nombre": "Herramientas Google: Gmail, Drive, Docs, Sheets y Calendar." },
+        { "file": "ofimatica_parte4_email.csv", "nombre": "Correo electrónico: conceptos elementales, funcionamiento y gestión de mensajes." }
+      ]
     },
     {
       "id": "tema_10_trebep",
