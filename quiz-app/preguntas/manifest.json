@@ -47,7 +47,7 @@
     {
       "id": "tema_4_l40_i",
       "titulo": "Tema 4",
-      "nombre": "Ley 40/2015 (I)",
+      "nombre": "Ley 40/2015 (I): Régimen Jurídico del Sector Público",
       "archivos": [
         { "file": "l40_parte1_organos_administrativos_competencia.csv", "nombre": "Órganos administrativos y Competencia" },
         { "file": "l40_parte2_organos_colegiados_funcionamiento.csv", "nombre": "Órganos colegiados y Funcionamiento" },
@@ -58,7 +58,7 @@
     {
       "id": "tema_5_l40_ii",
       "titulo": "Tema 5",
-      "nombre": "Ley 40/2015 (II)",
+      "nombre": "Ley 40/2015 (II): Régimen Jurídico del Sector Público",
       "archivos": [
         { "file": "l40_e_parte1_sede_portal_identificacion.csv", "nombre": "Sede Portal e Identificacion" },
         { "file": "l40_e_parte2_actuacion_automatizada_firma.csv", "nombre": "Actuacion automatizada y Firma" },
@@ -114,7 +114,7 @@
     {
       "id": "tema_10_trebep",
       "titulo": "Tema 10",
-      "nombre": "Real Decreto Legislativo 5/2015, Ley del Estatuto Básico del Empleado Público",
+      "nombre": "Real Decreto Legislativo 5/2015: Ley del Estatuto Básico del Empleado Público",
       "archivos": [
         { "file": "trebep_parte1_personal_servicio_aapp.csv", "nombre": "Personal al servicio de las Administraciones Públicas" },
         { "file": "trebep_parte2_derechos_empleados.csv", "nombre": "Derechos y deberes de los empleados públicos" },
@@ -126,7 +126,7 @@
     {
       "id": "tema_11_rd364",
       "titulo": "Tema 11",
-      "nombre": "Real Decreto 364/1995, Reglamento General de Ingreso del personal al servicio de la Administración General del Estado y de Provisión de Puestos de Trabajo y Promoción Profesional de los Funcionarios Civiles de la Administración General del Estado",
+      "nombre": "Real Decreto 364/1995: Reglamento General de Ingreso del personal al servicio de la Administración General del Estado y de Provisión de Puestos de Trabajo y Promoción Profesional de los Funcionarios Civiles de la Administración General del Estado",
       "archivos": [
         { "file": "rd364_parte1_ingreso_cuerpos_escalas.csv", "nombre": "Ingreso en Cuerpos o Escalas de funcionarios" },
         { "file": "rd364_parte2_provision_concurso_libre_designacion.csv", "nombre": "Provisión de puestos de trabajo" },
