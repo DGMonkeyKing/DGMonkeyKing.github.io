@@ -184,7 +184,7 @@ function renderHome() {
         </button>
         <button class="mode-card" data-action="go-examen" data-tab="Modo 03">
           <h3>Examen</h3>
-          <p>${EXAM_SIZE} preguntas, navegación libre y cronómetro. Responde o modifica cada pregunta antes de finalizar.</p>
+          <p>${EXAM_SIZE} preguntas, navegación libre y cronómetro. Puedes responder, modificar o dejar en blanco cada pregunta antes de finalizar.</p>
           <span class="go">Convocar examen &rarr;</span>
         </button>
         <button class="mode-card" data-action="go-tema" data-tab="Modo 04">
@@ -402,7 +402,7 @@ function renderQuiz() {
             <button class="option ${isExam && selected === op.csvIndex ? "is-selected" : ""}" data-action="answer" data-index="${op.csvIndex}" data-display-index="${op.displayIndex}" ${!isExam && s.answered ? "disabled" : ""}>
               <span class="option__letter">${letterFor(op.displayIndex - 1)}</span><span>${escapeHtml(op.texto)}</span>
             </button>`).join("")}</div>` : `<button class="show-answers-btn" data-action="show-answers" aria-expanded="false">Mostrar respuestas</button>`}
-          ${s.kind === "practice" && answersRevealed ? `<button class="blank-btn" data-action="answer-blank">Dejar en blanco</button>` : ""}
+          ${isExam ? `<button class="blank-btn" data-action="answer-blank">Dejar en blanco</button>` : ""}
           ${isExam ? renderExamNavigation() : ""}
         </section>
       </div>
@@ -532,18 +532,10 @@ function handleAnswer(selectedIndex) {
 
 function handleBlank() {
   const s = state.session;
-  if (s.answered || !s.answersRevealed || s.kind !== "practice") return;
-  const q = currentQuestion();
-  s.answered = true;
-  s.selected = null;
-  s.answers.push({
-    question: q,
-    selected: null,
-    selectedDisplayIndex: null,
-    displayOptions: displayOptionsForCurrentQuestion(),
-    correct: false,
-  });
-  paintAnswerState(q, null);
+  if (!s || s.kind !== "exam") return;
+  s.answers[s.index] = null;
+  if (s.index < s.queue.length - 1) goExamQuestion(s.index + 1);
+  else renderQuiz();
 }
 
 function paintAnswerState(q, selectedIndex) {
@@ -675,20 +667,50 @@ function finishExam() {
     blank,
     score,
     duracionMs: Date.now() - s.startedAt,
-    detalle: answers.map((a) => ({
-      pregunta: a.question.pregunta,
-      temaNombre: a.question.temaNombre,
-      opciones: a.question.opciones,
-      opcionesMuestreadas: a.displayOptions,
-      correcta: a.question.correcta,
-      seleccionada: a.selected,
-      seleccionadaMuestreo: a.selectedDisplayIndex,
-      explicacion: a.question.explicacion,
-    })),
+    detalle: answers.map(historyDetailFromAnswer),
   };
   saveExamResult(entry);
   state.session.finished = entry;
   renderExamSummary(entry);
+}
+
+/** Crea una instantánea autocontenida para que el historial no dependa del banco de preguntas. */
+function historyDetailFromAnswer(answer) {
+  const { question, selected, selectedDisplayIndex, displayOptions } = answer;
+  const correctOption = displayOptions.find((option) => option.csvIndex === question.correcta);
+  const selectedOption = displayOptions.find((option) => option.csvIndex === selected);
+  return {
+    pregunta: question.pregunta,
+    respuestaDada: selected === null
+      ? "Dejada en blanco"
+      : `${letterFor((selectedOption?.displayIndex || selectedDisplayIndex || selected) - 1)}. ${selectedOption?.texto || question.opciones[selected - 1]}`,
+    respuestaCorrecta: `${letterFor((correctOption?.displayIndex || question.correcta) - 1)}. ${correctOption?.texto || question.opciones[question.correcta - 1]}`,
+    explicacion: question.explicacion,
+    estado: selected === null ? "blank" : selected === question.correcta ? "ok" : "no",
+  };
+}
+
+function renderReviewItem(detail) {
+  // Las entradas antiguas se siguen mostrando si existían antes de las instantáneas de texto.
+  const legacy = !detail.respuestaDada;
+  const status = detail.estado || (detail.seleccionada === null ? "blank" : detail.seleccionada === detail.correcta ? "ok" : "no");
+  const correctOption = legacy && (detail.opcionesMuestreadas || []).find((option) => option.csvIndex === detail.correcta);
+  const givenAnswer = legacy
+    ? detail.seleccionada === null
+      ? "Dejada en blanco"
+      : `${letterFor((detail.seleccionadaMuestreo || detail.seleccionada) - 1)}. ${detail.opciones?.[detail.seleccionada - 1] || ""}`
+    : detail.respuestaDada;
+  const correctAnswer = legacy
+    ? `${letterFor((correctOption?.displayIndex || detail.correcta) - 1)}. ${detail.opciones?.[detail.correcta - 1] || ""}`
+    : detail.respuestaCorrecta;
+  return `
+    <article class="review-item ${status}">
+      <p class="review-item__q">${escapeHtml(detail.pregunta)}</p>
+      <p class="review-item__a"><strong>Tu respuesta:</strong> ${escapeHtml(givenAnswer)}</p>
+      <p class="review-item__a"><strong>Respuesta correcta:</strong> ${escapeHtml(correctAnswer)}</p>
+      <p class="review-item__a"><strong>Explicación:</strong> ${linkify(detail.explicacion)}</p>
+    </article>
+  `;
 }
 
 function renderExamSummary(entry) {
@@ -713,25 +735,7 @@ function renderExamSummary(entry) {
         </div>
       </div>
       <div class="review-list" id="review-list" style="display:none">
-        ${entry.detalle
-          .map((d) => {
-            const cls = d.seleccionada === null ? "blank" : d.seleccionada === d.correcta ? "ok" : "no";
-            const correctaMuestreo = (d.opcionesMuestreadas || []).find((op) => op.csvIndex === d.correcta);
-            const tuTexto =
-              d.seleccionada === null
-                ? "Dejada en blanco"
-                : `Tu respuesta: ${letterFor((d.seleccionadaMuestreo || d.seleccionada) - 1)} (CSV ${d.seleccionada}). ${escapeHtml(d.opciones[d.seleccionada - 1])}`;
-            const correctaTexto = `Correcta: ${letterFor(((correctaMuestreo && correctaMuestreo.displayIndex) || d.correcta) - 1)} (CSV ${d.correcta}). ${escapeHtml(d.opciones[d.correcta - 1])}`;
-            return `
-            <div class="review-item ${cls}">
-              <p class="review-item__q">${escapeHtml(d.pregunta)}</p>
-              <p class="review-item__a">${tuTexto}</p>
-              <p class="review-item__a">${correctaTexto}</p>
-              <p class="review-item__a">${linkify(d.explicacion)}</p>
-            </div>
-          `;
-          })
-          .join("")}
+        ${entry.detalle.map(renderReviewItem).join("")}
       </div>
     </main>
   `;
@@ -741,6 +745,15 @@ function toggleReview() {
   const el = document.getElementById("review-list");
   if (!el) return;
   el.style.display = el.style.display === "none" ? "flex" : "none";
+}
+
+function toggleHistoryReview(index, button) {
+  const review = document.getElementById(`history-review-${index}`);
+  if (!review) return;
+  const willShow = review.hidden;
+  review.hidden = !willShow;
+  button.setAttribute("aria-expanded", String(willShow));
+  button.textContent = willShow ? "Ocultar preguntas" : "Ver preguntas";
 }
 
 /* ------------------------------------------------------------------------
@@ -769,6 +782,10 @@ function renderHistory() {
                   <span class="history-row__date">${new Date(h.fecha).toLocaleString("es-ES")}</span>
                   <span>${h.correct} aciertos &middot; ${h.wrong} fallos &middot; ${h.blank} en blanco &middot; ${formatDuration(h.duracionMs || 0)}</span>
                   <span class="history-row__score">${formatScore(h.score)} / ${h.total}</span>
+                  <button class="btn-quiet" data-action="toggle-history-review" data-history-index="${i}" aria-expanded="false">Ver preguntas</button>
+                </div>
+                <div class="review-list history-review-list" id="history-review-${i}" hidden>
+                  ${(h.detalle || []).map(renderReviewItem).join("") || '<p class="history-review-empty">Este examen se guardó antes de que se registrara el detalle de sus preguntas.</p>'}
                 </div>
               `
                 )
@@ -836,6 +853,9 @@ app.addEventListener("click", (e) => {
       break;
     case "toggle-review":
       toggleReview();
+      break;
+    case "toggle-history-review":
+      toggleHistoryReview(el.dataset.historyIndex, el);
       break;
     case "exam-prev":
       goExamQuestion(state.session.index - 1);

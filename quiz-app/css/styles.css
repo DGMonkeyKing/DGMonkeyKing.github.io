@@ -17,6 +17,8 @@
   --navy-deep:    #142838;
   --garnet:       #8A2C2C;
   --garnet-deep:  #6E2222;
+  --success:      #2D6A4F;
+  --success-deep: #1F513A;
   --gold:         #8A6A1E;
   --gold-deep:    #6E5417;
   --line:         #C9BEA0;
@@ -759,11 +761,20 @@ main{ flex: 1; padding-top: 28px; }
   background: var(--paper-raised);
   text-align: left;
 }
-.review-item.ok{ border-left-color: var(--gold-deep); }
-.review-item.no{ border-left-color: var(--garnet); }
+.review-item.ok{
+  border-color: var(--success);
+  border-left-color: var(--success-deep);
+  background: #E3F0E8;
+}
+.review-item.no{
+  border-color: var(--garnet);
+  border-left-color: var(--garnet-deep);
+  background: #F5E2DF;
+}
 .review-item.blank{ border-left-color: var(--ink-soft); }
 .review-item__q{ font-size: 14px; margin: 0 0 6px; font-weight: 600; }
 .review-item__a{ font-size: 13px; color: var(--ink-soft); margin: 0; }
+.review-item__a strong{ color: var(--ink); }
 
 /* =========================================================================
    History
@@ -795,6 +806,9 @@ main{ flex: 1; padding-top: 28px; }
   font-size: 18px;
   color: var(--navy);
 }
+.history-review-list{ margin: 0 0 14px; }
+.history-review-list[hidden]{ display: none; }
+.history-review-empty{ margin: 0; color: var(--ink-soft); font-size: 14px; }
 .empty-state{
   text-align: center;
   padding: 50px 20px;
