@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>III Plan de Igualdad UC3M · Estudio</title>
+<style>
+:root{--bg:#f6f5fb;--fg:#1d1b2e;--cd:#fff;--mu:#6b6885;--bd:#e3e0f0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14131f;--fg:#ece9fb;--cd:#1e1d2e;--mu:#a29fc0;--bd:#33314a}}
+:root[data-theme="dark"]{--bg:#14131f;--fg:#ece9fb;--cd:#1e1d2e;--mu:#a29fc0;--bd:#33314a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:860px;margin:auto;padding:16px}
+h1{font-size:1.5rem;margin:.1em 0}h2{font-size:1.15rem;line-height:1.3}
+.sub{color:var(--mu);margin:0 0 10px}
+.bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7c5cff,#ec4899);transition:.4s}
+.story{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:10px 14px;margin:12px 0}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px;margin:12px 0}
+.t{border:2px solid var(--bd);background:var(--cd);color:var(--fg);border-radius:14px;padding:8px 6px;cursor:pointer;text-align:center;font:inherit;font-size:.85rem}
+.t b{display:block;font-size:1.7rem;line-height:1.1;color:var(--c)}.t small{display:block;color:var(--mu);font-size:.72rem}
+.t.on{background:var(--c);border-color:var(--c);color:#fff}.t.on b,.t.on small{color:#fff}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button,#q button{border:1px solid var(--bd);background:var(--cd);color:var(--fg);border-radius:20px;padding:6px 14px;cursor:pointer;font:inherit}
+.tools button.on{background:#7c5cff;color:#fff;border-color:#7c5cff}
+#q{background:var(--cd);border:2px dashed #ec4899;border-radius:14px;padding:10px 14px;margin:12px 0}
+.l{background:var(--cd);border:1px solid var(--bd);border-left:6px solid var(--c);border-radius:14px;padding:10px 14px;margin:12px 0}
+.lh{display:flex;gap:10px;align-items:center}.lh b{background:var(--c);color:#fff;border-radius:8px;padding:1px 8px;font-size:.85rem}.lh .h{flex:1;font-weight:700}
+.ck{border:2px solid var(--bd);background:none;border-radius:50%;width:32px;height:32px;cursor:pointer;color:var(--mu)}.ck.on{background:#10b981;border-color:#10b981;color:#fff}
+ol{list-style:none;margin:8px 0 0;padding:0}li{display:flex;gap:8px;padding:3px 0;border-top:1px dashed var(--bd)}
+li i{font-style:normal;min-width:2.3em;text-align:right;color:var(--c);font-weight:700}
+.recall .h:not(.o){filter:blur(7px);cursor:pointer;user-select:none}
+.chips span{display:inline-block;background:var(--cd);border:1px solid var(--bd);border-radius:20px;padding:2px 10px;margin:3px}
+</style></head><body><main>
+<h1>🌈 III Plan de Igualdad · UC3M</h1>
+<p class="sub">6 Ejes · 23 Líneas · 138 Medidas &nbsp;|&nbsp; <b id="pc">0/23</b> líneas dominadas</p>
+<div class="bar"><i id="pb"></i></div>
+<div class="story">🧠 <b>Historia para el orden:</b> el <b>G</b>obierno 🏛️ organiza la <b>F</b>ormación 🎓 para dar <b>E</b>mpleo 🤝 a quienes hacen <b>D</b>ocencia 📚 e <b>I</b>nvestigación 🔬, y <b>V</b>igila frenando la <b>V</b>iolencia 🛡️ &nbsp;→ <b>G-F-E-D-I-V</b></div>
+<div class="tabs" id="tabs"></div>
+<div class="tools"><button id="rb" onclick="rc()">🙈 Modo recuerdo</button><button onclick="qz()">❓ Pregúntame</button></div>
+<div id="q" hidden></div>
+<div id="v"></div>
+</main>
+<script>
+const E=[
+["I","🏛️","Gobernanza","#7c5cff","GOBERNANZA, ORGANIZACIÓN Y GESTIÓN CON PERSPECTIVA DE GÉNERO","Incluir de manera transversal la cultura de la igualdad y la perspectiva de género en la gobernanza, la organización y la gestión",[
+["Recopilación de datos e información",["Datos desagregados por sexo (art. 20 LO 3/2007)","«UC3M en cifras» → «Mujeres en cifras»","Datos con perspectiva interseccional"]],
+["Representación y participación",["Presencia equilibrada en órganos y cargos","Mujeres en actos institucionales"]],
+["Marco normativo, institucional y presupuestario",["Evaluación de impacto de género en normativa","Actualizar normativa de igualdad","Igualdad en Servicios, Unidades, Departamentos e Institutos","Perspectiva de género en presupuestos","Partida específica de igualdad para el Plan"]],
+["Políticas universitarias",["Comunicación institucional no sexista","Género en voluntariado, cooperación, sostenibilidad, internacionalización…","Política cultural igualitaria","Mujeres en el deporte","Género en inclusión y diversidad","Colaborar con Ayuntamientos de los campus","Contratación responsable (arts. 33-34 LOIEMH; art. 147 LCSP)"]],
+["Lenguaje inclusivo y no sexista",["Lenguaje inclusivo institucional","Revisar webs y documentos","Procedimiento de revisión + guía administrativa","Revisión previa de normativa","RPT y convocatorias de plazas","En cursos de igualdad","Plataformas académicas (roles)"]],
+["Toma de conciencia, visibilidad y reconocimiento",["Difundir el III Plan","Unidad de Igualdad en bienvenida a Grado/Postgrado","Mejorar web de la Unidad","Redes: CRUE, RUIGEU, RUIGEMA","Distintivo Igualdad I+D+I (RD 669/2023)","Campañas contra violencia y acoso","Fechas: 11 feb · 8 mar · 25 nov","Masculinidades igualitarias","Referentes: Honoris Causa, laudatios, madrinas","Espacios con nombre de mujer","Mujeres en ciencia, cultura, deporte, arte","Visibilizar premios de mujeres","Candidatas a premios del Consejo Social","Guía de eventos con perspectiva de género"]]]],
+["II","🎓","Formación","#0ea5e9","FORMACIÓN EN Y PARA LA IGUALDAD","Promover la formación en igualdad de todo el personal, la equidad y la prevención de la violencia",[
+["Formación para cargos de gobierno y gestión",["Órganos de gobierno","Responsables de Servicios/Unidades","Personal de RR.HH.","3.1|Revisores de RPT, APT y VPT","Impacto de género y datos","Lenguaje inclusivo para webs y redes"]],
+["Formación para PDI",["Cursos de la Unidad en el plan PDI","Género en docencia e investigación","Valorar formación (evaluación docente)","Género en cursos de PRL"]],
+["Formación para PTGAS",["Cursos de la Unidad en el plan PTGAS","Valorar formación (complementos)","Género en cursos de PRL"]],
+["Formación y corresponsabilidad",["Prioridad tras permisos/excedencias por cuidados","Cursos en horario de mañana y tarde"]]]],
+["III","🤝","Empleo","#10b981","IGUALDAD EN EL EMPLEO Y CORRESPONSABILIDAD","Avanzar en la igualdad efectiva en el empleo, favorecer corresponsabilidad y conciliación y una salud laboral con perspectiva de género",[
+["Acceso, promoción profesional y condiciones de trabajo",["Normativa de acceso con igualdad","Instrucciones a Tribunales: cuidados y violencia","Tribunales con presencia equilibrada","Igualdad en temarios de OPE del PTGAS","Mentoría y liderazgo","Liderazgo con otras instituciones","Estabilización de mujeres PDI","Brecha PDI de 30-40 años","Mentoría PDI senior → junior (<7 años)","Reparto de tareas de gestión","Licencias y sabáticos","Auditoría retributiva anual"]],
+["Corresponsabilidad y necesidades de cuidado",["Aplicar normativa de corresponsabilidad","Sin perjuicio por conciliar","Catálogo de Servicios","Apartado en Intranet","Campaña anual «Implícate» (Día de los Cuidados)","Reuniones entre 9:30 y 17:00","Espacios de conciliación en eventos","Convenios con escuelas infantiles","Convenios con centros de día","Espacio lúdico en campus","Lactancia y cuidados (mejorar Leganés)","Franjas horarias preferentes (PDI)","Reducciones docentes (PDI)","Teletrabajo y horario flexible (PTGAS)"]],
+["Salud laboral",["Género en prevención de riesgos","Campañas sociosanitarias","Riesgos psicosociales y género"]]]],
+["IV","📚","Docencia","#d97706","DOCENCIA Y PRÁCTICAS DE FORMACIÓN, INNOVACIÓN Y EVALUACIÓN DEL PROFESORADO CON PERSPECTIVA DE GÉNERO","Fortalecer la docencia con perspectiva de género en la UC3M",[
+["Perspectiva de género e igualdad entre mujeres y hombres en los estudios",["Transversalidad en estudios (art. 25 LOIEMH)","Verificación de Titulaciones","Guías por ramas de conocimiento","Guías docentes inclusivas","Recursos y materiales docentes","Asignaturas de igualdad en Grado","Formación docente"]],
+["Perspectiva de género e igualdad entre mujeres y hombres en los Trabajos Fin de Estudios y en las enseñanzas de postgrado",["Líneas de igualdad en TFG","Guías para estudiantado y tutoras/es","Rúbrica en TFG y TFM","Igualdad en postgrado (Escuela de Doctorado)","Título propio sobre igualdad"]],
+["Reconocimiento, innovación y evaluación de la docencia con perspectiva de género",["Mejores prácticas docentes","Innovación docente y APS","Reconocimiento en evaluación docente","Promoción STEAM"]],
+["Participación de las mujeres en funciones y tareas docentes",["Mujeres en dirección de Grados, Másteres y Doctorado","Comisiones de evaluación equilibradas"]]]],
+["V","🔬","Investigación","#ec4899","INVESTIGACIÓN, TRANSFERENCIA Y EMPRENDIMIENTO CON PERSPECTIVA DE GÉNERO","Fortalecer la investigación, la transferencia y el emprendimiento con perspectiva de género",[
+["Incorporación transversal de la perspectiva de género en la investigación, la transferencia y el emprendimiento",["Guía para proyectos (Servicio de Investigación)","Formación a investigadores/as y técnicos/as","Cooperación en transferencia","Divulgación científica","Iniciativas emprendedoras","Patentes, empresas y programa CR3CE"]],
+["Investigación, transferencia y emprendimiento en materia de igualdad",["Más investigación en igualdad","Ítems en Universitas XXI","Repositorio de producción científica","Premios Pilar Azcárate (TFG, TFM, Tesis)","Premio a trabajos de PDI","Mejores proyectos y transferencia social","Ayudas a congresos y seminarios"]],
+["Igualdad efectiva y visibilidad de las mujeres en la investigación, la transferencia y el emprendimiento",["Figura experta en la Unidad","Gestoras/es de apoyo a mujeres IP","20 contratos predoctorales","Programa propio sin sesgos","Liderazgo: mentoría y acompañamiento","Foros con presencia equilibrada","Órganos de evaluación equilibrados","Visibilizar a investigadoras"]],
+["Investigación y corresponsabilidad",["Reincorporación tras cuidados","Estancias con familia"]]]],
+["VI","🛡️","Violencia","#ef4444","ACCIONES FRENTE A LA VIOLENCIA CONTRA LAS MUJERES","Garantizar una UC3M libre de acoso y violencia contra las mujeres y proteger los derechos de las víctimas",[
+["Prevención y actuación frente al acoso y ciberacoso sexual y acoso por razón de sexo",["Nuevo Protocolo","Formación a toda la comunidad","Formación especializada (no revictimización)","Guía accesible","Campañas cada cuatrimestre y 25N","Apoyo psicológico (por mujer si se pide)","Asesoría jurídica gratuita","Informe anual al Consejo de Gobierno","Cláusula en pliegos","Coordinación con otros protocolos"]],
+["Apoyo, protección y promoción de los derechos de las mujeres víctimas de violencia de género",["Web con recursos públicos","Guía de derechos laborales","Atención integral personalizada","Solicitudes ágiles; reducción de jornada sin bajar salario","Acompañamiento psicológico especializado","Formación a RR.HH."]]]]];
+const K=`<div class="l" style="--c:#64748b"><h2>📌 Datos clave</h2><ul><li style="display:list-item">Vigencia <b>4 años</b>: 1 feb 2025 → 31 ene 2029 (día siguiente a su publicación en el BOEL)</li><li style="display:list-item">Primer Plan <b>negociado</b> con la representación de las personas trabajadoras (RD 901/2020)</li><li style="display:list-item">Comisión negociadora: <b>16</b> (8 Universidad + 8 CCOO/UGT); 10 reuniones; aprobado 27-28 nov 2024</li><li style="display:list-item">Ámbito: PDI y PTGAS · Getafe, Leganés, Colmenarejo, Puerta de Toledo</li><li style="display:list-item">Antecedentes: I Plan 2010 · II Plan 2017 (52 medidas) · Unidad de Igualdad 2008</li><li style="display:list-item">Seguimiento: reuniones en <b>febrero y octubre</b>; informe intermedio a los <b>2 años</b> y final; conflictos → IRMA</li><li style="display:list-item">Medidas por eje: <b>38 · 14 · 29 · 18 · 23 · 16 = 138</b></li></ul><h2>🔟 Principios generales</h2><div class="chips"><span>1 Igualdad efectiva y no discriminación</span><span>2 Perspectiva de género</span><span>3 Derechos humanos</span><span>4 Tolerancia cero a la violencia</span><span>5 Centralidad de los cuidados</span><span>6 Participación y diálogo social</span><span>7 Coordinación, cooperación y transversalidad</span><span>8 Transparencia y rendición de cuentas</span><span>9 Interseccionalidad</span><span>10 Accesibilidad</span></div></div>`;
+const $=s=>document.querySelector(s);let cur=0,M={};
+try{M=JSON.parse(localStorage.getItem("m")||"{}")}catch(e){}
+function pg(){const n=Object.keys(M).filter(k=>M[k]).length;$("#pc").textContent=n+"/23";$("#pb").style.width=n/23*100+"%"}
+function tabs(){$("#tabs").innerHTML=E.map((e,i)=>{const c=e[6].reduce((a,l)=>a+l[1].length,0),d=e[6].every((l,j)=>M[i+"."+j]);return`<button class="t${i==cur?" on":""}" style="--c:${e[3]}" onclick="go(${i})"><b>${e[2][0]}${d?" ✓":""}</b>Eje ${e[0]} ${e[1]}<small>${e[2]} · ${c}</small></button>`}).join("")+`<button class="t${cur==6?" on":""}" style="--c:#64748b" onclick="go(6)"><b>📌</b>Datos clave</button>`}
+function go(i){cur=i;tabs();const d=$("#v");if(i>5){d.innerHTML=K;return}
+const e=E[i];let n=0;
+d.innerHTML=`<h2 style="color:${e[3]}">${e[1]} EJE ${e[0]}. <span class="h">${e[4]}</span></h2><p><b>OG:</b> <span class="h">${e[5]}</span></p>`+e[6].map((l,j)=>`<div class="l" style="--c:${e[3]}"><div class="lh"><b>${e[0]}.${j+1}</b><span class="h">${l[0]}</span><button class="ck${M[i+"."+j]?" on":""}" onclick="ck(${i},${j},this)">✓</button></div><ol>${l[1].map(m=>{const[a,b]=m.includes("|")?m.split("|"):[++n,m];return`<li><i>${a}</i><span class="h">${b}</span></li>`}).join("")}</ol></div>`).join("")}
+function ck(i,j,b){const k=i+"."+j;M[k]=!M[k];b.classList.toggle("on");try{localStorage.setItem("m",JSON.stringify(M))}catch(e){}pg();tabs()}
+function rc(){document.body.classList.toggle("recall");$("#rb").classList.toggle("on");document.querySelectorAll(".o").forEach(x=>x.classList.remove("o"))}
+document.addEventListener("click",e=>{if(e.target.classList.contains("h")&&document.body.classList.contains("recall"))e.target.classList.toggle("o")});
+function qz(){const e=E[Math.random()*6|0],j=Math.random()*e[6].length|0,l=e[6][j],m=l[1][Math.random()*l[1].length|0].split("|").pop();const q=$("#q");q.hidden=false;q.innerHTML=`<b>¿A qué eje y línea pertenece?</b><p>«${m}»</p><p hidden>${e[1]} <b>Eje ${e[0]} ${e[2]}</b> · ${e[0]}.${j+1} ${l[0]}</p><button onclick="this.previousElementSibling.hidden=false">Ver respuesta</button> <button onclick="qz()">Otra ➜</button> <button onclick="$('#q').hidden=true">✕</button>`}
+pg();go(0);
+</script></body></html>
