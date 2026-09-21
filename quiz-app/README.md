@@ -1,8 +1,8 @@
 # Legajo — sala de estudio para oposiciones
 
 Aplicación web estática (sin frameworks, sin build) para practicar con el banco de
-preguntas tipo test. Tres modos: **al azar**, **examen** (70 preguntas puntuadas) y
-**por tema**.
+preguntas tipo test. Cuenta con los modos **revisión**, **al azar**, **examen**
+(70 preguntas puntuadas) y **por tema**.
 
 ## Cómo ejecutarla
 
@@ -59,15 +59,20 @@ No hace falta tocar el código: la app lee el manifiesto en tiempo de ejecución
 
 ## Modos de juego
 
-- **Al azar**: combina las preguntas de todos los temas cargados y las presenta en
-  orden aleatorio, sin fin. Lleva un contador de aciertos/fallos de la sesión.
-- **Examen**: selecciona 70 preguntas aleatorias del conjunto de todos los temas
-  (proporcional al tamaño de cada uno, al salir del mismo fondo común). Acierto = +1
-  punto, fallo = −1/3 de punto (equivalente a restar 1 punto cada 3 fallos), y dejar
-  en blanco no penaliza. Al terminar se guarda un registro permanente en el
+- **Revisión**: sustituye al antiguo modo Práctica. Combina únicamente las preguntas
+  cuyo enunciado no contiene las marcas de validación `⭐⭐⭐` ni `👑`, las presenta al
+  azar y sin límite, y mantiene el contador de aciertos/fallos de la sesión.
+- **Al azar**: combina únicamente las preguntas validadas de todos los temas y las
+  presenta en orden aleatorio, sin fin. Lleva un contador de aciertos/fallos de la
+  sesión.
+- **Examen**: selecciona 70 preguntas aleatorias validadas del conjunto de todos los
+  temas (proporcional al tamaño de cada uno, al salir del mismo fondo común). Acierto
+  = +1 punto, fallo = −1/3 de punto (equivalente a restar 1 punto cada 3 fallos), y
+  dejar en blanco no penaliza. Al terminar se guarda un registro permanente en el
   **Historial** (fecha, nota sobre 70, aciertos/fallos/blancos y el detalle completo
   para repasar cada pregunta).
-- **Por tema**: eliges un tema del listado y solo salen preguntas de ese tema.
+- **Por tema**: eliges uno o varios temas del listado y solo salen sus preguntas
+  validadas.
 
 En cada pregunta se muestra primero el enunciado y el botón **Mostrar respuestas**,
 para poder responder mentalmente antes de ver las opciones. Al pulsarlo aparecen las
