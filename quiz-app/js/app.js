@@ -14,7 +14,7 @@ const state = {
   manifest: null,
   questionCache: new Map(), // temaId -> Promise<Question[]>
   screen: "home", // home | tema-pick | quiz | exam-summary | history
-  session: null, // sesión activa (azar / tema / práctica / examen)
+  session: null, // sesión activa (azar / tema / revisión / examen)
   examTimerId: null,
   selectedTemaIds: new Set(),
 };
@@ -152,6 +152,19 @@ function formatScore(n) {
   return (Math.round(n * 100) / 100).toFixed(2);
 }
 
+/** Las preguntas validadas se identifican por una de las marcas en su enunciado. */
+function isValidatedQuestion(question) {
+  return question.pregunta.includes("⭐⭐⭐") || question.pregunta.includes("👑");
+}
+
+function validatedQuestions(questions) {
+  return questions.filter(isValidatedQuestion);
+}
+
+function revisionQuestions(questions) {
+  return questions.filter((question) => !isValidatedQuestion(question));
+}
+
 /* ------------------------------------------------------------------------
    Pantalla: inicio
    ------------------------------------------------------------------------ */
@@ -167,7 +180,7 @@ function renderHome() {
       <div class="home-intro">
         <h2>¿Cómo quieres estudiar hoy?</h2>
         <p>Elige un modo de trabajo. Las preguntas proceden del banco verificado de los
-        temas cargados en este expediente.</p>
+        temas cargados en este expediente. Los modos de examen, azar y por tema usan solo preguntas validadas.</p>
       </div>
       <div class="mode-grid">
         <button class="mode-card" data-action="go-azar" data-tab="Modo 01">
@@ -176,20 +189,19 @@ function renderHome() {
           Ideal para repasar con calma.</p>
           <span class="go">Empezar &rarr;</span>
         </button>
-        <button class="mode-card" data-action="go-practica" data-tab="Modo 02">
-          <h3>Práctica</h3>
-          <p>${EXAM_SIZE} preguntas repartidas entre todos los temas. Acierto = +1,
-          fallo = &minus;1/3. Recibe corrección inmediata mientras practicas.</p>
-          <span class="go">Empezar práctica &rarr;</span>
+        <button class="mode-card" data-action="go-revision" data-tab="Modo 02">
+          <h3>Revisión</h3>
+          <p>Preguntas aún sin validar, en orden aleatorio y sin límite. Recibe corrección inmediata mientras repasas.</p>
+          <span class="go">Empezar revisión &rarr;</span>
         </button>
         <button class="mode-card" data-action="go-examen" data-tab="Modo 03">
           <h3>Examen</h3>
-          <p>${EXAM_SIZE} preguntas, navegación libre y cronómetro. Puedes responder, modificar o dejar en blanco cada pregunta antes de finalizar.</p>
+          <p>${EXAM_SIZE} preguntas validadas, navegación libre y cronómetro. Puedes responder, modificar o dejar en blanco cada pregunta antes de finalizar.</p>
           <span class="go">Convocar examen &rarr;</span>
         </button>
         <button class="mode-card" data-action="go-tema" data-tab="Modo 04">
           <h3>Por tema</h3>
-          <p>Elige uno o varios temas del expediente y practica solo con sus preguntas.</p>
+          <p>Elige uno o varios temas del expediente y practica solo con sus preguntas validadas.</p>
           <span class="go">Elegir temas &rarr;</span>
         </button>
       </div>
@@ -246,7 +258,7 @@ async function renderTemaPicker() {
   state.manifest.temas.forEach((t) => {
     loadTema(t).then((qs) => {
       const el = app.querySelector(`[data-count="${t.id}"]`);
-      if (el) el.textContent = `${qs.length} preguntas`;
+      if (el) el.textContent = `${validatedQuestions(qs).length} preguntas validadas`;
     });
   });
 }
@@ -294,11 +306,11 @@ function toggleTemaSelection(temaId) {
 }
 
 /* ------------------------------------------------------------------------
-   Sesión: azar / tema
+   Sesión: azar / tema / revisión
    ------------------------------------------------------------------------ */
 
 async function startAzar() {
-  const pool = await loadAllQuestions();
+  const pool = validatedQuestions(await loadAllQuestions());
   state.session = {
     kind: "azar",
     pool,
@@ -315,7 +327,7 @@ async function startTemas(temaIds) {
   const temas = state.manifest.temas.filter((t) => temaIds.includes(t.id));
   if (temas.length === 0) return;
   const questionsByTema = await Promise.all(temas.map(loadTema));
-  const pool = questionsByTema.flat();
+  const pool = validatedQuestions(questionsByTema.flat());
   state.session = {
     kind: "tema",
     temaNombre: temas.length === 1 ? temas[0].nombre : `${temas.length} temas seleccionados`,
@@ -333,24 +345,22 @@ async function startSelectedTemas() {
   await startTemas(Array.from(state.selectedTemaIds));
 }
 
-async function startPractice() {
-  const all = await loadAllQuestions();
-  const size = Math.min(EXAM_SIZE, all.length);
+async function startRevision() {
+  const pool = revisionQuestions(await loadAllQuestions());
   state.session = {
-    kind: "practice",
-    queue: shuffle(all).slice(0, size),
-    index: 0,
-    answers: [],
+    kind: "revision",
+    pool,
+    current: pickNext(pool, null),
     answered: false,
     answersRevealed: false,
     selected: null,
-    startedAt: Date.now(),
+    stats: { correct: 0, wrong: 0, total: 0 },
   };
   renderQuiz();
 }
 
 async function startExam() {
-  const all = await loadAllQuestions();
+  const all = validatedQuestions(await loadAllQuestions());
   const size = Math.min(EXAM_SIZE, all.length);
   state.session = {
     kind: "exam",
@@ -364,12 +374,12 @@ async function startExam() {
 }
 
 /* ------------------------------------------------------------------------
-   Pantalla: cuestionario (compartida por los tres modos)
+   Pantalla: cuestionario (compartida por los modos)
    ------------------------------------------------------------------------ */
 
 function currentQuestion() {
   const s = state.session;
-  return ["exam", "practice"].includes(s.kind) ? s.queue[s.index] : s.current;
+  return s.kind === "exam" ? s.queue[s.index] : s.current;
 }
 
 function examDisplayOptions() {
@@ -435,24 +445,23 @@ function startExamTimer() {
 
 function renderStatusPanel() {
   const s = state.session;
-  if (["exam", "practice"].includes(s.kind)) {
-    const isExam = s.kind === "exam";
-    const done = isExam ? s.answers.filter((answer) => answer !== null).length : s.index;
+  if (s.kind === "exam") {
+    const done = s.answers.filter((answer) => answer !== null).length;
     const pct = Math.round((done / s.queue.length) * 100);
     return `
       <aside class="quiz-status">
         <div class="quiz-status__block">
-          <span class="quiz-status__label">${isExam ? "Examen" : "Práctica"}</span>
-          <span class="quiz-status__value">${isExam ? `Pregunta ${s.index + 1}` : `${done + 1} / ${s.queue.length}`}</span>
+          <span class="quiz-status__label">Examen</span>
+          <span class="quiz-status__value">Pregunta ${s.index + 1}</span>
           <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
         </div>
-        ${isExam ? `<div class="quiz-status__block"><span class="quiz-status__label">Respondidas</span><span class="quiz-status__value">${done} / ${s.queue.length}</span></div><div class="quiz-status__block"><span class="quiz-status__label">Tiempo</span><span class="quiz-status__value" id="exam-timer">${formatDuration(Date.now() - s.startedAt)}</span></div>` : `<div class="quiz-status__block"><span class="quiz-status__label">Puntuación provisional</span><span class="quiz-status__value">${formatScore(examScore(s.answers))}</span></div>`}
-        <button class="end-session" data-action="abandon-exam">Abandonar ${isExam ? "examen" : "práctica"}</button>
+        <div class="quiz-status__block"><span class="quiz-status__label">Respondidas</span><span class="quiz-status__value">${done} / ${s.queue.length}</span></div><div class="quiz-status__block"><span class="quiz-status__label">Tiempo</span><span class="quiz-status__value" id="exam-timer">${formatDuration(Date.now() - s.startedAt)}</span></div>
+        <button class="end-session" data-action="abandon-exam">Abandonar examen</button>
       </aside>
     `;
   }
   const { correct, wrong, total } = s.stats;
-  const label = s.kind === "tema" ? escapeHtml(s.temaNombre) : "Todos los temas";
+  const label = s.kind === "tema" ? escapeHtml(s.temaNombre) : s.kind === "revision" ? "Preguntas sin validar" : "Todos los temas";
   return `
     <aside class="quiz-status">
       <div class="quiz-status__block">
@@ -508,24 +517,12 @@ function handleAnswer(selectedIndex) {
   if (s.answered || !s.answersRevealed) return;
   const q = currentQuestion();
   const isCorrect = selectedIndex === q.correcta;
-  const selectedOption = displayOptionsForCurrentQuestion().find((op) => op.csvIndex === selectedIndex);
-
   s.answered = true;
   s.selected = selectedIndex;
 
-  if (s.kind === "practice") {
-    s.answers.push({
-      question: q,
-      selected: selectedIndex,
-      selectedDisplayIndex: selectedOption ? selectedOption.displayIndex : null,
-      displayOptions: displayOptionsForCurrentQuestion(),
-      correct: isCorrect,
-    });
-  } else {
-    s.stats.total++;
-    if (isCorrect) s.stats.correct++;
-    else s.stats.wrong++;
-  }
+  s.stats.total++;
+  if (isCorrect) s.stats.correct++;
+  else s.stats.wrong++;
 
   paintAnswerState(q, selectedIndex);
 }
@@ -572,9 +569,7 @@ function paintAnswerState(q, selectedIndex) {
     <p class="explanation__label">Explicación</p>
     <p class="explanation__text">${linkify(q.explicacion)}</p>
     <div class="q-card__footer">
-      <button class="btn-primary" data-action="next">${
-        s.kind === "practice" && s.index >= s.queue.length - 1 ? "Ver resultados" : "Siguiente pregunta"
-      }</button>
+      <button class="btn-primary" data-action="next">Siguiente pregunta</button>
     </div>
   `;
   card.appendChild(explanation);
@@ -588,22 +583,7 @@ function goNext() {
   const s = state.session;
   if (!s.answered) return;
 
-  if (s.kind === "practice") {
-    s.index++;
-    s.answered = false;
-    s.answersRevealed = false;
-    s.selected = null;
-    s.displayOptions = null;
-    s.displayQuestionId = null;
-    if (s.index >= s.queue.length) {
-      finishExam();
-      return;
-    }
-    renderQuiz();
-    return;
-  }
-
-  // azar / tema: siguiente pregunta aleatoria del pool
+  // azar / tema / revisión: siguiente pregunta aleatoria del conjunto aplicable
   const prevId = s.current.id;
   s.current = pickNext(s.pool, prevId);
   s.answered = false;
@@ -644,16 +624,14 @@ function closeQuestionMenu() { document.querySelector(".question-menu-backdrop")
 
 function finishExam() {
   const s = state.session;
-  if (!s || !["exam", "practice"].includes(s.kind)) return;
+  if (!s || s.kind !== "exam") return;
   clearInterval(state.examTimerId);
-  const answers = s.kind === "exam"
-    ? s.queue.map((question, index) => {
+  const answers = s.queue.map((question, index) => {
         const selected = s.answers[index];
         const displayOptions = s.optionOrders[index] || buildDisplayOptions(question);
         const selectedOption = displayOptions.find((option) => option.csvIndex === selected);
         return { question, selected, selectedDisplayIndex: selectedOption ? selectedOption.displayIndex : null, displayOptions, correct: selected === question.correcta };
-      })
-    : s.answers;
+      });
   const correct = answers.filter((a) => a.selected !== null && a.correct).length;
   const wrong = answers.filter((a) => a.selected !== null && !a.correct).length;
   const blank = answers.filter((a) => a.selected === null).length;
@@ -824,8 +802,8 @@ app.addEventListener("click", (e) => {
     case "go-azar":
       startAzar();
       break;
-    case "go-practica":
-      startPractice();
+    case "go-revision":
+      startRevision();
       break;
     case "go-examen":
       startExam();
