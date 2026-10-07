@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Recursos Administrativos · Ley 39/2015</title>
+<style>
+:root{--bg:#f6f5fb;--fg:#1d1b2e;--cd:#fff;--mu:#6b6885;--bd:#e3e0f0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14131f;--fg:#ece9fb;--cd:#1e1d2e;--mu:#a29fc0;--bd:#33314a}}
+:root[data-theme="dark"]{--bg:#14131f;--fg:#ece9fb;--cd:#1e1d2e;--mu:#a29fc0;--bd:#33314a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:860px;margin:auto;padding:16px}
+h1{font-size:1.45rem;margin:.1em 0}h2{font-size:1.1rem;line-height:1.3}
+.sub{color:var(--mu);margin:0 0 10px}
+.story{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:10px 14px;margin:12px 0}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin:12px 0}
+.t{border:2px solid var(--bd);background:var(--cd);color:var(--fg);border-radius:14px;padding:8px 6px;cursor:pointer;text-align:center;font:inherit;font-size:.82rem}
+.t b{display:block;font-size:1.5rem;line-height:1.15;color:var(--c)}.t small{display:block;color:var(--mu);font-size:.7rem}
+.t.on{background:var(--c);border-color:var(--c);color:#fff}.t.on b,.t.on small{color:#fff}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button,#q button{border:1px solid var(--bd);background:var(--cd);color:var(--fg);border-radius:20px;padding:6px 14px;cursor:pointer;font:inherit}
+.tools button.on{background:#7c5cff;color:#fff;border-color:#7c5cff}
+#q{background:var(--cd);border:2px dashed #ec4899;border-radius:14px;padding:10px 14px;margin:12px 0}
+.l{background:var(--cd);border:1px solid var(--bd);border-left:6px solid var(--c);border-radius:14px;padding:12px 14px;margin:12px 0}
+.hd{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}.hd h2{margin:0}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.93rem}
+td{padding:4px 6px;border-top:1px dashed var(--bd);vertical-align:top}
+td:first-child{white-space:nowrap;color:var(--c);font-weight:700;width:1%}
+.recall .h:not(.o){filter:blur(7px);cursor:pointer;user-select:none}
+ul.compact{margin:6px 0;padding-left:1.2em}ul.compact li{margin:2px 0}
+.chips span{display:inline-block;background:var(--cd);border:1px solid var(--bd);border-radius:20px;padding:2px 10px;margin:3px}
+.art{display:inline-block;background:var(--c);color:#fff;border-radius:7px;padding:0 6px;font-size:.72rem;font-weight:700}
+.warn{background:#fff3cd;border:1px solid #ffe08a;border-radius:10px;padding:6px 10px;font-size:.9rem;margin:6px 0}
+:root[data-theme="dark"] .warn,body:not([data-theme]) .warn{color:#1d1b2e}
+</style></head><body><main>
+<h1>⚖️ Recursos Administrativos</h1>
+<p class="sub">Ley 39/2015, Título V, Cap. II (arts. 112-126) · Consulta y repaso diario</p>
+<div class="story">🧠 <b>Mapa mental:</b> todo recurso nace de un <b>acto</b> (112) → se <b>interpone</b> (115) → puede ser <b>inadmitido</b> (116) o <b>suspendido</b> (117) → hay <b>audiencia</b> (118) → se <b>resuelve</b> (119). Hay <b>3 tipos</b>: 🔺 <b>Alzada</b> (jerárquico) · 🔁 <b>Reposición</b> (mismo órgano, potestativo) · 🧩 <b>Extraordinario de revisión</b> (actos firmes, taxado)</div>
+<div class="tabs" id="tabs"></div>
+<div class="tools"><button id="rb" onclick="rc()">🙈 Modo recuerdo</button><button onclick="qz()">❓ Pregúntame</button></div>
+<div id="q" hidden></div>
+<div id="v"></div>
+</main>
+<script>
+const R=[
+["A","🔺","Alzada","#7c5cff","Recurso de ALZADA","121-122",
+ `<p><span class="art">Art. 121</span> <b class="h">Objeto:</b> <span class="h">resoluciones y actos de trámite cualificados del art. 112.1 que NO pongan fin a la vía administrativa</span></p>
+ <table>
+ <tr><td>Órgano</td><td><span class="h">Órgano superior jerárquico del que dictó el acto</span> (se puede presentar ante el que dictó el acto o ante el competente; si se presenta ante el primero, lo remite en <span class="h">10 días</span>)</td></tr>
+ <tr><td>Plazo interponer</td><td><span class="h">1 mes</span> si el acto es expreso (firme si transcurre). Si no es expreso: <span class="h">en cualquier momento</span> desde el día siguiente a los efectos del silencio</td></tr>
+ <tr><td>Plazo resolver</td><td><span class="h">3 meses</span> máximo para dictar y notificar; transcurrido, se entiende <span class="h">desestimado</span> (salvo art. 24.1 párr. 3º)</td></tr>
+ <tr><td>Fin de la vía</td><td><span class="h">Sí</span> — su resolución agota la vía administrativa (art. 114.1.a)</td></tr>
+ <tr><td>Recurso posterior</td><td><span class="h">Ninguno</span> en vía administrativa, salvo el extraordinario de revisión (art. 125.1)</td></tr>
+ </table>`],
+["R","🔁","Reposición","#0ea5e9","Recurso POTESTATIVO de REPOSICIÓN","123-124",
+ `<p><span class="art">Art. 123</span> <b class="h">Objeto:</b> <span class="h">actos que ya ponen fin a la vía administrativa</span></p>
+ <table>
+ <tr><td>Carácter</td><td><span class="h">Potestativo</span>: cabe elegir entre interponerlo o acudir directamente a la vía contencioso-administrativa</td></tr>
+ <tr><td>Órgano</td><td><span class="h">El mismo órgano que dictó el acto</span></td></tr>
+ <tr><td>Plazo interponer</td><td><span class="h">1 mes</span> si es expreso (pasado el plazo, solo cabe el contencioso-administrativo, salvo revisión extraordinaria). Si no es expreso: <span class="h">en cualquier momento</span> desde el día siguiente al acto presunto</td></tr>
+ <tr><td>Plazo resolver</td><td><span class="h">1 mes</span> máximo para dictar y notificar</td></tr>
+ <tr><td>Contencioso-admvo.</td><td><span class="h">No se puede interponer</span> hasta que se resuelva expresamente o se desestime por silencio el de reposición</td></tr>
+ <tr><td>Recurso posterior</td><td><span class="h">No cabe un segundo</span> recurso de reposición contra su resolución</td></tr>
+ </table>`],
+["E","🧩","Ext. revisión","#ec4899","Recurso EXTRAORDINARIO DE REVISIÓN","125-126",
+ `<p><span class="art">Art. 125</span> <b class="h">Objeto:</b> <span class="h">actos firmes en vía administrativa</span> (solo en los 4 supuestos tasados)</p>
+ <table><tr><td>Órgano</td><td><span class="h">El mismo que dictó el acto</span> (también competente para resolver)</td></tr></table>
+ <p><b class="h">4 causas tasadas</b> (113 y 125.1):</p>
+ <table>
+ <tr><td>a)</td><td><span class="h">Error de hecho</span>, que resulte de los propios documentos del expediente</td></tr>
+ <tr><td>b)</td><td><span class="h">Documentos esenciales</span> aparecidos después que evidencien el error, aunque sean posteriores</td></tr>
+ <tr><td>c)</td><td><span class="h">Documentos o testimonios declarados falsos</span> por sentencia firme, antes o después de la resolución</td></tr>
+ <tr><td>d)</td><td><span class="h">Prevaricación, cohecho, violencia, maquinación fraudulenta u otro delito</span> declarado por sentencia firme</td></tr>
+ </table>
+ <table>
+ <tr><td>Plazo causa a)</td><td><span class="h">4 años</span> desde la notificación de la resolución impugnada</td></tr>
+ <tr><td>Plazo causas b, c, d</td><td><span class="h">3 meses</span> desde que se conocieron los documentos o desde la firmeza de la sentencia</td></tr>
+ <tr><td>Inadmisión</td><td><span class="h">Cabe acordar motivadamente la inadmisión a trámite</span> sin dictamen del Consejo de Estado u órgano consultivo autonómico, cuando no se funde en ninguna de las 4 causas o se hayan desestimado en cuanto al fondo otros recursos sustancialmente iguales</td></tr>
+ </table>`],
+["G","📐","Reglas comunes","#10b981","REGLAS COMUNES a todos los recursos","112-120",
+ `<table>
+ <tr><td><span class="art">112</span></td><td><b class="h">Objeto y clases:</b> <span class="h">alzada y reposición</span> contra resoluciones y actos de trámite cualificados (deciden el fondo, impiden continuar, causan indefensión o perjuicio irreparable); se fundan en <span class="h">motivos de nulidad (47) o anulabilidad (48)</span>. Las leyes pueden sustituirlos por impugnación, reclamación, conciliación, mediación o arbitraje ante órganos colegiados. <span class="h">No cabe recurso contra disposiciones administrativas generales</span> (reglamentos); si el recurso contra un acto se funda solo en la nulidad de un reglamento, se interpone ante el órgano que dictó el reglamento</td></tr>
+ <tr><td><span class="art">114</span></td><td><b class="h">Fin de la vía administrativa:</b> resoluciones de alzada; resoluciones de procedimientos sustitutivos (112.2); resoluciones de órganos sin superior jerárquico; acuerdos/pactos/convenios finalizadores; responsabilidad patrimonial; procedimientos sancionadores complementarios (90.4); y lo que establezca la ley. En el Estado: actos del Gobierno, Ministros y Secretarios de Estado, Directores generales (en materia de personal), máximos órganos de Organismos públicos</td></tr>
+ <tr><td><span class="art">115</span></td><td><b class="h">Interposición:</b> debe expresar nombre e identificación del recurrente; acto recurrido y motivo; lugar, fecha y firma; órgano al que se dirige. <span class="h">El error en la calificación del recurso no impide su tramitación</span> si se deduce su verdadero carácter. Quien causó el vicio no puede alegarlo</td></tr>
+ <tr><td><span class="art">116</span></td><td><b class="h">Causas de inadmisión (5):</b> órgano incompetente (de otra Administración) · falta de legitimación · acto no recurrible · plazo transcurrido · recurso manifiestamente infundado</td></tr>
+ <tr><td><span class="art">117</span></td><td><b class="h">Suspensión de la ejecución:</b> regla general → <span class="h">NO suspende</span>. Puede suspenderse de oficio o a instancia si: perjuicios de imposible/difícil reparación, o causa de nulidad de pleno derecho (47.1). <span class="h">Silencio: transcurrido 1 mes</span> desde la solicitud sin resolución expresa, se entiende <span class="h">suspendido</span></td></tr>
+ <tr><td><span class="art">118</span></td><td><b class="h">Audiencia:</b> si hay hechos o documentos nuevos, trámite de alegaciones de <span class="h">10 a 15 días</span>. No se valoran hechos/documentos que el recurrente pudo aportar antes y no lo hizo</td></tr>
+ <tr><td><span class="art">119</span></td><td><b class="h">Resolución:</b> estima (total o parcial), desestima o declara inadmisión. Si hay vicio de forma, retroacción del procedimiento. <span class="h">Prohibición de reforma peyorativa:</span> no puede agravarse la situación inicial del recurrente</td></tr>
+ <tr><td><span class="art">120</span></td><td><b class="h">Pluralidad de recursos:</b> si hay varios recursos del mismo acto y un recurso judicial pendiente, puede suspenderse el plazo para resolver hasta el pronunciamiento judicial (notificable y recurrible)</td></tr>
+ </table>
+ <div class="warn">⚠️ Diferencia clave: Alzada y Reposición son <b>ordinarios</b> (motivos amplios: nulidad/anulabilidad); el Extraordinario de Revisión solo procede contra <b>actos firmes</b> y por <b>4 causas tasadas</b>.</div>`]];
+const K=`<div class="l" style="--c:#64748b"><h2>📌 Comparativa rápida</h2><table>
+<tr><td></td><td><b>Alzada</b></td><td><b>Reposición</b></td><td><b>Ext. revisión</b></td></tr>
+<tr><td>Contra</td><td>Acto que NO agota vía</td><td>Acto que SÍ agota vía</td><td>Acto firme</td></tr>
+<tr><td>Órgano</td><td>Superior jerárquico</td><td>El mismo que dictó</td><td>El mismo que dictó</td></tr>
+<tr><td>Carácter</td><td>Obligatorio si se quiere agotar vía</td><td>Potestativo</td><td>Extraordinario (taxado)</td></tr>
+<tr><td>Plazo interponer</td><td>1 mes</td><td>1 mes</td><td>4 años (a) / 3 meses (b,c,d)</td></tr>
+<tr><td>Plazo resolver</td><td>3 meses</td><td>1 mes</td><td>— (remite a reglas generales)</td></tr>
+<tr><td>Cabe después</td><td>Solo ext. revisión</td><td>Solo contencioso o ext. revisión</td><td>Contencioso-admvo.</td></tr>
+</table>
+<h2>🗂️ Normativa citada</h2><div class="chips"><span>Nulidad: art. 47</span><span>Anulabilidad: art. 48</span><span>Silencio: art. 24</span><span>Convalidación: art. 52</span><span>Sancionador: art. 90.4</span><span>Competencia: art. 14.1 LRJSP</span></div>
+<h2>🧭 Flujo del procedimiento</h2><p>Acto <span class="h">(112)</span> → Interposición <span class="h">(115)</span> → ¿Inadmisión? <span class="h">(116)</span> → Suspensión ejecución <span class="h">(117)</span> → Audiencia si hay novedades <span class="h">(118)</span> → Resolución <span class="h">(119)</span></p></div>`;
+const $=s=>document.querySelector(s);let cur=0;
+function tabs(){$("#tabs").innerHTML=R.map((e,i)=>`<button class="t${i==cur?" on":""}" style="--c:${e[3]}" onclick="go(${i})"><b>${e[1]}</b>${e[2]}<small>Art. ${e[5]}</small></button>`).join("")+`<button class="t${cur==4?" on":""}" style="--c:#64748b" onclick="go(4)"><b>📊</b>Comparativa<small>Resumen</small></button>`}
+function go(i){cur=i;tabs();if(i>3){$("#v").innerHTML=K;return}
+const e=R[i];$("#v").innerHTML=`<div class="l" style="--c:${e[3]}"><div class="hd"><h2>${e[1]} ${e[4]}</h2></div>${e[6]}</div>`}
+function rc(){document.body.classList.toggle("recall");$("#rb").classList.toggle("on")}
+document.addEventListener("click",e=>{if(e.target.classList.contains("h")&&document.body.classList.contains("recall"))e.target.classList.toggle("o")});
+const QB=[
+["¿Cuál es el plazo para interponer un recurso de ALZADA si el acto es expreso?","1 mes"],
+["¿Ante qué órgano se interpone el recurso de REPOSICIÓN?","El mismo órgano que dictó el acto"],
+["¿Cuál es el plazo máximo para resolver un recurso de ALZADA?","3 meses"],
+["¿Cuál es el plazo máximo para resolver un recurso de REPOSICIÓN?","1 mes"],
+["¿Qué recurso tiene carácter POTESTATIVO?","El recurso de reposición"],
+["Si transcurre 1 mes desde la solicitud de suspensión sin resolución expresa, ¿qué ocurre?","Se entiende suspendida la ejecución del acto"],
+["¿Cuántas causas tasadas permiten el recurso extraordinario de revisión?","4 (error de hecho; documentos esenciales; documentos/testimonios falsos; delito declarado por sentencia firme)"],
+["¿Cuál es el plazo del recurso extraordinario de revisión por la causa de error de hecho (a)?","4 años desde la notificación"],
+["¿Cuál es el plazo del recurso extraordinario de revisión por las causas b, c y d?","3 meses desde que se conocieron los documentos o desde la firmeza de la sentencia"],
+["¿Puede interponerse recurso contra una disposición administrativa de carácter general (reglamento)?","No, no cabe recurso en vía administrativa contra disposiciones generales"],
+["¿Cuántas causas de inadmisión establece el art. 116?","5"],
+["Tras un recurso de alzada, ¿cabe otro recurso administrativo?","No, salvo el extraordinario de revisión"],
+["¿Cuál es la regla general sobre la ejecución del acto al interponer un recurso?","No se suspende, salvo que una disposición establezca lo contrario"],
+["¿Cuál es el plazo del trámite de audiencia del art. 118?","Entre 10 y 15 días"],
+["¿Qué principio impide que la resolución de un recurso empeore la situación del recurrente?","La prohibición de la reforma peyorativa (no cabe agravar su situación inicial)"]];
+function qz(){const x=QB[Math.random()*QB.length|0],q=$("#q");q.hidden=false;q.innerHTML=`<b>Pregunta:</b><p>${x[0]}</p><p hidden><b>Respuesta:</b> ${x[1]}</p><button onclick="this.previousElementSibling.hidden=false">Ver respuesta</button> <button onclick="qz()">Otra ➜</button> <button onclick="$('#q').hidden=true">✕</button>`}
+go(0);
+</script></body></html>
