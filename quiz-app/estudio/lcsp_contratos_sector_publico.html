@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Contratos del Sector Público · LCSP</title>
+<style>
+:root{--bg:#f6f5fb;--fg:#1d1b2e;--cd:#fff;--mu:#6b6885;--bd:#e3e0f0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14131f;--fg:#ece9fb;--cd:#1e1d2e;--mu:#a29fc0;--bd:#33314a}}
+:root[data-theme="dark"]{--bg:#14131f;--fg:#ece9fb;--cd:#1e1d2e;--mu:#a29fc0;--bd:#33314a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:900px;margin:auto;padding:16px}
+h1{font-size:1.45rem;margin:.1em 0}h2{font-size:1.1rem;line-height:1.3;margin:.2em 0}
+.sub{color:var(--mu);margin:0 0 10px}
+.story{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:10px 14px;margin:12px 0}
+.grp{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:10px 0 4px;color:var(--mu);font-size:.78rem;text-transform:uppercase;letter-spacing:.03em}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(106px,1fr));gap:8px;margin:0 0 12px}
+.t{border:2px solid var(--bd);background:var(--cd);color:var(--fg);border-radius:14px;padding:8px 6px;cursor:pointer;text-align:center;font:inherit;font-size:.78rem}
+.t b{display:block;font-size:1.45rem;line-height:1.15;color:var(--c)}.t small{display:block;color:var(--mu);font-size:.68rem}
+.t.on{background:var(--c);border-color:var(--c);color:#fff}.t.on b,.t.on small{color:#fff}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button,#q button{border:1px solid var(--bd);background:var(--cd);color:var(--fg);border-radius:20px;padding:6px 14px;cursor:pointer;font:inherit}
+.tools button.on{background:#7c5cff;color:#fff;border-color:#7c5cff}
+#q{background:var(--cd);border:2px dashed #ec4899;border-radius:14px;padding:10px 14px;margin:12px 0}
+.l{background:var(--cd);border:1px solid var(--bd);border-left:6px solid var(--c);border-radius:14px;padding:12px 14px;margin:12px 0}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.9rem}
+td{padding:4px 6px;border-top:1px dashed var(--bd);vertical-align:top}
+td:first-child{white-space:nowrap;color:var(--c);font-weight:700;width:1%}
+.recall .h:not(.o){filter:blur(7px);cursor:pointer;user-select:none}
+.chips span{display:inline-block;background:var(--cd);border:1px solid var(--bd);border-radius:20px;padding:2px 10px;margin:3px;font-size:.85rem}
+.art{display:inline-block;background:var(--c);color:#fff;border-radius:7px;padding:0 6px;font-size:.72rem;font-weight:700}
+.warn{background:#fff3cd;border:1px solid #ffe08a;border-radius:10px;padding:6px 10px;font-size:.9rem;margin:6px 0;color:#1d1b2e}
+.big{font-size:1.3rem;font-weight:800}
+</style></head><body><main>
+<h1>📑 Contratos del Sector Público</h1>
+<p class="sub">Ley 9/2017 (LCSP) · Tipos, umbrales, plazos y procedimientos · Consulta diaria</p>
+<div class="story">🧠 <b>Mapa mental:</b> primero decides el <b>TIPO</b> de contrato (qué compras) → compruebas si supera el <b>UMBRAL SARA</b> (regulación armonizada) → eliges el <b>PROCEDIMIENTO</b> de adjudicación según el importe → fijas la <b>DURACIÓN</b> máxima y, si hace falta, la <b>GARANTÍA</b> y la <b>CLASIFICACIÓN</b>.</p>
+<div class="grp">🔷 Tipos de contrato</div>
+<div class="tabs" id="tabsA"></div>
+<div class="grp">⚙️ Adjudicación y gestión</div>
+<div class="tabs" id="tabsB"></div>
+<div class="tools"><button id="rb" onclick="rc()">🙈 Modo recuerdo</button><button onclick="qz()">❓ Pregúntame</button></div>
+<div id="q" hidden></div>
+<div id="v"></div>
+</main>
+<script>
+const T=[
+["O","🏗️","Obras","#7c5cff","Contrato de OBRAS","13",
+ `<p><span class="art">Art. 13</span> <b class="h">Objeto:</b> <span class="h">ejecución de una obra (con o sin redacción de proyecto) o trabajos del Anexo I; o realización de una obra conforme a requisitos fijados por la entidad contratante que ejerce influencia decisiva</span></p>
+ <table><tr><td>«Obra»</td><td><span class="h">resultado de trabajos de construcción o ingeniería civil con función económica o técnica sobre un bien inmueble; también la modificación de la forma del terreno</span></td></tr>
+ <tr><td>Regla</td><td><span class="h">debe referirse a una obra COMPLETA</span> (entregable al uso general); cabe dividir en proyectos independientes si son susceptibles de utilización independiente, con autorización del órgano de contratación</td></tr></table>
+ <div class="grp" style="margin-top:10px">Cifras clave</div>
+ <table>
+ <tr><td>Umbral SARA</td><td><span class="h big">5.404.000 €</span> (art. 20) — obras, concesión de obras y concesión de servicios comparten este umbral</td></tr>
+ <tr><td>Contrato menor</td><td><span class="h">&lt; 40.000 €</span> (art. 118.1)</td></tr>
+ <tr><td>Abierto simplificado</td><td><span class="h">≤ 2.000.000 €</span> (art. 159.1.a)</td></tr>
+ <tr><td>Exige clasificación</td><td><span class="h">≥ 500.000 €</span> obligatoria; por debajo, potestativa (art. 77.1.a)</td></tr>
+ </table>`],
+["CO","🛣️","Conc. obras","#0ea5e9","Contrato de CONCESIÓN DE OBRAS","14",
+ `<p><span class="art">Art. 14</span> <b class="h">Objeto:</b> <span class="h">el concesionario realiza una obra (incluida restauración, reparación, conservación) y la contraprestación es el DERECHO A EXPLOTARLA, solo o acompañado de un precio</span></p>
+ <table>
+ <tr><td>Riesgo operacional</td><td><span class="h">elemento esencial:</span> el concesionario asume el riesgo de demanda y/o de suministro — no tiene garantizado recuperar la inversión ni cubrir costes en condiciones normales</td></tr>
+ <tr><td>Umbral SARA</td><td><span class="h big">5.404.000 €</span> (art. 20)</td></tr>
+ <tr><td>Duración máxima</td><td><span class="h big">40 años</span> si comprende ejecución de obra y explotación de servicio (art. 29.6.a)</td></tr>
+ <tr><td>Ampliación por reequilibrio</td><td>hasta un <span class="h">15% de la duración inicial</span> (arts. 270 y 290)</td></tr>
+ </table>`],
+["CS","🧰","Conc. servicios","#10b981","Contrato de CONCESIÓN DE SERVICIOS","15",
+ `<p><span class="art">Art. 15</span> <b class="h">Objeto:</b> <span class="h">uno o varios poderes adjudicadores encomiendan a título oneroso la GESTIÓN de un servicio de su titularidad o competencia</span>, y la contrapartida es el derecho a explotarlo, solo o con precio</p>
+ <table>
+ <tr><td>Riesgo operacional</td><td><span class="h">igual que en concesión de obras</span> (remite al art. 14.4)</td></tr>
+ <tr><td>Umbral SARA</td><td><span class="h big">5.404.000 €</span> (art. 20)</td></tr>
+ <tr><td>Duración máxima</td><td><span class="h big">25 años</span> explotación de servicio no sanitario · <span class="h big">10 años</span> si es servicio sanitario · <span class="h big">40 años</span> si incluye ejecución de obra (art. 29.6)</td></tr>
+ <tr><td>Procedimiento especial</td><td>concesiones de servicios ESPECIALES (Anexo IV) → se adjudican siempre por <span class="h">procedimiento restringido</span> (art. 131.2)</td></tr>
+ </table>`],
+["S","📦","Suministro","#d97706","Contrato de SUMINISTRO","16",
+ `<p><span class="art">Art. 16</span> <b class="h">Objeto:</b> <span class="h">adquisición, arrendamiento financiero o arrendamiento (con o sin opción de compra) de productos o bienes muebles</span></p>
+ <table><tr><td>Siempre son suministro</td><td><span class="h">entregas sucesivas por precio unitario sin cuantía total exacta · equipos/sistemas de telecomunicación o informáticos y cesión de uso (salvo software a medida = servicios) · contratos de fabricación con características fijadas por el contratante · adquisición de energía</span></td></tr></table>
+ <div class="grp" style="margin-top:10px">Cifras clave</div>
+ <table>
+ <tr><td>Umbral SARA (AGE)</td><td><span class="h big">140.000 €</span> Admón. General del Estado, OO.AA. y Seg. Social (art. 21.1.a)</td></tr>
+ <tr><td>Umbral SARA (resto)</td><td><span class="h big">216.000 €</span> resto de entidades del sector público (art. 21.1.b)</td></tr>
+ <tr><td>Contrato menor</td><td><span class="h">&lt; 15.000 €</span> (art. 118.1)</td></tr>
+ <tr><td>Abierto simplificado</td><td>valor estimado <span class="h">inferior</span> al umbral SARA del art. 21.1.a (140.000 €) (art. 159.1.a)</td></tr>
+ <tr><td>Duración máxima</td><td><span class="h big">5 años</span> (prestación sucesiva, incluidas prórrogas) (art. 29.4). Arrendamiento de bienes muebles: también <span class="h">5 años</span> máx. (art. 29.5)</td></tr>
+ </table>`],
+["SV","🛠️","Servicios","#ec4899","Contrato de SERVICIOS","17",
+ `<p><span class="art">Art. 17</span> <b class="h">Objeto:</b> <span class="h">prestaciones de HACER consistentes en una actividad o dirigidas a un resultado distinto de obra o suministro</span>, incluida la ejecución sucesiva por precio unitario</p>
+ <table><tr><td>Límite</td><td><span class="h">no pueden ser objeto de este contrato los servicios que impliquen ejercicio de autoridad inherente a los poderes públicos</span></td></tr></table>
+ <div class="grp" style="margin-top:10px">Cifras clave</div>
+ <table>
+ <tr><td>Umbral SARA (AGE)</td><td><span class="h big">140.000 €</span> (art. 22.1.a)</td></tr>
+ <tr><td>Umbral SARA (resto)</td><td><span class="h big">216.000 €</span> (art. 22.1.b)</td></tr>
+ <tr><td>Umbral servicios Anexo IV</td><td><span class="h big">750.000 €</span> servicios sociales y específicos del Anexo IV (art. 22.1.c)</td></tr>
+ <tr><td>Contrato menor</td><td><span class="h">&lt; 15.000 €</span> (art. 118.1)</td></tr>
+ <tr><td>Abierto simplificado</td><td>valor estimado <span class="h">inferior</span> a 140.000 € (art. 159.1.a)</td></tr>
+ <tr><td>Duración máxima</td><td><span class="h big">5 años</span> prestación sucesiva, incluidas prórrogas (art. 29.4). Excepciones: hasta la vida útil del bien (mantenimiento ligado a compra exclusiva) o duración mayor en servicios a las personas si el cambio de prestador perjudica la continuidad</td></tr>
+ <tr><td>Clasificación</td><td><span class="h">NO exigible</span> para contratos de servicios (art. 77.1.b) — solo criterios de solvencia</td></tr>
+ </table>`],
+["M","🧩","Mixtos","#64748b","Contratos MIXTOS","18",
+ `<p><span class="art">Art. 18</span> <b class="h">Objeto:</b> <span class="h">contienen prestaciones de distinta clase de contrato</span>. Solo caben en las condiciones del art. 34.2</p>
+ <table>
+ <tr><td>Regla general</td><td>se atiende al carácter de la <span class="h">prestación PRINCIPAL</span> si las prestaciones no son separables</td></tr>
+ <tr><td>Obras+Suministros/Servicios</td><td>si son separables, se aplican las normas de cada contrato según superen o no los umbrales de los arts. 20, 21 y 22; si no los superan, normas de concesión</td></tr>
+ <tr><td>Obra &gt; 50.000 €</td><td><span class="h">obligatorio elaborar proyecto</span> y tramitarlo conforme a los arts. 231 y ss.</td></tr>
+ </table>`]];
+const P=[
+["AB","📣","Abierto","#7c5cff","Procedimiento ABIERTO","131-156",
+ `<table>
+ <tr><td>Caracterización</td><td><span class="h">cualquier empresario interesado puede presentar oferta</span>; es, junto al restringido, el procedimiento ORDINARIO (art. 131.2)</td></tr>
+ <tr><td>Criterio</td><td>pluralidad de criterios basados en la <span class="h">mejor relación calidad-precio</span></td></tr>
+ </table>`],
+["SI","⚡","Ab. simplificado","#0ea5e9","Procedimiento ABIERTO SIMPLIFICADO","159",
+ `<p><span class="art">Art. 159.1</span> requiere <span class="h">2 condiciones conjuntas</span>:</p>
+ <table>
+ <tr><td>a) Importe</td><td>Obras <span class="h">≤ 2.000.000 €</span> · Suministros y Servicios <span class="h">&lt; umbral SARA</span> del art. 21.1.a / 22.1.a (140.000 €)</td></tr>
+ <tr><td>b) Criterios</td><td>ningún criterio de juicio de valor, o si lo hay, <span class="h">pondera ≤ 25%</span> (≤ 45% si es prestación intelectual: ingeniería, arquitectura)</td></tr>
+ <tr><td>Plazo ofertas</td><td><span class="h">≥ 15 días</span> desde el anuncio (≥ 20 días si es obras)</td></tr>
+ <tr><td>Especialidades</td><td>anuncio solo en el <span class="h">perfil de contratante</span>; licitadores inscritos en ROLECE; <span class="h">sin garantía provisional</span>; valoración técnica en ≤ 7 días</td></tr>
+ </table>`],
+["RE","🔒","Restringido","#10b981","Procedimiento RESTRINGIDO","160-165",
+ `<table>
+ <tr><td>Caracterización</td><td><span class="h">en 2 fases:</span> solicitud de participación de cualquier empresa → solo presentan oferta los SELECCIONADOS por solvencia (art. 160)</td></tr>
+ <tr><td>Negociación</td><td><span class="h">prohibida</span> toda negociación de los términos con los candidatos</td></tr>
+ <tr><td>Indicado para</td><td>servicios intelectuales de especial complejidad (consultoría, arquitectura, ingeniería)</td></tr>
+ <tr><td>Obligatorio para</td><td>concesiones de servicios ESPECIALES del Anexo IV (art. 131.2)</td></tr>
+ </table>`],
+["LN","🤝","Lic. negociación","#d97706","Licitación CON NEGOCIACIÓN","166-169",
+ `<p><span class="art">Art. 167</span> procede, entre otros, cuando:</p>
+ <ul class="compact"><li class="h">la prestación exige diseño o adaptación previa por los licitadores</li><li class="h">incluye un proyecto o soluciones innovadoras</li><li class="h">no puede adjudicarse sin negociación por su complejidad o configuración jurídica/financiera</li><li class="h">no se pueden fijar con precisión las especificaciones técnicas</li><li class="h">en un abierto/restringido previo solo hubo ofertas irregulares o inaceptables</li><li class="h">servicios sociales personalísimos con arraigo del usuario, para dar continuidad</li></ul>`],
+["NP","🤐","Neg. sin publicidad","#ef4444","Procedimiento NEGOCIADO SIN PUBLICIDAD","168-170",
+ `<table><tr><td>Art. 168</td><td><span class="h">sin publicación previa de anuncio</span> — supuestos tasados (p. ej. ausencia de licitadores en procedimiento previo, exclusividad técnica o de derechos, extrema urgencia no imputable al órgano)</td></tr></table>`],
+["DC","💬","Diálogo competitivo","#7c5cff","DIÁLOGO COMPETITIVO","172-176",
+ `<table>
+ <tr><td>Caracterización</td><td>la mesa especial <span class="h">dialoga con los candidatos seleccionados</span> para desarrollar soluciones que sirvan de base a su oferta final (art. 172)</td></tr>
+ <tr><td>Supuestos</td><td><span class="h">los mismos del art. 167</span> (licitación con negociación)</td></tr>
+ <tr><td>Requisito previo</td><td><span class="h">publicación de anuncio de licitación</span></td></tr>
+ </table>`],
+["AI","💡","Asoc. innovación","#0ea5e9","ASOCIACIÓN PARA LA INNOVACIÓN","177-179",
+ `<table>
+ <tr><td>Finalidad</td><td><span class="h">desarrollar productos, servicios u obras innovadores</span> y comprar después lo resultante, si cumple niveles de rendimiento y coste acordados (art. 177)</td></tr>
+ <tr><td>Fases</td><td>investigación y desarrollo (normas del contrato de servicios, supletoriamente) → ejecución (normas del contrato de que se trate)</td></tr>
+ </table>`],
+["CM","🪙","Contrato menor","#64748b","CONTRATO MENOR","118",
+ `<table>
+ <tr><td>Umbral obras</td><td><span class="h big">&lt; 40.000 €</span></td></tr>
+ <tr><td>Umbral suministro/servicios</td><td><span class="h big">&lt; 15.000 €</span></td></tr>
+ <tr><td>Tramitación</td><td>informe motivado del órgano de contratación (necesidad + no fraccionamiento) · aprobación del gasto · factura. En obras: presupuesto (y proyecto si procede)</td></tr>
+ <tr><td>Adjudicación</td><td><span class="h">directa</span>, a cualquier empresario con capacidad y habilitación profesional (art. 131.3)</td></tr>
+ <tr><td>Duración</td><td><span class="h">máximo 1 año, sin prórroga</span> (art. 29.8). Excepción: servicios complementarios de obra menor, hasta 30 meses por el periodo de garantía</td></tr>
+ <tr><td>Anticipo de caja fija</td><td>sin informe de necesidad si el valor estimado <span class="h">≤ 5.000 €</span></td></tr>
+ </table>
+ <div class="warn">⚠️ Prohibido el fraccionamiento del contrato para eludir estos umbrales.</div>`]];
+const K=`<div class="l" style="--c:#64748b"><h2>📌 Resumen de umbrales (euros)</h2><table>
+<tr><td></td><td><b>Obras</b></td><td><b>Suministro</b></td><td><b>Servicios</b></td></tr>
+<tr><td>Contrato menor</td><td>&lt; 40.000</td><td>&lt; 15.000</td><td>&lt; 15.000</td></tr>
+<tr><td>Ab. simplificado</td><td>≤ 2.000.000</td><td>&lt; 140.000</td><td>&lt; 140.000</td></tr>
+<tr><td>SARA (AGE)</td><td colspan="1">5.404.000 *</td><td>140.000</td><td>140.000</td></tr>
+<tr><td>SARA (resto entes)</td><td>5.404.000 *</td><td>216.000</td><td>216.000 (750.000 Anexo IV)</td></tr>
+<tr><td>Exige clasificación</td><td>≥ 500.000</td><td>—</td><td>— (no exigible)</td></tr>
+</table><p style="font-size:.85rem;color:var(--mu)">* El umbral de obras (5.404.000 €) es el mismo para obras, concesión de obras y concesión de servicios (art. 20), y no distingue AGE de otros entes.</p>
+<h2>⏳ Duraciones máximas</h2><table>
+<tr><td>Suministro / Servicios</td><td>5 años (incl. prórrogas)</td></tr>
+<tr><td>Arrendamiento de bienes muebles</td><td>5 años</td></tr>
+<tr><td>Concesión obras / conc. servicios con obra</td><td>40 años</td></tr>
+<tr><td>Concesión de servicios (no sanitario)</td><td>25 años</td></tr>
+<tr><td>Concesión de servicios sanitarios</td><td>10 años</td></tr>
+<tr><td>Contrato menor</td><td>1 año, sin prórroga</td></tr>
+<tr><td>Preaviso de prórroga obligatoria</td><td>≥ 2 meses antes de finalizar</td></tr>
+<tr><td>Prórroga de emergencia (sin nuevo contrato)</td><td>máx. 9 meses</td></tr>
+</table>
+<h2>💰 Garantías (art. 107)</h2><table>
+<tr><td>Definitiva ordinaria</td><td>5% del precio de adjudicación, IVA excluido</td></tr>
+<tr><td>Complementaria (casos especiales)</td><td>hasta otro 5% adicional → total máx. 10%</td></tr>
+<tr><td>Obras y concesión de obras</td><td>NUNCA se puede eximir de garantía definitiva</td></tr>
+</table>
+<h2>🧭 El flujo de decisión</h2><p>1️⃣ ¿Qué tipo de contrato? → 2️⃣ ¿Supera el umbral SARA? → 3️⃣ ¿Qué importe y qué criterios? → elige procedimiento → 4️⃣ Fija duración y garantías</p></div>`;
+const $=s=>document.querySelector(s);let curA=0,curB=-1;
+function tabsA(){$("#tabsA").innerHTML=T.map((e,i)=>`<button class="t${curA==i&&curB<0?" on":""}" style="--c:${e[3]}" onclick="goA(${i})"><b>${e[1]}</b>${e[2]}<small>Art. ${e[5]}</small></button>`).join("")}
+function tabsB(){$("#tabsB").innerHTML=P.map((e,i)=>`<button class="t${curB==i?" on":""}" style="--c:${e[3]}" onclick="goB(${i})"><b>${e[1]}</b>${e[2]}<small>Art. ${e[5]}</small></button>`).join("")+`<button class="t${curB==99?" on":""}" style="--c:#64748b" onclick="goB(99)"><b>📌</b>Resumen<small>Umbrales</small></button>`}
+function goA(i){curA=i;curB=-1;tabsA();tabsB();const e=T[i];$("#v").innerHTML=`<div class="l" style="--c:${e[3]}"><h2>${e[1]} ${e[4]}</h2>${e[6]}</div>`}
+function goB(i){curB=i;tabsA();tabsB();if(i==99){$("#v").innerHTML=K;return}
+const e=P[i];$("#v").innerHTML=`<div class="l" style="--c:${e[3]}"><h2>${e[1]} ${e[4]}</h2>${e[6]}</div>`}
+function rc(){document.body.classList.toggle("recall");$("#rb").classList.toggle("on")}
+document.addEventListener("click",e=>{if(e.target.classList.contains("h")&&document.body.classList.contains("recall"))e.target.classList.toggle("o")});
+const QB=[
+["¿Cuál es el umbral de regulación armonizada (SARA) para obras, concesión de obras y concesión de servicios?","5.404.000 €"],
+["¿A partir de qué importe es obligatoria la clasificación empresarial en obras?","500.000 € (valor estimado igual o superior)"],
+["¿Cuál es el límite para considerar un contrato de obras como contrato menor?","Inferior a 40.000 €"],
+["¿Cuál es el límite para considerar un contrato de suministro o de servicios como contrato menor?","Inferior a 15.000 €"],
+["¿Qué duración máxima tiene un contrato menor y admite prórroga?","1 año, sin posibilidad de prórroga"],
+["¿Cuál es la duración máxima ordinaria de un contrato de servicios o suministro de prestación sucesiva?","5 años, incluidas las prórrogas"],
+["¿Cuál es la duración máxima de una concesión de obras?","40 años"],
+["¿Cuál es la duración máxima de una concesión de servicios no sanitarios?","25 años"],
+["¿Cuál es la duración máxima de una concesión de servicios sanitarios?","10 años"],
+["¿Qué elemento es esencial en toda concesión (de obras o de servicios)?","La transferencia al concesionario del riesgo operacional (de demanda y/o de suministro)"],
+["¿Qué dos condiciones exige el art. 159 para usar el procedimiento abierto simplificado?","Que el importe no supere el umbral fijado y que los criterios de juicio de valor ponderen 25% o menos (45% si es prestación intelectual)"],
+["¿Qué procedimiento está prohibido negociar con los candidatos?","El procedimiento restringido"],
+["¿Qué porcentaje de garantía definitiva ordinaria exige el art. 107?","5% del precio de adjudicación, IVA excluido"],
+["¿En qué tipo de contratos nunca se puede eximir de constituir garantía definitiva?","En obras y en concesión de obras"],
+["¿Cuál es el umbral SARA de servicios para la Administración General del Estado?","140.000 €"],
+["¿Cuál es el umbral SARA de servicios para el resto de entidades del sector público?","216.000 €"],
+["¿Qué procedimiento es obligatorio para las concesiones de servicios especiales del Anexo IV?","El procedimiento restringido"],
+["¿Con cuánta antelación debe preavisarse una prórroga para que sea obligatoria para el contratista?","Al menos 2 meses antes de finalizar el contrato"]];
+function qz(){const x=QB[Math.random()*QB.length|0],q=$("#q");q.hidden=false;q.innerHTML=`<b>Pregunta:</b><p>${x[0]}</p><p hidden><b>Respuesta:</b> ${x[1]}</p><button onclick="this.previousElementSibling.hidden=false">Ver respuesta</button> <button onclick="qz()">Otra ➜</button> <button onclick="$('#q').hidden=true">✕</button>`}
+goA(0);
+</script></body></html>
