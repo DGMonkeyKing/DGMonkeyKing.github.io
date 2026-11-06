@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Ley 40/2015 · Arts. 5-24 y 38-46 bis</title>
+<style>
+:root{--bg:#f6f5fb;--fg:#1d1b2e;--cd:#fff;--mu:#6b6885;--bd:#e3e0f0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14131f;--fg:#ece9fb;--cd:#1e1d2e;--mu:#a29fc0;--bd:#33314a}}
+:root[data-theme="dark"]{--bg:#14131f;--fg:#ece9fb;--cd:#1e1d2e;--mu:#a29fc0;--bd:#33314a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:900px;margin:auto;padding:16px}
+h1{font-size:1.45rem;margin:.1em 0}h2{font-size:1.1rem;line-height:1.3;margin:.2em 0}h3{font-size:.98rem;margin:.9em 0 .2em}
+.sub{color:var(--mu);margin:0 0 10px}
+.bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7c5cff,#ec4899);transition:.4s}
+.story{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:10px 14px;margin:12px 0}
+.grp{margin:12px 0 4px;color:var(--mu);font-size:.76rem;text-transform:uppercase;letter-spacing:.03em}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:8px}
+.t{border:2px solid var(--bd);background:var(--cd);color:var(--fg);border-radius:14px;padding:8px 6px;cursor:pointer;text-align:center;font:inherit;font-size:.78rem;position:relative}
+.t b{display:block;font-size:1.45rem;line-height:1.15}.t small{display:block;color:var(--mu);font-size:.68rem}
+.t.on{background:var(--c);border-color:var(--c);color:#fff}.t.on small{color:#fff}
+.t.dn::after{content:"✓";position:absolute;top:2px;right:7px;color:#10b981;font-weight:800}.t.on.dn::after{color:#fff}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tools button,#q button,.ok{border:1px solid var(--bd);background:var(--cd);color:var(--fg);border-radius:20px;padding:6px 14px;cursor:pointer;font:inherit}
+.tools button.on,.ok.on{background:#10b981;color:#fff;border-color:#10b981}
+#rb.on{background:#7c5cff;border-color:#7c5cff}
+#q{background:var(--cd);border:2px dashed #ec4899;border-radius:14px;padding:10px 14px;margin:12px 0}
+.l{background:var(--cd);border:1px solid var(--bd);border-left:6px solid var(--c);border-radius:14px;padding:12px 14px;margin:12px 0}
+.hd{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.9rem}
+td,th{padding:4px 6px;border-top:1px dashed var(--bd);vertical-align:top;text-align:left}
+th{color:var(--c);font-size:.8rem}
+td:first-child{color:var(--c);font-weight:700}
+.sc{overflow-x:auto}.sc table{min-width:620px}
+.recall .h:not(.o){filter:blur(7px);cursor:pointer;user-select:none}
+.chips span{display:inline-block;background:var(--cd);border:1px solid var(--bd);border-radius:20px;padding:2px 10px;margin:3px;font-size:.85rem}
+.art{display:inline-block;background:var(--c);color:#fff;border-radius:7px;padding:0 6px;font-size:.72rem;font-weight:700}
+.tip{background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:6px 10px;font-size:.9rem;margin:8px 0;color:#1d1b2e}
+.warn{background:#fff3cd;border:1px solid #ffe08a;border-radius:10px;padding:6px 10px;font-size:.9rem;margin:8px 0;color:#1d1b2e}
+ul.c{margin:6px 0;padding-left:1.2em}ul.c li{margin:2px 0}
+</style></head><body><main>
+<h1>🏛️ Ley 40/2015 · Régimen Jurídico del Sector Público</h1>
+<p class="sub">Arts. 5-24 y 38-46 bis · Consulta diaria · <b id="pc">0</b> bloques dominados</p>
+<div class="bar"><i id="pb"></i></div>
+<div class="story">🧠 <b>Mapa mental:</b> <b>QUIÉN</b> actúa (órganos, 5-7) → <b>CON QUÉ COMPETENCIA</b> (8-14) y cómo se traslada (delegar, avocar, encomendar, firmar, suplir) → <b>CÓMO DECIDEN</b> los órganos colegiados (15-22) → <b>QUIÉN NO PUEDE</b> intervenir (abstención y recusación, 23-24) → <b>CÓMO ACTÚAN POR VÍA ELECTRÓNICA</b> (38-46 bis).</div>
+<div id="nav"></div>
+<div class="tools"><button id="rb" onclick="rc()">🙈 Modo recuerdo</button><button onclick="qz()">❓ Pregúntame</button></div>
+<div id="q" hidden></div>
+<div id="v"></div>
+</main>
+<script>
+const A=(n,c)=>`<span class="art" style="--c:${c}">Art. ${n}</span>`;
+const S=[
+/* ===== GRUPO 0 ===== */
+{g:0,k:"o",i:"🏛️",n:"Órganos",a:"5-7",c:"#7c5cff",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(5,c)} Órganos administrativos</h2>
+<p><b>Concepto:</b> <span class="h">unidades administrativas con funciones con efectos jurídicos frente a terceros, o cuya actuación tenga carácter preceptivo</span></p>
+<p><b>Cada Administración</b> <span class="h">delimita en su ámbito las unidades que configuran los órganos propios</span></p>
+<h3>Requisitos mínimos para crear un órgano (3)</h3>
+<table><tr><td>a)</td><td class="h">Forma de integración en la Administración y dependencia jerárquica</td></tr><tr><td>b)</td><td class="h">Delimitación de funciones y competencias</td></tr><tr><td>c)</td><td class="h">Dotación de créditos necesarios</td></tr></table>
+<div class="warn">⚠️ <b>No duplicidad:</b> <span class="h">no pueden crearse órganos que dupliquen otros existentes si no se suprime o restringe la competencia de estos</span>. Antes hay que comprobar que no existe otro con igual función sobre el mismo territorio y población.</div>
+<div class="tip">🔑 Truco: <b>I-F-C</b> → <b>I</b>ntegración · <b>F</b>unciones · <b>C</b>réditos</div></div>
+<div class="l" style="--c:${c}"><h2>${A(6,c)} Instrucciones y órdenes de servicio</h2>
+<table>
+<tr><td>Qué son</td><td class="h">medios con los que un órgano dirige las actividades de sus órganos jerárquicamente dependientes</td></tr>
+<tr><td>Publicación</td><td class="h">en el boletín oficial si una disposición lo establece o se estima conveniente por los destinatarios o efectos; difusión según Ley 19/2013 de transparencia</td></tr>
+<tr><td>Incumplimiento</td><td class="h">NO afecta por sí solo a la validez de los actos; sí puede dar lugar a responsabilidad disciplinaria</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(7,c)} Órganos consultivos</h2>
+<table>
+<tr><td>Forma</td><td class="h">órganos específicos con autonomía orgánica y funcional respecto a la Administración activa, o servicios de asistencia jurídica de esta</td></tr>
+<tr><td>Garantía</td><td class="h">si son servicios jurídicos: sin dependencia jerárquica (orgánica ni funcional), sin recibir instrucciones del órgano que elaboró la disposición o acto consultado, y actuando de forma colegiada</td></tr></table></div>`},
+
+{g:0,k:"c",i:"⚖️",n:"Competencia",a:"8 y 14",c:"#0ea5e9",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(8,c)} Competencia</h2>
+<table>
+<tr><td>Regla</td><td class="h">la competencia es IRRENUNCIABLE y la ejercen los órganos que la tienen atribuida como propia (salvo delegación o avocación)</td></tr>
+<tr><td>No alteran la titularidad</td><td class="h">delegación de competencias, encomiendas de gestión, delegación de firma y suplencia</td></tr>
+<tr><td>Desconcentración (8.2)</td><td class="h">traslada la titularidad y el ejercicio a órganos jerárquicamente dependientes, en los términos de las normas de atribución</td></tr>
+<tr><td>Sin órgano concreto (8.3)</td><td class="h">instruyen y resuelven los órganos inferiores competentes por materia y territorio; si hay varios, el superior jerárquico común</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(14,c)} Decisiones sobre competencia</h2>
+<table>
+<tr><td>Órgano que se estima incompetente</td><td class="h">remite directamente las actuaciones al que considere competente y lo notifica a los interesados</td></tr>
+<tr><td>Interesados (partes)</td><td class="h">pueden pedir al que conoce que decline su competencia, o al que estimen competente que requiera de inhibición al que conoce del asunto</td></tr>
+<tr><td>Conflictos de atribuciones</td><td class="h">solo entre órganos de una misma Administración NO relacionados jerárquicamente, y en asuntos cuyo procedimiento no haya finalizado</td></tr></table></div>`},
+
+{g:0,k:"d",i:"🔀",n:"Delegación",a:"9",c:"#10b981",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(9,c)} Delegación de competencias</h2>
+<table>
+<tr><td>Quién delega</td><td class="h">órganos de cualquier Administración, en órganos de la misma Administración (aunque NO sean jerárquicamente dependientes) o en Organismos públicos/Entidades de Derecho Público vinculados o dependientes</td></tr>
+<tr><td>AGE: aprobación previa</td><td class="h">del órgano ministerial de quien dependa el delegante; en Organismos públicos, del órgano máximo de dirección. Si no hay relación jerárquica: del superior común (mismo Ministerio) o del superior del delegado (distintos Ministerios)</td></tr></table>
+<h3>NO delegables (4)</h3>
+<table>
+<tr><td>a)</td><td class="h">Asuntos de relaciones con la Jefatura del Estado, Presidencia del Gobierno, Cortes Generales, Presidencias de Consejos de Gobierno de CCAA y Asambleas Legislativas autonómicas</td></tr>
+<tr><td>b)</td><td class="h">Adopción de disposiciones de carácter general</td></tr>
+<tr><td>c)</td><td class="h">Resolución de recursos en los órganos que hayan dictado los actos recurridos</td></tr>
+<tr><td>d)</td><td class="h">Materias que determine una norma con rango de Ley</td></tr></table>
+<h3>Régimen</h3>
+<table>
+<tr><td>Publicidad (9.3)</td><td class="h">la delegación y su revocación se publican en BOE, boletín de la CA o de la Provincia, según la Administración del delegante</td></tr>
+<tr><td>Efectos (9.4)</td><td class="h">las resoluciones indican expresamente que son por delegación y se consideran dictadas por el órgano DELEGANTE</td></tr>
+<tr><td>Subdelegación (9.5)</td><td class="h">salvo autorización expresa de Ley, NO se pueden delegar competencias que se ejercen por delegación</td></tr>
+<tr><td>Dictamen o informe</td><td class="h">no impide delegar la resolución; pero NO se puede delegar la resolución una vez emitido el dictamen o informe preceptivo</td></tr>
+<tr><td>Revocación (9.6)</td><td class="h">revocable en cualquier momento por el órgano que delegó</td></tr>
+<tr><td>Colegiados (9.7)</td><td class="h">si la competencia exige quórum o mayoría especial, el acuerdo de delegación debe adoptarse con ese quórum o mayoría</td></tr></table>
+<div class="tip">🔑 Truco de los 4 no delegables: <b>R-G-R-L</b> → <b>R</b>elaciones institucionales · <b>G</b>enerales (disposiciones) · <b>R</b>ecursos contra sus propios actos · <b>L</b>ey</div></div>`},
+
+{g:0,k:"ae",i:"⬆️",n:"Avocación y encomienda",a:"10-11",c:"#d97706",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(10,c)} Avocación</h2>
+<table>
+<tr><td>Qué es</td><td class="h">un órgano SUPERIOR recoge para sí el conocimiento de uno o varios asuntos que corresponden a sus dependientes (por competencia propia o delegada)</td></tr>
+<tr><td>Cuándo</td><td class="h">cuando lo hagan conveniente circunstancias técnicas, económicas, sociales, jurídicas o territoriales</td></tr>
+<tr><td>Delegación en no dependientes</td><td class="h">solo puede avocar el órgano DELEGANTE</td></tr>
+<tr><td>Forma</td><td class="h">acuerdo MOTIVADO, notificado a los interesados antes o simultáneamente a la resolución final</td></tr>
+<tr><td>Recursos</td><td class="h">NO cabe recurso contra el acuerdo; se puede impugnar en el recurso contra la resolución del procedimiento</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(11,c)} Encomiendas de gestión</h2>
+<table>
+<tr><td>Objeto</td><td class="h">actividades de carácter MATERIAL o TÉCNICO de órganos o Entidades de Derecho Público, encomendadas a otros órganos/Entidades de la misma o distinta Administración</td></tr>
+<tr><td>Motivo</td><td class="h">razones de eficacia o falta de medios técnicos idóneos</td></tr>
+<tr><td>Límite</td><td class="h">no pueden tener por objeto prestaciones propias de los contratos del sector público</td></tr>
+<tr><td>Titularidad</td><td class="h">NO supone cesión de la titularidad de la competencia ni de los elementos sustantivos de su ejercicio; el encomendante dicta los actos jurídicos que dan soporte a la actividad</td></tr>
+<tr><td>Datos personales</td><td class="h">el encomendado es ENCARGADO DEL TRATAMIENTO</td></tr></table>
+<h3>Formalización</h3>
+<table>
+<tr><td>Misma Administración</td><td class="h">según su normativa propia o, en su defecto, acuerdo expreso; mención mínima de actividad, plazo de vigencia, naturaleza y alcance; se publica en el boletín oficial correspondiente</td></tr>
+<tr><td>Distintas Administraciones</td><td class="h">mediante CONVENIO, publicado en BOE, boletín de la CA o de la Provincia según la Administración del encomendante (salvo gestión ordinaria de servicios de CCAA por Diputaciones, Cabildos o Consejos insulares: legislación de Régimen Local)</td></tr></table></div>`},
+
+{g:0,k:"fs",i:"✍️",n:"Firma y suplencia",a:"12-13",c:"#ec4899",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(12,c)} Delegación de firma</h2>
+<table>
+<tr><td>Quién y a quién</td><td class="h">los titulares de órganos, en materias de su competencia (propia o delegada), pueden delegar la firma de resoluciones y actos en titulares de órganos o unidades que de ellos dependan, dentro de los límites del art. 9</td></tr>
+<tr><td>Efectos</td><td class="h">NO altera la competencia del delegante</td></tr>
+<tr><td>Publicación</td><td class="h">NO es necesaria para su validez</td></tr>
+<tr><td>Constancia</td><td class="h">en los actos firmados por delegación se hace constar esta circunstancia y la autoridad de procedencia</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(13,c)} Suplencia</h2>
+<table>
+<tr><td>Cuándo</td><td class="h">sustitución TEMPORAL del titular por vacante, ausencia o enfermedad, o si se ha declarado su abstención o recusación</td></tr>
+<tr><td>Sin suplente designado</td><td class="h">la competencia la ejerce quien designe el órgano inmediato superior</td></tr>
+<tr><td>Efectos</td><td class="h">NO implica alteración de la competencia; NO necesita publicación</td></tr>
+<tr><td>Designación en la AGE</td><td class="h">en los reales decretos de estructura orgánica básica de los Departamentos o estatutos de Organismos públicos; o por el órgano competente para nombrar al titular, en el nombramiento o en acto posterior</td></tr>
+<tr><td>Constancia</td><td class="h">se hace constar la suplencia, el titular suplido y quien la ejerce efectivamente</td></tr></table></div>`},
+
+{g:0,k:"cmp",i:"🧮",n:"Comparativa",a:"8-13",c:"#64748b",h:c=>`
+<div class="l" style="--c:${c}"><h2>🧮 Las 6 figuras de traslado de competencia, de un vistazo</h2>
+<div class="sc"><table>
+<tr><th>Figura</th><th>Qué se traslada</th><th>¿Cambia la titularidad?</th><th>¿Se publica?</th><th>Clave</th></tr>
+<tr><td>Desconcentración (8.2)</td><td class="h">titularidad y ejercicio, a órganos jerárquicamente dependientes</td><td class="h">SÍ</td><td class="h">según normas de atribución</td><td class="h">la fijan las normas de atribución</td></tr>
+<tr><td>Delegación (9)</td><td class="h">ejercicio de competencias</td><td class="h">NO</td><td class="h">SÍ (y su revocación)</td><td class="h">dictadas por el delegante; revocable; no se delega lo delegado</td></tr>
+<tr><td>Avocación (10)</td><td class="h">conocimiento de asuntos concretos hacia el superior</td><td class="h">—</td><td class="h">se notifica a interesados</td><td class="h">acuerdo motivado; sin recurso</td></tr>
+<tr><td>Encomienda (11)</td><td class="h">actividades materiales o técnicas</td><td class="h">NO</td><td class="h">SÍ (instrumento o convenio)</td><td class="h">no contratos; encargado de tratamiento</td></tr>
+<tr><td>Delegación de firma (12)</td><td class="h">la firma</td><td class="h">NO</td><td class="h">NO</td><td class="h">se hace constar</td></tr>
+<tr><td>Suplencia (13)</td><td class="h">ejercicio temporal por el suplente</td><td class="h">NO</td><td class="h">NO</td><td class="h">vacante, ausencia, enfermedad, abstención o recusación</td></tr>
+</table></div>
+<div class="tip">🔑 Truco: <b>D</b>elegación y <b>E</b>ncomienda se publican (<b>DE: sí</b>); <b>F</b>irma y <b>S</b>uplencia no (<b>FS: no</b>).</div>
+<div class="warn">⚠️ Ojo: la competencia es irrenunciable (art. 8.1). Solo la desconcentración traslada titularidad; las demás figuras (delegación, encomienda, firma, suplencia) la mantienen.</div></div>`},
+
+/* ===== GRUPO 1 ===== */
+{g:1,k:"f",i:"👥",n:"Funcionamiento",a:"15-18",c:"#7c5cff",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(15,c)} Régimen</h2>
+<table>
+<tr><td>Norma</td><td class="h">los órganos colegiados de todas las Administraciones se rigen por esta sección, sin perjuicio de sus peculiaridades organizativas</td></tr>
+<tr><td>Art. 15.2: casos especiales</td><td class="h">con organizaciones representativas de intereses sociales, o con representantes de distintas Administraciones: pueden establecer o completar sus normas de funcionamiento; se integran en la Administración que corresponda, pero NO en su estructura jerárquica (salvo que lo diga su norma de creación, sus funciones o su naturaleza)</td></tr>
+<tr><td>Publicación</td><td class="h">el acuerdo de creación y las normas de funcionamiento de los que dicten resoluciones con efectos frente a terceros, en el boletín oficial de su Administración</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(16,c)} Secretario</h2>
+<table>
+<tr><td>Quién</td><td class="h">miembro del órgano o persona al servicio de la Administración</td></tr>
+<tr><td>Funciones</td><td class="h">velar por la legalidad formal y material de las actuaciones, certificar las actuaciones y garantizar que se respetan los procedimientos y reglas de constitución y adopción de acuerdos</td></tr>
+<tr><td>Suplencia</td><td class="h">si un miembro suple a un Secretario no miembro, conserva todos sus derechos como miembro</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(17,c)} Convocatorias y sesiones</h2>
+<table>
+<tr><td>Modalidad</td><td class="h">presencial o a distancia (por medios electrónicos, incluidos telefónicos y audiovisuales), salvo que el reglamento interno disponga excepcionalmente lo contrario</td></tr>
+<tr><td>Quórum de constitución</td><td class="h">Presidente + Secretario (o quienes les suplan) + al menos la MITAD de los miembros</td></tr>
+<tr><td>Sin convocatoria previa</td><td class="h">pueden constituirse si están reunidos el Secretario y todos los miembros y así lo deciden todos</td></tr>
+<tr><td>Segunda convocatoria</td><td class="h">el régimen propio puede preverla y fijar el número de miembros necesarios</td></tr>
+<tr><td>Convocatoria</td><td class="h">por medios electrónicos, con el orden del día, la documentación, las condiciones de la sesión y el sistema de conexión</td></tr>
+<tr><td>Orden del día</td><td class="h">no se delibera ni acuerda ningún asunto que no conste, salvo que asistan TODOS los miembros y se declare la urgencia por mayoría</td></tr>
+<tr><td>Acuerdos</td><td class="h">por MAYORÍA de votos; a distancia se entienden adoptados donde tenga la sede el órgano (o la presidencia)</td></tr>
+<tr><td>Voto en contra o abstención</td><td class="h">quedan exentos de la responsabilidad derivada de los acuerdos</td></tr>
+<tr><td>Certificación</td><td class="h">quien acredite interés legítimo puede pedirla al Secretario; se expide por medios electrónicos salvo que el interesado diga lo contrario y no esté obligado a relacionarse electrónicamente</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(18,c)} Actas</h2>
+<table>
+<tr><td>Contenido mínimo</td><td class="h">asistentes, orden del día, lugar y tiempo, puntos principales de las deliberaciones y contenido de los acuerdos</td></tr>
+<tr><td>Grabación</td><td class="h">pueden grabarse las sesiones; el fichero con la certificación del Secretario acompaña al acta, sin necesidad de recoger los puntos principales de las deliberaciones</td></tr>
+<tr><td>Aprobación</td><td class="h">en la misma reunión o en la inmediata siguiente; el Secretario la elabora con el visto bueno del Presidente y la remite por medios electrónicos</td></tr></table></div>`},
+
+{g:1,k:"age",i:"🏢",n:"Colegiados en la AGE",a:"19-22",c:"#0ea5e9",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(19,c)} Régimen de los órganos colegiados de la AGE y entidades vinculadas</h2>
+<h3>Presidente (7 funciones)</h3>
+<table>
+<tr><td>a)</td><td class="h">Ostentar la representación del órgano</td></tr>
+<tr><td>b)</td><td class="h">Acordar la convocatoria de sesiones ordinarias y extraordinarias y fijar el orden del día</td></tr>
+<tr><td>c)</td><td class="h">Presidir las sesiones, moderar los debates y suspenderlos por causas justificadas</td></tr>
+<tr><td>d)</td><td class="h">Dirimir con su voto los empates</td></tr>
+<tr><td>e)</td><td class="h">Asegurar el cumplimiento de las leyes</td></tr>
+<tr><td>f)</td><td class="h">Visar las actas y certificaciones</td></tr>
+<tr><td>g)</td><td class="h">Otras funciones inherentes a su condición</td></tr>
+<tr><td>Sustitución</td><td class="h">por el Vicepresidente que corresponda y, en su defecto, por el miembro de mayor jerarquía, antigüedad y edad, por este orden</td></tr></table>
+<div class="tip">🔑 Truco del Presidente: <b>R-C-P-D-A-V-O</b> → <b>R</b>epresenta · <b>C</b>onvoca · <b>P</b>reside · <b>D</b>irime · <b>A</b>segura leyes · <b>V</b>isa actas · <b>O</b>tras</div>
+<h3>Miembros</h3>
+<table>
+<tr><td>Convocatoria</td><td class="h">recibirla con una antelación mínima de DOS DÍAS, con el orden del día y la información de los temas</td></tr>
+<tr><td>Derechos y deberes</td><td class="h">participar en los debates · votar y formular voto particular · ruegos y preguntas · obtener la información precisa · otras inherentes</td></tr>
+<tr><td>Abstención</td><td class="h">NO pueden abstenerse en las votaciones quienes, por su cargo, sean miembros natos del órgano</td></tr>
+<tr><td>Representación</td><td class="h">no pueden atribuirse las funciones de representación del órgano salvo norma o acuerdo expreso para cada caso</td></tr>
+<tr><td>Conflicto de interés</td><td class="h">no pueden ejercer sus funciones cuando concurra</td></tr></table>
+<h3>Secretario</h3>
+<table>
+<tr><td>Participación</td><td class="h">voz pero SIN voto; con voz y voto si la Secretaría la ostenta un miembro</td></tr>
+<tr><td>Funciones</td><td class="h">convocar por orden del Presidente · recibir los actos de comunicación de los miembros · preparar el despacho de asuntos, redactar y autorizar las actas · expedir certificaciones de consultas, dictámenes y acuerdos · otras</td></tr></table>
+<h3>Actas y voto particular (19.5)</h3>
+<table>
+<tr><td>Constancia</td><td class="h">a solicitud de los miembros: voto contrario, abstención y motivos, o sentido del voto favorable</td></tr>
+<tr><td>Voto particular</td><td class="h">por escrito en el plazo de DOS DÍAS; se incorpora al texto aprobado</td></tr>
+<tr><td>Aprobación</td><td class="h">en la misma o en la siguiente sesión; el Secretario puede certificar acuerdos antes (haciendo constar que el acta no está aprobada)</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(20,c)} Requisitos para constituir órganos colegiados</h2>
+<table>
+<tr><td>Concepto</td><td class="h">creados formalmente, integrados por TRES O MÁS personas, con funciones administrativas de decisión, propuesta, asesoramiento, seguimiento o control, integrados en la AGE o sus Organismos públicos</td></tr>
+<tr><td>Norma de creación (5 extremos)</td><td class="h">a) fines u objetivos · b) integración administrativa o dependencia jerárquica · c) composición y criterios de designación del Presidente y miembros · d) funciones · e) dotación de créditos, en su caso</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(21,c)} Clasificación y composición</h2>
+<table>
+<tr><td>Por su composición</td><td class="h"><b>Interministeriales</b> (miembros de distintos Ministerios) · <b>Ministeriales</b> (miembros de un solo Ministerio)</td></tr>
+<tr><td>Otras Administraciones</td><td class="h">pueden tener representantes si lo aceptan voluntariamente, lo establece un convenio o lo determina una norma aplicable</td></tr>
+<tr><td>Composición abierta</td><td class="h">pueden participar organizaciones representativas de intereses sociales y miembros designados por su experiencia o conocimientos</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(22,c)} Creación, modificación y supresión</h2>
+<table>
+<tr><td>Cuándo basta norma específica publicada en el BOE</td><td class="h">si tienen competencias decisorias; de propuesta o informe preceptivo que sirva de base a decisiones de otros órganos; o de seguimiento o control de otros órganos de la AGE</td></tr></table>
+<h3>Forma de la norma de creación</h3>
+<table>
+<tr><td>Real Decreto</td><td class="h">interministeriales cuyo Presidente tenga rango superior a Director general</td></tr>
+<tr><td>Orden ministerial conjunta</td><td class="h">restantes órganos interministeriales</td></tr>
+<tr><td>Orden ministerial</td><td class="h">órganos ministeriales</td></tr></table>
+<table>
+<tr><td>Grupos o comisiones de trabajo</td><td class="h">todos los supuestos no incluidos arriba; se crean por Acuerdo del Consejo de Ministros o por los Ministerios interesados; sus acuerdos NO tienen efectos directos frente a terceros</td></tr>
+<tr><td>Modificación y supresión</td><td class="h">en la misma forma que la creación (salvo extinción automática en la fecha prevista si se fijó plazo)</td></tr></table></div>`},
+
+/* ===== GRUPO 2 ===== */
+{g:2,k:"ar",i:"🚫",n:"Abstención y recusación",a:"23-24",c:"#ef4444",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(23,c)} Abstención</h2>
+<p><b>Quién:</b> <span class="h">autoridades y personal al servicio de las Administraciones en quienes concurra un motivo; se abstienen y lo comunican a su superior inmediato, que resuelve lo procedente</span></p>
+<h3>Motivos de abstención (5)</h3>
+<table>
+<tr><td>a)</td><td class="h"><b>Interés personal</b> en el asunto (o en otro cuya resolución pueda influir); ser administrador de sociedad o entidad interesada; tener cuestión litigiosa pendiente con algún interesado</td></tr>
+<tr><td>b)</td><td class="h"><b>Vínculo matrimonial o situación de hecho asimilable, y parentesco</b> de consanguinidad hasta el CUARTO grado o de afinidad hasta el SEGUNDO con interesados, administradores de entidades interesadas, asesores, representantes legales o mandatarios; compartir despacho profesional o estar asociado con estos</td></tr>
+<tr><td>c)</td><td class="h"><b>Amistad íntima o enemistad manifiesta</b> con las personas anteriores</td></tr>
+<tr><td>d)</td><td class="h"><b>Haber intervenido como perito o testigo</b> en el procedimiento</td></tr>
+<tr><td>e)</td><td class="h"><b>Relación de servicio</b> con persona natural o jurídica interesada directamente, o haberle prestado en los DOS últimos años servicios profesionales de cualquier tipo</td></tr></table>
+<div class="tip">🔑 Truco: <b>I-P-A-P-R</b> → <b>I</b>nterés · <b>P</b>arentesco · <b>A</b>mistad/enemistad · <b>P</b>erito o testigo · <b>R</b>elación de servicio</div>
+<table>
+<tr><td>Orden del superior</td><td class="h">los órganos superiores pueden ordenar abstenerse de toda intervención en el expediente</td></tr>
+<tr><td>Validez</td><td class="h">la actuación con motivo de abstención NO implica necesariamente, y en todo caso, la invalidez de los actos</td></tr>
+<tr><td>Responsabilidad</td><td class="h">la no abstención da lugar a la responsabilidad que proceda</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(24,c)} Recusación</h2>
+<table>
+<tr><td>Quién y cuándo</td><td class="h">los INTERESADOS, en cualquier momento de la tramitación, por los mismos motivos del art. 23</td></tr>
+<tr><td>Forma</td><td class="h">por ESCRITO, expresando la causa o causas</td></tr>
+<tr><td>Día siguiente</td><td class="h">el recusado manifiesta a su superior inmediato si se da o no la causa; si se da y el superior lo aprecia, acuerda su sustitución acto seguido</td></tr>
+<tr><td>Si el recusado la niega</td><td class="h">el superior resuelve en TRES DÍAS, previos los informes y comprobaciones oportunos</td></tr>
+<tr><td>Recursos</td><td class="h">NO cabe recurso, sin perjuicio de alegar la recusación en el recurso contra el acto que ponga fin al procedimiento</td></tr></table>
+<div class="tip">🔑 Cronología: escrito → <b>1 día</b> (recusado contesta) → <b>3 días</b> (superior resuelve)</div>
+<div class="warn">⚠️ Abstención: la inicia el propio empleado. Recusación: la promueven los interesados. En ambas decide el superior inmediato y no cabe recurso autónomo.</div></div>`},
+
+/* ===== GRUPO 3 ===== */
+{g:3,k:"se",i:"🌐",n:"Sede y portal",a:"38-40",c:"#10b981",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(38,c)} La sede electrónica</h2>
+<table>
+<tr><td>Concepto</td><td class="h">dirección electrónica disponible para los ciudadanos a través de redes de telecomunicaciones, cuya titularidad corresponde a una Administración Pública, o a uno o varios organismos públicos o entidades de Derecho Público en el ejercicio de sus competencias</td></tr>
+<tr><td>Responsabilidad del titular</td><td class="h">por la integridad, veracidad y actualización de la información y los servicios</td></tr>
+<tr><td>Garantías mínimas</td><td class="h">identificación del órgano titular y medios para formular sugerencias y quejas; sistemas de comunicaciones seguras cuando sean necesarias</td></tr>
+<tr><td>Identificación segura</td><td class="h">certificados reconocidos o cualificados de autenticación de sitio web, o medio equivalente</td></tr></table>
+<h3>Principios de creación (9)</h3>
+<div class="chips"><span class="h">Transparencia</span><span class="h">Publicidad</span><span class="h">Responsabilidad</span><span class="h">Calidad</span><span class="h">Seguridad</span><span class="h">Disponibilidad</span><span class="h">Accesibilidad</span><span class="h">Neutralidad</span><span class="h">Interoperabilidad</span></div>
+<p style="font-size:.88rem;color:var(--mu)">Cada Administración determina las condiciones e instrumentos de creación. La publicación de informaciones, servicios y transacciones respeta la accesibilidad y el uso conforme a las normas, estándares abiertos y, en su caso, los de uso generalizado por los ciudadanos.</p></div>
+<div class="l" style="--c:${c}"><h2>${A(39,c)} Portal de internet</h2>
+<p class="h">Punto de acceso electrónico cuya titularidad corresponde a una Administración, organismo público o entidad de Derecho Público, que permite el acceso por internet a la información publicada y, en su caso, a la sede electrónica correspondiente.</p>
+<div class="warn">⚠️ Diferencia: la <b>sede</b> es donde se ofrecen servicios y trámites (con responsabilidad del titular); el <b>portal</b> es un punto de acceso a información y, en su caso, a la sede.</div></div>
+<div class="l" style="--c:${c}"><h2>${A(40,c)} Sistemas de identificación de las Administraciones</h2>
+<table>
+<tr><td>Sello electrónico</td><td class="h">basado en certificado electrónico reconocido o cualificado; incluye NIF y denominación y, en su caso, la identidad del titular (sellos de órganos administrativos)</td></tr>
+<tr><td>Transparencia</td><td class="h">la relación de sellos electrónicos, con características de los certificados y prestadores, es pública y accesible por medios electrónicos</td></tr>
+<tr><td>Portal</td><td class="h">se entiende identificada la Administración respecto de la información que publique como propia en su portal</td></tr></table></div>`},
+
+{g:3,k:"au",i:"🤖",n:"Automatizada y firma",a:"41-45",c:"#d97706",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(41,c)} Actuación administrativa automatizada</h2>
+<table>
+<tr><td>Concepto</td><td class="h">cualquier acto o actuación realizada ÍNTEGRAMENTE por medios electrónicos en el marco de un procedimiento, SIN intervención directa de un empleado público</td></tr>
+<tr><td>Requisito previo</td><td class="h">establecer los órganos competentes para: especificaciones, programación, mantenimiento, supervisión, control de calidad y, en su caso, auditoría del sistema y su código fuente</td></tr>
+<tr><td>Impugnación</td><td class="h">se indica el órgano responsable a efectos de impugnación</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(42,c)} Sistemas de firma para la actuación automatizada (2)</h2>
+<table>
+<tr><td>a)</td><td class="h"><b>Sello electrónico</b> de Administración, órgano, organismo o entidad, basado en certificado reconocido o cualificado</td></tr>
+<tr><td>b)</td><td class="h"><b>Código seguro de verificación (CSV)</b> vinculado a la Administración, órgano, organismo o entidad; permite comprobar la integridad del documento accediendo a la sede electrónica</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(43,c)} Firma electrónica del personal</h2>
+<table>
+<tr><td>Regla</td><td class="h">cuando se usen medios electrónicos, la actuación se realiza mediante firma electrónica del TITULAR DEL ÓRGANO o EMPLEADO PÚBLICO (sin perjuicio de los arts. 38, 41 y 42)</td></tr>
+<tr><td>Sistemas</td><td class="h">los determina cada Administración; pueden identificar conjuntamente al titular del puesto o cargo y a la Administración u órgano</td></tr>
+<tr><td>Seguridad pública</td><td class="h">pueden referirse solo al número de identificación profesional del empleado público</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(44,c)} Intercambio electrónico de datos en entornos cerrados</h2>
+<table>
+<tr><td>Validez</td><td class="h">los documentos transmitidos en entornos cerrados entre Administraciones, órganos, organismos y entidades son válidos a efectos de autenticación e identificación de emisores y receptores</td></tr>
+<tr><td>Misma Administración</td><td class="h">ella determina las condiciones y garantías (al menos: relación de emisores y receptores autorizados y naturaleza de los datos)</td></tr>
+<tr><td>Distintas Administraciones</td><td class="h">las condiciones y garantías se establecen mediante CONVENIO</td></tr>
+<tr><td>Siempre</td><td class="h">garantizar la seguridad del entorno y la protección de los datos</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(45,c)} Aseguramiento e interoperabilidad de la firma</h2>
+<table>
+<tr><td>45.1</td><td class="h">las Administraciones pueden determinar los trámites e informes que incluyan firma electrónica reconocida o cualificada y avanzada, basada en certificados reconocidos o cualificados</td></tr>
+<tr><td>45.2</td><td class="h">si usan sistemas de firma distintos de los basados en certificado reconocido o cualificado, para remitir documentación a otras Administraciones pueden SUPERPONER un sello electrónico basado en certificado reconocido o cualificado</td></tr></table></div>`},
+
+{g:3,k:"ar2",i:"🗄️",n:"Archivo y ubicación",a:"46-46 bis",c:"#ec4899",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(46,c)} Archivo electrónico de documentos</h2>
+<table>
+<tr><td>46.1</td><td class="h">todos los documentos de las actuaciones administrativas se almacenan por medios electrónicos, salvo cuando no sea posible</td></tr>
+<tr><td>46.2</td><td class="h">los documentos electrónicos con actos que afecten a derechos o intereses de los particulares se conservan en soporte electrónico (en el formato de origen u otro que asegure identidad e integridad), con posibilidad de trasladar los datos a otros formatos y soportes</td></tr>
+<tr><td>46.3</td><td class="h">los soportes cumplen medidas de seguridad del ESQUEMA NACIONAL DE SEGURIDAD (integridad, autenticidad, confidencialidad, calidad, protección y conservación), con identificación de usuarios, control de accesos, garantías de protección de datos y conservación a largo plazo</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A("46 bis",c)} Ubicación de sistemas de información y comunicaciones para el registro de datos</h2>
+<p><b>Deben ubicarse y prestarse dentro del territorio de la UNIÓN EUROPEA</b> los sistemas para recogida, almacenamiento, procesamiento y gestión de:</p>
+<table>
+<tr><td>1</td><td class="h">Censo electoral</td></tr>
+<tr><td>2</td><td class="h">Padrones municipales de habitantes y otros registros de población</td></tr>
+<tr><td>3</td><td class="h">Datos fiscales relacionados con tributos propios o cedidos</td></tr>
+<tr><td>4</td><td class="h">Datos de los usuarios del Sistema Nacional de Salud</td></tr></table>
+<table><tr><td>Transferencias</td><td class="h">NO pueden transferirse a un tercer país u organización internacional, salvo los que tengan decisión de adecuación de la Comisión Europea o cuando lo exija el cumplimiento de obligaciones internacionales de España</td></tr></table>
+<div class="tip">🔑 Truco: <b>C-P-F-S</b> → <b>C</b>enso · <b>P</b>adrones · <b>F</b>iscales · <b>S</b>alud</div></div>`},
+
+/* ===== GRUPO 4 ===== */
+{g:4,k:"res",i:"📊",n:"Cifras clave",a:"Resumen",c:"#64748b",h:c=>`
+<div class="l" style="--c:${c}"><h2>📊 Números y plazos que hay que saber</h2>
+<table>
+<tr><td>Crear un órgano</td><td><span class="h">3 requisitos</span> (integración y jerarquía, funciones, créditos) · art. 5.3</td></tr>
+<tr><td>No delegable</td><td><span class="h">4 supuestos</span> · art. 9.2</td></tr>
+<tr><td>Quórum órgano colegiado</td><td><span class="h">Presidente + Secretario + mitad de los miembros</span> · art. 17.2</td></tr>
+<tr><td>Convocatoria (AGE)</td><td><span class="h">2 días</span> de antelación mínima · art. 19.3.a</td></tr>
+<tr><td>Voto particular</td><td><span class="h">2 días</span>, por escrito · art. 19.5</td></tr>
+<tr><td>Órgano colegiado AGE</td><td><span class="h">3 o más personas</span> · art. 20.1</td></tr>
+<tr><td>Norma de creación</td><td><span class="h">5 extremos</span> · art. 20.2</td></tr>
+<tr><td>Motivos de abstención</td><td><span class="h">5</span> (parentesco: consanguinidad hasta 4.º grado, afinidad hasta 2.º; servicios: últimos 2 años) · art. 23</td></tr>
+<tr><td>Recusación</td><td>recusado contesta <span class="h">al día siguiente</span>; superior resuelve en <span class="h">3 días</span> · art. 24</td></tr>
+<tr><td>Principios de la sede</td><td><span class="h">9</span> · art. 38.3</td></tr>
+<tr><td>Sistemas de firma automatizada</td><td><span class="h">2: sello electrónico y CSV</span> · art. 42</td></tr>
+<tr><td>Datos en la UE</td><td><span class="h">4 grupos: censo, padrones, fiscales, salud</span> · art. 46 bis</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>🗂️ Rango de la norma de creación de órganos colegiados (art. 22)</h2>
+<div class="chips"><span class="h">Interministerial + Presidente superior a Director general → Real Decreto</span><span class="h">Interministerial (resto) → Orden ministerial conjunta</span><span class="h">Ministerial → Orden ministerial</span><span class="h">Grupos o comisiones de trabajo → Acuerdo de Consejo de Ministros o Ministerios</span></div></div>
+<div class="l" style="--c:${c}"><h2>🔗 Relaciones entre artículos</h2>
+<ul class="c"><li>Art. 12 (firma) → remite a los <b>límites del art. 9</b> (delegación)</li><li>Art. 13 (suplencia) → cubre los casos de <b>abstención y recusación</b> (arts. 23-24)</li><li>Art. 19.3.c → miembros natos <b>no pueden abstenerse en las votaciones</b> (distinto de la abstención por motivos del art. 23)</li><li>Art. 43 → sin perjuicio de los <b>arts. 38, 41 y 42</b></li><li>Art. 42.b (CSV) → se verifica accediendo a la <b>sede electrónica</b> (art. 38)</li></ul></div>`}
+];
+const GN=["🏛️ Órganos y competencia (arts. 5-14)","👥 Órganos colegiados (arts. 15-22)","🚫 Abstención y recusación (arts. 23-24)","💻 Funcionamiento electrónico (arts. 38-46 bis)","📊 Repaso"];
+const $=s=>document.querySelector(s);let cur=0,M={};
+try{M=JSON.parse(localStorage.getItem("l40")||"{}")}catch(e){}
+function sv(){try{localStorage.setItem("l40",JSON.stringify(M))}catch(e){}}
+function pg(){const n=S.filter(s=>M[s.k]).length;$("#pc").textContent=n+"/"+S.length;$("#pb").style.width=n/S.length*100+"%"}
+function nav(){let o="";GN.forEach((g,gi)=>{o+=`<div class="grp">${g}</div><div class="tabs">`;S.forEach((s,i)=>{if(s.g==gi)o+=`<button class="t${i==cur?" on":""}${M[s.k]?" dn":""}" style="--c:${s.c}" onclick="go(${i})"><b>${s.i}</b>${s.n}<small>Arts. ${s.a}</small></button>`});o+="</div>"});$("#nav").innerHTML=o}
+function go(i){cur=i;nav();const s=S[i];$("#v").innerHTML=s.h(s.c)+`<button class="ok${M[s.k]?" on":""}" onclick="mk(this)">${M[s.k]?"✓ Bloque dominado":"Marcar como dominado"}</button>`;pg()}
+function mk(b){const s=S[cur];M[s.k]=!M[s.k];sv();b.classList.toggle("on",!!M[s.k]);b.textContent=M[s.k]?"✓ Bloque dominado":"Marcar como dominado";nav();pg()}
+function rc(){document.body.classList.toggle("recall");$("#rb").classList.toggle("on")}
+document.addEventListener("click",e=>{const h=e.target.closest(".h");if(h&&document.body.classList.contains("recall"))h.classList.toggle("o")});
+const QB=[
+["¿Qué tres requisitos mínimos exige la creación de cualquier órgano administrativo?","Forma de integración y dependencia jerárquica; delimitación de funciones y competencias; dotación de créditos (art. 5.3)"],
+["¿Qué efecto tiene el incumplimiento de una instrucción u orden de servicio sobre la validez de los actos?","Por sí solo no afecta a su validez, sin perjuicio de la responsabilidad disciplinaria (art. 6.2)"],
+["¿Es renunciable la competencia de los órganos administrativos?","No: es irrenunciable (art. 8.1)"],
+["¿Qué figuras NO alteran la titularidad de la competencia?","Delegación de competencias, encomiendas de gestión, delegación de firma y suplencia (art. 8.1)"],
+["¿Entre qué órganos pueden suscitarse conflictos de atribuciones?","Solo entre órganos de una misma Administración no relacionados jerárquicamente, en asuntos con procedimiento no finalizado (art. 14.3)"],
+["¿Puede delegarse la competencia para resolver recursos en el órgano que dictó el acto recurrido?","No (art. 9.2.c)"],
+["¿Cuántos supuestos de competencias no delegables recoge el art. 9.2?","4: relaciones institucionales, disposiciones generales, resolución de recursos contra actos propios y materias que determine una Ley"],
+["¿Qué órgano se considera autor de una resolución adoptada por delegación?","El órgano delegante (art. 9.4)"],
+["¿Se puede subdelegar una competencia que se ejerce por delegación?","No, salvo autorización expresa de una Ley (art. 9.5)"],
+["¿Cabe recurso contra el acuerdo de avocación?","No; puede impugnarse en el recurso contra la resolución del procedimiento (art. 10.2)"],
+["¿Quién puede avocar cuando la delegación se hizo en órganos no dependientes jerárquicamente?","Únicamente el órgano delegante (art. 10.1)"],
+["¿Qué actividades pueden ser objeto de encomienda de gestión?","Actividades de carácter material o técnico (art. 11.1)"],
+["¿Qué condición tiene el órgano o entidad encomendado respecto a los datos personales?","Encargado del tratamiento (art. 11.2)"],
+["¿Cómo se formaliza una encomienda entre Administraciones distintas?","Mediante convenio, publicado en el boletín oficial correspondiente (art. 11.3.b)"],
+["¿Es necesaria la publicación para la validez de la delegación de firma y de la suplencia?","No es necesaria en ninguna de las dos (arts. 12.2 y 13.2)"],
+["Si no se designa suplente, ¿quién ejerce la competencia del órgano?","Quien designe el órgano administrativo inmediato superior (art. 13.1)"],
+["¿Qué quórum se exige para constituir un órgano colegiado?","Presidente y Secretario (o quienes les suplan) y, al menos, la mitad de los miembros (art. 17.2)"],
+["¿Cuándo puede tratarse un asunto que no figura en el orden del día?","Si asisten todos los miembros y se declara la urgencia por voto favorable de la mayoría (art. 17.4)"],
+["¿Qué ocurre con la responsabilidad de quien vota en contra o se abstiene?","Queda exento de la responsabilidad derivada de los acuerdos (art. 17.6)"],
+["¿Con qué antelación mínima deben recibir los miembros la convocatoria en la AGE?","Dos días (art. 19.3.a)"],
+["¿En qué plazo puede formularse voto particular por escrito?","Dos días (art. 19.5)"],
+["¿Tiene voto el Secretario del órgano colegiado?","No (voz sin voto), salvo que la Secretaría la ostente un miembro del órgano (art. 19.4.a)"],
+["¿Cuántas personas, como mínimo, integran un órgano colegiado de la AGE?","Tres o más (art. 20.1)"],
+["¿Qué norma crea un órgano interministerial cuyo Presidente tiene rango superior a Director general?","Real Decreto (art. 22.2)"],
+["¿Pueden los grupos o comisiones de trabajo adoptar acuerdos con efectos directos frente a terceros?","No (art. 22.3)"],
+["¿Cuántos motivos de abstención establece el art. 23.2?","Cinco: interés personal, vínculo o parentesco, amistad íntima o enemistad manifiesta, perito o testigo, relación de servicio"],
+["¿Hasta qué grado de parentesco opera la abstención?","Consanguinidad hasta el cuarto grado y afinidad hasta el segundo (art. 23.2.b)"],
+["¿Cuántos años atrás se computan los servicios profesionales prestados a un interesado como motivo de abstención?","Los dos últimos años (art. 23.2.e)"],
+["¿Quién puede promover la recusación y en qué momento?","Los interesados, en cualquier momento de la tramitación (art. 24.1)"],
+["¿En qué plazo resuelve el superior si el recusado niega la causa?","Tres días (art. 24.4)"],
+["¿Cuántos principios rigen la creación de las sedes electrónicas?","Nueve: transparencia, publicidad, responsabilidad, calidad, seguridad, disponibilidad, accesibilidad, neutralidad e interoperabilidad (art. 38.3)"],
+["¿De qué es responsable el titular de una sede electrónica?","De la integridad, veracidad y actualización de la información y los servicios (art. 38.2)"],
+["¿Qué es la actuación administrativa automatizada?","Cualquier acto realizado íntegramente por medios electrónicos, sin intervención directa de un empleado público (art. 41.1)"],
+["¿Qué dos sistemas de firma contempla el art. 42 para la actuación automatizada?","Sello electrónico y código seguro de verificación (CSV)"],
+["¿Cómo se establecen las condiciones del intercambio electrónico en entornos cerrados entre distintas Administraciones?","Mediante convenio suscrito entre ellas (art. 44.3)"],
+["¿Qué esquema marca las medidas de seguridad del archivo electrónico de documentos?","El Esquema Nacional de Seguridad (art. 46.3)"],
+["¿Dónde deben ubicarse los sistemas que gestionan el censo electoral, los padrones y los datos fiscales y de salud?","Dentro del territorio de la Unión Europea (art. 46 bis)"]];
+function qz(){const x=QB[Math.random()*QB.length|0],q=$("#q");q.hidden=false;q.innerHTML=`<b>Pregunta:</b><p>${x[0]}</p><p hidden><b>Respuesta:</b> ${x[1]}</p><button onclick="this.previousElementSibling.hidden=false">Ver respuesta</button> <button onclick="qz()">Otra ➜</button> <button onclick="$('#q').hidden=true">✕</button>`}
+go(0);
+</script></body></html>
