@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Estatutos UC3M · Defensor, Servicios, Economía y Reforma</title>
+<style>
+:root{--bg:#f6f5fb;--fg:#1d1b2e;--cd:#fff;--mu:#6b6885;--bd:#e3e0f0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14131f;--fg:#ece9fb;--cd:#1e1d2e;--mu:#a29fc0;--bd:#33314a}}
+:root[data-theme="dark"]{--bg:#14131f;--fg:#ece9fb;--cd:#1e1d2e;--mu:#a29fc0;--bd:#33314a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:900px;margin:auto;padding:16px}
+h1{font-size:1.45rem;margin:.1em 0}h2{font-size:1.1rem;line-height:1.3;margin:.2em 0}h3{font-size:.98rem;margin:.9em 0 .2em}
+.sub{color:var(--mu);margin:0 0 10px}
+.bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7c5cff,#ec4899);transition:.4s}
+.story{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:10px 14px;margin:12px 0}
+.grp{margin:12px 0 4px;color:var(--mu);font-size:.76rem;text-transform:uppercase;letter-spacing:.03em}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px}
+.t{border:2px solid var(--bd);background:var(--cd);color:var(--fg);border-radius:14px;padding:8px 6px;cursor:pointer;text-align:center;font:inherit;font-size:.78rem;position:relative}
+.t b{display:block;font-size:1.45rem;line-height:1.15}.t small{display:block;color:var(--mu);font-size:.68rem}
+.t.on{background:var(--c);border-color:var(--c);color:#fff}.t.on small{color:#fff}
+.t.dn::after{content:"✓";position:absolute;top:2px;right:7px;color:#10b981;font-weight:800}.t.on.dn::after{color:#fff}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tools button,#q button,.ok{border:1px solid var(--bd);background:var(--cd);color:var(--fg);border-radius:20px;padding:6px 14px;cursor:pointer;font:inherit}
+.ok.on{background:#10b981;color:#fff;border-color:#10b981}
+#rb.on{background:#7c5cff;color:#fff;border-color:#7c5cff}
+#q{background:var(--cd);border:2px dashed #ec4899;border-radius:14px;padding:10px 14px;margin:12px 0}
+.l{background:var(--cd);border:1px solid var(--bd);border-left:6px solid var(--c);border-radius:14px;padding:12px 14px;margin:12px 0}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.9rem}
+td,th{padding:4px 6px;border-top:1px dashed var(--bd);vertical-align:top;text-align:left}
+th{color:var(--c);font-size:.8rem}
+td:first-child{color:var(--c);font-weight:700}
+.sc{overflow-x:auto}.sc table{min-width:560px}
+.recall .h:not(.o){filter:blur(7px);cursor:pointer;user-select:none}
+.chips span{display:inline-block;background:var(--cd);border:1px solid var(--bd);border-radius:20px;padding:2px 10px;margin:3px;font-size:.85rem}
+.art{display:inline-block;background:var(--c);color:#fff;border-radius:7px;padding:0 6px;font-size:.72rem;font-weight:700}
+.tip{background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:6px 10px;font-size:.9rem;margin:8px 0;color:#1d1b2e}
+.warn{background:#fff3cd;border:1px solid #ffe08a;border-radius:10px;padding:6px 10px;font-size:.9rem;margin:8px 0;color:#1d1b2e}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0}
+.flow span{background:var(--c);color:#fff;border-radius:10px;padding:3px 10px;font-size:.82rem}
+.flow em{font-style:normal;color:var(--mu)}
+ul.c{margin:6px 0;padding-left:1.2em}ul.c li{margin:2px 0}
+</style></head><body><main>
+<h1>🎓 Estatutos de la UC3M</h1>
+<p class="sub">Defensor Universitario · Servicios universitarios · Régimen económico y financiero · Reforma · <b id="pc">0</b> bloques dominados</p>
+<div class="bar"><i id="pb"></i></div>
+<div class="story">🧠 <b>Mapa mental del tema:</b> 🛡️ el <b>Defensor</b> protege derechos (arts. 127-132) → 🧰 los <b>Servicios</b> apoyan docencia e investigación (157-165) → 💶 el <b>Dinero</b> los sostiene: patrimonio, presupuesto y contratación (166-177) → 🔧 la <b>Reforma</b> permite cambiar las reglas del juego (178-180). Las cuatro partes giran sobre los mismos actores: <b>Claustro · Rector · Consejo de Gobierno · Consejo Social · Gerente</b>.</div>
+<div id="nav"></div>
+<div class="tools"><button id="rb" onclick="rc()">🙈 Modo recuerdo</button><button onclick="qz()">❓ Pregúntame</button></div>
+<div id="q" hidden></div>
+<div id="v"></div>
+</main>
+<script>
+const A=(n,c)=>`<span class="art" style="--c:${c}">Art. ${n}</span>`;
+const S=[
+/* ===== GRUPO 0: DEFENSOR ===== */
+{g:0,k:"def",i:"🛡️",n:"Defensor Universitario",a:"127-132",c:"#7c5cff",h:c=>`
+<div class="l" style="--c:${c}"><h2>🔄 Ruta de designación</h2>
+<div class="flow" style="--c:${c}"><span>Rector propone candidato</span><em>→</em><span>Claustro vota</span><em>→</em><span>Mitad más uno de los miembros</span><em>→</em><span>Adjunto en la misma sesión</span></div></div>
+<div class="l" style="--c:${c}"><h2>${A(127,c)} Elección y cese</h2>
+<table>
+<tr><td>Base legal</td><td class="h">disposición adicional decimocuarta de la LOU</td></tr>
+<tr><td>Propone</td><td class="h">el RECTOR, oídos los representantes de estudiantes, del PAS y del Profesorado: un candidato</td></tr>
+<tr><td>Elige</td><td class="h">el CLAUSTRO; resulta elegido con los votos de la MITAD MÁS UNO de los miembros del Claustro</td></tr>
+<tr><td>Cese</td><td class="h">a petición propia o por acuerdo del Claustro con la misma mayoría</td></tr>
+<tr><td>Causas de cese por acuerdo</td><td class="h">incumplimiento de sus obligaciones, o actuaciones que den lugar a lesión de derechos</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(128,c)} Mandato, Adjunto y memoria</h2>
+<table>
+<tr><td>Duración</td><td class="h">TRES años, con reelección por UNA sola vez</td></tr>
+<tr><td>Iniciativa de reelección</td><td class="h">el Rector, o un grupo de claustrales que represente al menos la QUINTA parte del Claustro</td></tr>
+<tr><td>Adjunto</td><td class="h">lo propone el candidato (de su confianza) y lo designa el Claustro en la MISMA sesión, por MAYORÍA SIMPLE</td></tr>
+<tr><td>Complementos retributivos</td><td class="h">el Defensor se equipara a VICERRECTOR; el Adjunto a VICEDECANO</td></tr>
+<tr><td>Memoria anual</td><td class="h">al principio de cada curso, ante el Claustro, de las actividades del curso anterior</td></tr>
+<tr><td>Informes</td><td class="h">por iniciativa propia o de la QUINTA parte del Claustro, sobre los asuntos que se consideren convenientes</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A("129-131",c)} Medios, perfil y apoyo</h2>
+<table>
+<tr><td>129 · Medios</td><td class="h">el Rector provee, de acuerdo con el Defensor, el apoyo administrativo y los medios económicos necesarios</td></tr>
+<tr><td>130 · Perfil</td><td class="h">designado entre profesores y PAS de la propia Universidad; compatibiliza la función con sus tareas reduciéndolas hasta un MÁXIMO del 50%</td></tr>
+<tr><td>131 · Colaboración</td><td class="h">las autoridades académicas y los servicios prestan el apoyo necesario</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(132,c)} Reglamento y órgano asesor</h2>
+<table>
+<tr><td>Reglamento</td><td class="h">el Rector lo propone al CONSEJO DE GOBIERNO para su aprobación, oído el Defensor</td></tr>
+<tr><td>Audiencia</td><td class="h">el Defensor oye, según el caso, a los representantes del sector de la comunidad universitaria concernido</td></tr>
+<tr><td>Órgano de participación y asesoramiento</td><td class="h"><b>2 estudiantes + 2 PAS + 2 PDI</b> (6 miembros)</td></tr></table></div>
+<div class="tip">🔑 Cifras del Defensor: <b>3</b> años · <b>1</b> reelección · <b>1/5</b> del Claustro (reelección e informes) · <b>50%</b> de reducción máxima · <b>2+2+2</b> en el órgano asesor</div>
+<div class="warn">⚠️ Ojo con las mayorías: el Defensor se elige por <b>mitad más uno de los miembros</b>; su Adjunto, por <b>mayoría simple</b>.</div>`},
+
+/* ===== GRUPO 1: SERVICIOS ===== */
+{g:1,k:"sg",i:"🧰",n:"Régimen general",a:"157-159 bis",c:"#0ea5e9",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(157,c)} Finalidad y gestión</h2>
+<table>
+<tr><td>Finalidad</td><td class="h">organizar los servicios necesarios para apoyar la docencia, el estudio, la investigación y la colaboración Universidad-sociedad, según disponibilidades presupuestarias</td></tr>
+<tr><td>Gestión</td><td class="h">directa por la Universidad, o por otras personas o entidades mediante convenios o contratos que deben ser aprobados por el RECTOR</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(158,c)} Creación y supresión</h2>
+<table>
+<tr><td>Quién</td><td class="h">el CONSEJO DE GOBIERNO, a propuesta del Rector, crea y suprime los servicios y aprueba sus reglamentos de organización y funcionamiento</td></tr>
+<tr><td>Acuerdo de creación</td><td class="h">debe especificar la dependencia orgánica y los medios personales y materiales asignados</td></tr>
+<tr><td>Reglamentos</td><td class="h">deben establecer cauces para la participación de los usuarios</td></tr>
+<tr><td>Control de calidad</td><td class="h">podrá constituirse un órgano de control de la calidad de los servicios prestados INDIRECTAMENTE, con representantes de los usuarios y de los distintos sectores</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(159,c)} Dirección y unidades de gestión</h2>
+<table>
+<tr><td>Director</td><td class="h">puede haber un director responsable de la gestión y funcionamiento, con profesionalidad y experiencia, nombrado por el RECTOR</td></tr>
+<tr><td>Unidades de gestión</td><td class="h">pueden constituirse en las Facultades, Escuela y otros centros</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A("159 bis",c)} Unidad de Igualdad</h2>
+<table>
+<tr><td>Creación</td><td class="h">la Universidad contará con una Unidad de Igualdad (principio de igualdad, en especial entre mujeres y hombres)</td></tr>
+<tr><td>Dirección</td><td class="h">la persona que la dirija es nombrada por el RECTOR</td></tr></table>
+<h3>Competencias (4)</h3>
+<table>
+<tr><td>a)</td><td class="h">Elaborar, implantar, seguir y evaluar los Planes de Igualdad</td></tr>
+<tr><td>b)</td><td class="h">Informar y asesorar a los órganos de gobierno y comisiones en políticas de igualdad</td></tr>
+<tr><td>c)</td><td class="h">Elaborar una memoria anual</td></tr>
+<tr><td>d)</td><td class="h">Apoyar estudios que promuevan la igualdad y fomentar su conocimiento y aplicación</td></tr></table>
+<div class="tip">🔑 Truco: <b>P-A-M-E</b> → <b>P</b>lanes · <b>A</b>sesorar · <b>M</b>emoria · <b>E</b>studios</div></div>
+<div class="tip">🔑 Regla de oro: <b>Consejo de Gobierno crea y suprime; Rector nombra directores y aprueba convenios.</b></div>`},
+
+{g:1,k:"so",i:"🔬",n:"OTRI y Biblioteca",a:"160-161",c:"#10b981",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(160,c)} Oficina de Transferencia de Resultados de la Investigación (OTRI)</h2>
+<table>
+<tr><td>Naturaleza</td><td class="h">servicio técnico-administrativo CENTRALIZADO, sin personalidad distinta de la de la Universidad</td></tr>
+<tr><td>Finalidad</td><td class="h">gestión de la actividad investigadora y administración de los fondos generados por la Universidad</td></tr>
+<tr><td>Dependencia</td><td class="h">orgánica del Rector o Vicerrector en quien delegue; autonomía funcional bajo su superior dirección</td></tr></table>
+<h3>Funciones (6)</h3>
+<table>
+<tr><td>a)</td><td class="h">Identificar y difundir la oferta científico-técnica</td></tr>
+<tr><td>b)</td><td class="h">Establecer y desarrollar relaciones con demandantes o promotores de investigación (públicos o privados)</td></tr>
+<tr><td>c)</td><td class="h">Facilitar y gestionar la transferencia de resultados, contratando en nombre de la Universidad los trabajos</td></tr>
+<tr><td>d)</td><td class="h">Llevar la base de datos de investigadores e investigación</td></tr>
+<tr><td>e)</td><td class="h">Informar de convocatorias públicas de financiación (proyectos, becas, infraestructuras…)</td></tr>
+<tr><td>f)</td><td class="h">Gestionar propiedad intelectual e industrial y el vivero de empresas, a través del Parque Científico</td></tr></table>
+<div class="tip">🔑 Truco: <b>I-R-T-B-I-P</b> → <b>I</b>dentificar oferta · <b>R</b>elaciones · <b>T</b>ransferir · <b>B</b>ase de datos · <b>I</b>nformar convocatorias · <b>P</b>ropiedad y vivero</div></div>
+<div class="l" style="--c:${c}"><h2>${A(161,c)} Biblioteca</h2>
+<table>
+<tr><td>Naturaleza</td><td class="h">centro de recursos para el aprendizaje, la docencia, la investigación, la formación continua y la gestión de la Universidad</td></tr>
+<tr><td>Misión</td><td class="h">asegurar la conservación, el acceso y la difusión de los recursos de información y colaborar en la creación del conocimiento</td></tr>
+<tr><td>Competencia</td><td class="h">gestionar los recursos de información con independencia del concepto presupuestario, del procedimiento de adquisición o del soporte</td></tr>
+<tr><td>Presupuesto</td><td class="h"><span style="font-weight:800">al menos el 8%</span> del total de gastos del capítulo de bienes y servicios para el fondo bibliográfico y documental</td></tr>
+<tr><td>Dirección</td><td class="h">dirección ÚNICA; depende orgánicamente del Rector o Vicerrector delegado; se garantiza la representación de los Departamentos y de los estudiantes</td></tr></table></div>`},
+
+{g:1,k:"sr",i:"🖥️",n:"Informática, residencia y medios",a:"162-165",c:"#d97706",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(162,c)} Servicio de Informática</h2>
+<table>
+<tr><td>Misión</td><td class="h">organización general de los sistemas automatizados de información para apoyar docencia, estudio, investigación y gestión</td></tr>
+<tr><td>Funciones</td><td class="h">planificar y gestionar la red y los elementos informáticos conectados · soporte informático a la gestión · atención a los miembros como usuarios de bienes informáticos de la Universidad</td></tr>
+<tr><td>Dependencia</td><td class="h">orgánica del Rector o Vicerrector delegado; órganos en los que se garantiza la presencia de representantes de los DEPARTAMENTOS</td></tr>
+<tr><td>Datos personales</td><td class="h">su reglamento establece medidas para velar por la seguridad de los datos personales</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(163,c)} Servicio de residencia</h2>
+<table>
+<tr><td>Prestación</td><td class="h">mediante convocatoria pública ANUAL</td></tr>
+<tr><td>Directores de Colegios Mayores–Residencias</td><td class="h">nombrados por el RECTOR entre profesores pertenecientes a cuerpos docentes universitarios o al profesorado contratado estable; puede nombrar Subdirectores a propuesta del Vicerrector competente</td></tr>
+<tr><td>Reglamento</td><td class="h">aprobado por el CONSEJO DE GOBIERNO</td></tr>
+<tr><td>Control de calidad</td><td class="h">podrá constituirse un órgano específico con representación de los usuarios</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(164,c)} Medio de comunicación interno</h2>
+<table>
+<tr><td>Garantía</td><td class="h">existencia y difusión de un medio interno de periodicidad MENSUAL durante el período lectivo, en el que publican libremente todos los integrantes de la comunidad</td></tr>
+<tr><td>Nombramientos</td><td class="h">el Consejo de Redacción y el Director los nombra el RECTOR, previa deliberación del Consejo de Gobierno</td></tr>
+<tr><td>Audiovisual</td><td class="h">la Universidad impulsará la creación de medios audiovisuales propios</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(165,c)} Restantes servicios</h2>
+<p class="h">Se rigen por sus reglamentos propios y actúan conforme a las directrices, planes, programas e instrucciones aprobados por los órganos de gobierno.</p></div>
+<div class="tip">🔑 Dependen del <b>Rector o Vicerrector delegado</b>: <b>OTRI · Biblioteca · Informática</b> (arts. 160-162).</div>`},
+
+/* ===== GRUPO 2: ECONOMÍA ===== */
+{g:2,k:"pat",i:"🏠",n:"Patrimonio",a:"166-169",c:"#ec4899",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(166,c)} Principio general</h2>
+<p class="h">La Universidad goza de autonomía económica y financiera, de acuerdo con las leyes.</p></div>
+<div class="l" style="--c:${c}"><h2>${A(167,c)} Patrimonio</h2>
+<table>
+<tr><td>Concepto</td><td class="h">conjunto de bienes, derechos y acciones cuya titularidad ostente y los que pueda adquirir o le sean atribuidos</td></tr>
+<tr><td>Se incorporan</td><td class="h">las donaciones recibidas y el material inventariable y bibliográfico adquirido con fondos de investigación (salvo el que por convenio deba adscribirse a otras entidades)</td></tr>
+<tr><td>Responsabilidad</td><td class="h">la conservación y correcta utilización incumbe a TODA la comunidad universitaria; el incumplimiento se sanciona conforme a la legislación y a las normas del Consejo de Gobierno</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(168,c)} Bienes de dominio público y disposición</h2>
+<table>
+<tr><td>Titularidad</td><td class="h">la Universidad asume los bienes de dominio público afectos a sus fines y los que en el futuro destinen a ellos el Estado, las Comunidades Autónomas o las Corporaciones Locales</td></tr>
+<tr><td>Gestión y disposición</td><td class="h">el CONSEJO DE GOBIERNO gestiona los bienes de dominio público y dispone de los patrimoniales INMUEBLES, previa autorización del CONSEJO SOCIAL</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(169,c)} Inventario y registro</h2>
+<table>
+<tr><td>Inventario general</td><td class="h">lo elabora el GERENTE; se actualiza ANUALMENTE; se deposita en la secretaría general para consulta de los interesados</td></tr>
+<tr><td>Inscripción registral</td><td class="h">corresponde al SECRETARIO GENERAL la inscripción en los registros públicos de bienes y derechos</td></tr></table>
+<div class="tip">🔑 <b>Gerente</b> = inventario · <b>Secretario General</b> = registros · <b>Consejo de Gobierno + autorización del Consejo Social</b> = disponer de inmuebles</div></div>`},
+
+{g:2,k:"pre",i:"📒",n:"Presupuesto y control",a:"170-174",c:"#7c5cff",h:c=>`
+<div class="l" style="--c:${c}"><h2>🔄 Circuito del presupuesto y de la memoria</h2>
+<div class="flow" style="--c:${c}"><span>Gerente: anteproyecto</span><em>→</em><span>Rector presenta</span><em>→</em><span>Consejo de Gobierno aprueba</span><em>→</em><span>Se somete al Consejo Social</span></div>
+<div class="flow" style="--c:#0ea5e9"><span>Gerente: memoria económica</span><em>→</em><span>Consejo de Gobierno aprueba</span><em>→</em><span>Consejo Social: aprobación definitiva</span><em>→</em><span>Se hace pública</span></div></div>
+<div class="l" style="--c:${c}"><h2>${A(170,c)} Presupuesto anual</h2>
+<table>
+<tr><td>Características</td><td class="h">ANUAL, ÚNICO, PÚBLICO y EQUILIBRADO; contiene la totalidad de ingresos y gastos durante el año natural</td></tr>
+<tr><td>Elaboración</td><td class="h">el GERENTE confecciona el anteproyecto teniendo en cuenta las necesidades comunicadas por los órganos; el RECTOR lo presenta al Consejo de Gobierno y, aprobado, se somete al CONSEJO SOCIAL</td></tr>
+<tr><td>Convenios y contratos</td><td class="h">todo programa de actividades por acuerdo, convenio o contrato contabiliza SEPARADAMENTE sus fondos, sin perjuicio de consignarlos en el presupuesto</td></tr></table>
+<div class="tip">🔑 Truco: <b>A-U-P-E</b> → <b>A</b>nual · <b>Ú</b>nico · <b>P</b>úblico · <b>E</b>quilibrado</div></div>
+<div class="l" style="--c:${c}"><h2>${A(171,c)} Memoria económica anual</h2>
+<table>
+<tr><td>Finalidad</td><td class="h">rendir cuentas de la ejecución del presupuesto ante los órganos competentes y ante la comunidad universitaria</td></tr>
+<tr><td>Elaboración</td><td class="h">el GERENTE, bajo la dirección del Rector, que la somete al Consejo de Gobierno; aprobada, la presenta al CONSEJO SOCIAL para su aprobación definitiva; después se hace pública</td></tr>
+<tr><td>Contenido (3)</td><td class="h">liquidación definitiva del presupuesto · informe de la situación patrimonial · informe de la gestión de los recursos económicos</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(172,c)} Transferencias de crédito</h2>
+<table>
+<tr><td>Entre capítulos de gastos corrientes, o entre capítulos de gastos de capital</td><td class="h"><b>Rector</b> si el importe es MENOR al límite máximo de los contratos menores de obra · <b>Consejo de Gobierno</b> si es MAYOR</td></tr>
+<tr><td>Entre gastos corrientes y gastos de capital</td><td class="h"><b>Consejo Social</b></td></tr></table>
+<p style="font-size:.85rem;color:var(--mu)">Todo ello conforme a las normas y procedimientos de ejecución presupuestaria que establezca la Comunidad de Madrid.</p></div>
+<div class="l" style="--c:${c}"><h2>${A(173,c)} Remanentes específicos</h2>
+<p class="h">Los resultantes de las liquidaciones de Centros, Departamentos, Doctorados, Institutos Universitarios de Investigación, Másteres y otros centros, y los generados por convenios, acuerdos o contratos específicos, pueden generar crédito en el ejercicio siguiente, siempre que exista remanente suficiente.</p></div>
+<div class="l" style="--c:${c}"><h2>${A(174,c)} Control interno y auditoría</h2>
+<table>
+<tr><td>Principios</td><td class="h">legalidad, eficacia y eficiencia</td></tr>
+<tr><td>Unidad de control</td><td class="h">podrá constituirse una unidad administrativa con dependencia directa del RECTOR y autonomía funcional respecto del GERENTE, con técnicas de intervención selectiva</td></tr>
+<tr><td>Auditoría externa</td><td class="h">ANUAL, por profesionales capacitados e independientes; el auditor se nombra por un período NO SUPERIOR A CINCO AÑOS</td></tr>
+<tr><td>Resultados</td><td class="h">se comunican al Consejo Social, al Claustro y al Consejo de Gobierno (este fija el procedimiento de difusión a la comunidad)</td></tr></table></div>`},
+
+{g:2,k:"con",i:"📝",n:"Contratación",a:"175-177",c:"#0ea5e9",h:c=>`
+<div class="l" style="--c:${c}"><h2>${A(175,c)} Órgano de contratación</h2>
+<p class="h">El RECTOR es el órgano de contratación y está facultado para suscribir en nombre y representación de la Universidad los contratos en que intervenga.</p></div>
+<div class="l" style="--c:${c}"><h2>${A(176,c)} Mesa de contratación</h2>
+<table>
+<tr><td>Cuándo</td><td class="h">en la contratación mediante concurso</td></tr>
+<tr><td>Quién la nombra</td><td class="h">el órgano de contratación, conforme a la normativa vigente</td></tr>
+<tr><td>Garantía de composición</td><td class="h">al menos UN representante de los Departamentos, centros o servicios afectados</td></tr>
+<tr><td>Sucesión de empresa</td><td class="h">en la contratación indirecta de servicios que impliquen sucesión de empresa, la mesa, ANTES de formular la propuesta de adjudicación, oye a los representantes de los trabajadores de la Universidad</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(177,c)} Acuerdo del Consejo Social</h2>
+<p class="h">Es PRECEPTIVO para suscribir contratos de inversiones de duración superior al año y para las que se comprometan fondos públicos de ejercicios presupuestarios futuros.</p>
+<div class="tip">🔑 <b>Rector contrata</b> · <b>mesa con representante de lo afectado</b> · <b>Consejo Social</b> si la inversión pasa de un año y compromete fondos futuros.</div></div>`},
+
+/* ===== GRUPO 3: REFORMA ===== */
+{g:3,k:"ref",i:"🔧",n:"Reforma de los Estatutos",a:"178-180",c:"#10b981",h:c=>`
+<div class="l" style="--c:${c}"><h2>🔄 Itinerario de la reforma</h2>
+<div class="flow" style="--c:${c}"><span>Iniciativa</span><em>→</em><span>Mesa del Claustro</span><em>→</em><span>Toma en consideración (extraordinario)</span><em>→</em><span>Comisión (proporcional)</span><em>→</em><span>Dictamen</span><em>→</em><span>Aprobación (extraordinario)</span><em>→</em><span>Administración competente</span></div></div>
+<div class="l" style="--c:${c}"><h2>${A(178,c)} Iniciativa y toma en consideración</h2>
+<table>
+<tr><td>Quién tiene iniciativa (reforma total o parcial)</td><td class="h">a) el CONSEJO DE GOBIERNO · b) el CLAUSTRO, a propuesta de la QUINTA parte de sus miembros</td></tr>
+<tr><td>Dónde se presenta</td><td class="h">ante la MESA DEL CLAUSTRO</td></tr>
+<tr><td>Contenido</td><td class="h">el texto articulado propuesto o, al menos, las materias y los preceptos cuya reforma se propugna</td></tr>
+<tr><td>Toma en consideración</td><td class="h">por el Pleno del Claustro, en sesión EXTRAORDINARIA; requiere mayoría ABSOLUTA de los claustrales PRESENTES</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(179,c)} Tramitación y aprobación</h2>
+<table>
+<tr><td>Comisión de estudio</td><td class="h">se elige en la MISMA sesión de la toma en consideración; con representantes de todos los sectores, de forma PROPORCIONAL a la composición del Claustro</td></tr>
+<tr><td>Dictamen</td><td class="h">sirve de base a la discusión en el Pleno, conforme al reglamento del Claustro</td></tr>
+<tr><td>Aprobación</td><td class="h">mayoría ABSOLUTA de los MIEMBROS del Claustro, en sesión EXTRAORDINARIA</td></tr>
+<tr><td>Después</td><td class="h">se eleva a la Administración competente para su aprobación y publicación</td></tr></table></div>
+<div class="l" style="--c:${c}"><h2>${A(180,c)} Límite temporal</h2>
+<p class="h">No se pueden presentar propuestas de reforma en los TRES MESES anteriores a la finalización del mandato del Claustro Universitario.</p></div>
+<div class="warn">⚠️ <b>Dos mayorías absolutas, dos bases distintas:</b> toma en consideración → mayoría absoluta de los <b>presentes</b> (art. 178.3) · aprobación de la reforma → mayoría absoluta de los <b>miembros</b> (art. 179.3).</div>
+<div class="l" style="--c:#64748b"><h2>📎 Complemento: disposiciones finales</h2>
+<table>
+<tr><td>Adicional 1.ª</td><td class="h">boletín oficial de disposiciones de la Universidad, al menos cada CUATRO meses</td></tr>
+<tr><td>Adicional 3.ª</td><td class="h">los plazos de información pública pueden reducirse a la MITAD si la documentación está disponible electrónicamente y consta su fecha de publicación</td></tr>
+<tr><td>Derogatoria</td><td class="h">quedan derogados los Estatutos aprobados por Decreto 197/1995, de 13 de julio</td></tr>
+<tr><td>Final</td><td class="h">entrada en vigor a partir de su publicación en el Boletín Oficial de la Comunidad de Madrid</td></tr></table></div>`},
+
+/* ===== GRUPO 4: REPASO ===== */
+{g:4,k:"mat",i:"🧭",n:"¿Quién decide qué?",a:"Matriz",c:"#d97706",h:c=>`
+<div class="l" style="--c:${c}"><h2>🧭 Matriz de competencias por órgano</h2>
+<div class="sc"><table>
+<tr><th>Órgano</th><th>Qué hace en este tema</th></tr>
+<tr><td>Claustro</td><td class="h">elige y cesa al Defensor (mitad más uno de los miembros) · designa al Adjunto (mayoría simple) · recibe su memoria anual · toma en consideración y aprueba la reforma · recibe los resultados de la auditoría</td></tr>
+<tr><td>Rector</td><td class="h">propone al candidato a Defensor · provee sus medios · propone su reglamento · aprueba convenios y contratos de servicios · nombra directores de servicio, de la Unidad de Igualdad y de las residencias · nombra el Consejo de Redacción (previa deliberación del CG) · es órgano de contratación · presenta el presupuesto · aprueba transferencias menores</td></tr>
+<tr><td>Consejo de Gobierno</td><td class="h">aprueba el reglamento del Defensor · crea y suprime servicios y aprueba sus reglamentos · aprueba el reglamento de residencia · gestiona el dominio público y dispone de inmuebles patrimoniales · aprueba presupuesto y memoria · aprueba transferencias mayores · tiene iniciativa de reforma</td></tr>
+<tr><td>Consejo Social</td><td class="h">autoriza la disposición de inmuebles patrimoniales · recibe el presupuesto · aprueba definitivamente la memoria económica · aprueba transferencias entre gastos corrientes y de capital · acuerdo preceptivo en inversiones plurianuales · recibe los resultados de la auditoría</td></tr>
+<tr><td>Gerente</td><td class="h">elabora el inventario, el anteproyecto de presupuesto y la memoria económica</td></tr>
+<tr><td>Secretario General</td><td class="h">custodia el inventario (secretaría general) · inscribe bienes y derechos en los registros públicos</td></tr></table></div></div>`},
+
+{g:4,k:"cif",i:"📊",n:"Cifras clave",a:"Resumen",c:"#64748b",h:c=>`
+<div class="l" style="--c:${c}"><h2>📊 Números y plazos que hay que saber</h2>
+<table>
+<tr><td>Mandato del Defensor</td><td><span class="h">3 años</span>, reelección <span class="h">1 vez</span> · art. 128.1</td></tr>
+<tr><td>Elección del Defensor</td><td><span class="h">mitad más uno de los miembros del Claustro</span> · art. 127.1</td></tr>
+<tr><td>Adjunto</td><td><span class="h">mayoría simple</span>, misma sesión · art. 128.2</td></tr>
+<tr><td>Iniciativa (reelección, informes, reforma)</td><td><span class="h">1/5 del Claustro</span> · arts. 128, 178</td></tr>
+<tr><td>Dedicación del Defensor</td><td><span class="h">reducción máxima del 50%</span> · art. 130</td></tr>
+<tr><td>Órgano asesor del Defensor</td><td><span class="h">2 + 2 + 2</span> (estudiantes, PAS, PDI) · art. 132.3</td></tr>
+<tr><td>Competencias de la Unidad de Igualdad</td><td><span class="h">4</span> · art. 159 bis</td></tr>
+<tr><td>Funciones de la OTRI</td><td><span class="h">6</span> · art. 160.3</td></tr>
+<tr><td>Biblioteca</td><td><span class="h">≥ 8%</span> del capítulo de bienes y servicios · art. 161.4</td></tr>
+<tr><td>Residencia</td><td>convocatoria pública <span class="h">anual</span> · art. 163.1</td></tr>
+<tr><td>Medio de comunicación interno</td><td><span class="h">mensual</span> en período lectivo · art. 164.1</td></tr>
+<tr><td>Inventario</td><td>actualización <span class="h">anual</span> · art. 169.1</td></tr>
+<tr><td>Presupuesto</td><td><span class="h">anual, único, público y equilibrado</span> · art. 170.1</td></tr>
+<tr><td>Memoria económica: contenido</td><td><span class="h">3 elementos</span> · art. 171.3</td></tr>
+<tr><td>Auditoría externa</td><td><span class="h">anual</span>; auditor por <span class="h">máximo 5 años</span> · art. 174.2</td></tr>
+<tr><td>Inversión con Consejo Social</td><td><span class="h">más de 1 año</span> y fondos de ejercicios futuros · art. 177</td></tr>
+<tr><td>Reforma: toma en consideración</td><td><span class="h">mayoría absoluta de presentes</span> · art. 178.3</td></tr>
+<tr><td>Reforma: aprobación</td><td><span class="h">mayoría absoluta de miembros</span> · art. 179.3</td></tr>
+<tr><td>Veto a propuestas de reforma</td><td><span class="h">3 meses</span> antes del fin del mandato del Claustro · art. 180</td></tr></table></div>`}
+];
+const GN=["🛡️ Defensor Universitario (arts. 127-132)","🧰 Servicios universitarios (Título V, arts. 157-165)","💶 Régimen económico y financiero (Título VI, arts. 166-177)","🔧 Reforma de los Estatutos (Título VII, arts. 178-180)","📊 Repaso"];
+const $=s=>document.querySelector(s);let cur=0,M={};
+try{M=JSON.parse(localStorage.getItem("eu3m")||"{}")}catch(e){}
+function sv(){try{localStorage.setItem("eu3m",JSON.stringify(M))}catch(e){}}
+function pg(){const n=S.filter(s=>M[s.k]).length;$("#pc").textContent=n+"/"+S.length;$("#pb").style.width=n/S.length*100+"%"}
+function nav(){let o="";GN.forEach((g,gi)=>{o+=`<div class="grp">${g}</div><div class="tabs">`;S.forEach((s,i)=>{if(s.g==gi)o+=`<button class="t${i==cur?" on":""}${M[s.k]?" dn":""}" style="--c:${s.c}" onclick="go(${i})"><b>${s.i}</b>${s.n}<small>Arts. ${s.a}</small></button>`});o+="</div>"});$("#nav").innerHTML=o}
+function go(i){cur=i;nav();const s=S[i];$("#v").innerHTML=s.h(s.c)+`<button class="ok${M[s.k]?" on":""}" onclick="mk(this)">${M[s.k]?"✓ Bloque dominado":"Marcar como dominado"}</button>`;pg()}
+function mk(b){const s=S[cur];M[s.k]=!M[s.k];sv();b.classList.toggle("on",!!M[s.k]);b.textContent=M[s.k]?"✓ Bloque dominado":"Marcar como dominado";nav();pg()}
+function rc(){document.body.classList.toggle("recall");$("#rb").classList.toggle("on")}
+document.addEventListener("click",e=>{const h=e.target.closest(".h");if(h&&document.body.classList.contains("recall"))h.classList.toggle("o")});
+const QB=[
+["¿Quién propone al candidato a Defensor Universitario y quién lo elige?","El Rector propone (oídos los representantes de estudiantes, PAS y Profesorado) y lo elige el Claustro (art. 127.1)"],
+["¿Qué mayoría necesita el candidato a Defensor para resultar elegido?","Los votos de la mitad más uno de los miembros del Claustro (art. 127.1)"],
+["¿Por qué causas puede el Claustro cesar al Defensor?","Incumplimiento de sus obligaciones o actuaciones que den lugar a lesión de derechos, con la misma mayoría que para su elección (art. 127.2)"],
+["¿Cuánto dura el mandato del Defensor y cuántas veces puede ser reelegido?","Tres años, con reelección por una sola vez (art. 128.1)"],
+["¿Quién puede tener la iniciativa para proponer la reelección del Defensor?","El Rector o un grupo de claustrales que represente al menos la quinta parte del Claustro (art. 128.1)"],
+["¿Cómo se designa al Defensor Adjunto?","Lo propone el candidato y lo designa el Claustro en la misma sesión que al Defensor, por mayoría simple (art. 128.2)"],
+["¿A qué cargos se equiparan el Defensor y su Adjunto a efectos de complementos retributivos?","El Defensor a Vicerrector y el Adjunto a Vicedecano (art. 128.3)"],
+["¿Cuándo presenta el Defensor su memoria al Claustro?","Anualmente, al principio de cada curso académico, sobre las actividades del curso anterior (art. 128.4)"],
+["¿Entre quiénes se designa al Defensor y cuánto puede reducir sus tareas propias?","Entre profesores y PAS de la propia Universidad; reduce sus tareas hasta un máximo del 50% (art. 130)"],
+["¿Quién aprueba el Reglamento del Defensor Universitario?","El Consejo de Gobierno, a propuesta del Rector y oído el Defensor (art. 132.1)"],
+["¿Cómo se compone el órgano de participación y asesoramiento del Defensor?","Dos estudiantes, dos miembros del PAS y dos del PDI (art. 132.3)"],
+["¿Qué órgano crea y suprime los servicios universitarios?","El Consejo de Gobierno, a propuesta del Rector (art. 158.1)"],
+["¿Quién nombra al director de un servicio universitario?","El Rector (art. 159.1)"],
+["¿Qué debe especificar el acuerdo de creación de un servicio?","La dependencia orgánica y los medios personales y materiales asignados (art. 158.2)"],
+["¿Quién nombra a la persona que dirige la Unidad de Igualdad?","El Rector (art. 159 bis.2)"],
+["¿Cuántas competencias de la Unidad de Igualdad recoge el art. 159 bis.3?","Cuatro: planes de igualdad, informar y asesorar, memoria anual y apoyo a estudios"],
+["¿De quién depende orgánicamente la OTRI?","Del Rector o Vicerrector en quien delegue, con autonomía funcional (art. 160.2)"],
+["¿Qué porcentaje mínimo del capítulo de bienes y servicios debe destinarse al fondo de la Biblioteca?","Al menos el ocho por ciento (art. 161.4)"],
+["¿Quién aprueba el reglamento del servicio de residencia?","El Consejo de Gobierno (art. 163.3)"],
+["¿Con qué periodicidad se presta el servicio de residencia y cómo?","Mediante convocatoria pública anual (art. 163.1)"],
+["¿Qué periodicidad tiene el medio de comunicación interno de la Universidad?","Mensual durante el período lectivo (art. 164.1)"],
+["¿Qué principio general establece el art. 166?","La Universidad goza de autonomía económica y financiera, de acuerdo con las leyes"],
+["¿Qué órgano gestiona los bienes de dominio público y dispone de los patrimoniales inmuebles, y con qué autorización?","El Consejo de Gobierno, previa autorización del Consejo Social (art. 168.2)"],
+["¿Quién elabora el inventario general y con qué periodicidad se actualiza?","El Gerente; se actualiza anualmente y se deposita en la secretaría general (art. 169.1)"],
+["¿A quién corresponde inscribir en los registros públicos los bienes y derechos de la Universidad?","Al Secretario General (art. 169.2)"],
+["¿Qué cuatro características tiene el presupuesto de la Universidad?","Anual, único, público y equilibrado (art. 170.1)"],
+["¿Quién confecciona el anteproyecto de presupuesto y quién lo presenta ante el Consejo de Gobierno?","El Gerente lo confecciona y el Rector lo presenta (art. 170.2)"],
+["¿Qué tres elementos contiene la memoria económica anual?","Liquidación definitiva del presupuesto, informe de la situación patrimonial e informe de la gestión de los recursos económicos (art. 171.3)"],
+["¿Quién da la aprobación definitiva a la memoria económica anual?","El Consejo Social (art. 171.2)"],
+["¿Qué órgano aprueba las transferencias de crédito entre gastos corrientes y gastos de capital?","El Consejo Social (art. 172.2)"],
+["¿Quién aprueba las transferencias entre capítulos de gastos corrientes si superan el límite de los contratos menores de obra?","El Consejo de Gobierno (art. 172.1.b)"],
+["¿Cada cuánto se realiza la auditoría financiera externa y por cuánto tiempo se nombra al auditor?","Anualmente; el auditor se nombra por un período no superior a cinco años (art. 174.2)"],
+["¿Quién es el órgano de contratación de la Universidad?","El Rector (art. 175)"],
+["¿Qué garantía de composición tiene la mesa de contratación en los concursos?","Al menos un representante de los Departamentos, centros o servicios afectados (art. 176)"],
+["¿Cuándo es preceptivo el acuerdo del Consejo Social en un contrato?","En contratos de inversiones de duración superior al año que comprometan fondos públicos de ejercicios futuros (art. 177)"],
+["¿Quién tiene la iniciativa de reforma de los Estatutos?","El Consejo de Gobierno y el Claustro, a propuesta de la quinta parte de sus miembros (art. 178.1)"],
+["¿Ante qué órgano se presenta la iniciativa de reforma?","Ante la Mesa del Claustro (art. 178.2)"],
+["¿Qué mayoría exige la toma en consideración de la reforma?","Mayoría absoluta de los claustrales presentes, en sesión extraordinaria (art. 178.3)"],
+["¿Qué mayoría exige la aprobación de la reforma por el Claustro?","Mayoría absoluta de los miembros del Claustro, en sesión extraordinaria (art. 179.3)"],
+["¿Cómo se compone la comisión que estudia la reforma?","Representantes de todos los sectores, proporcional a la composición del Claustro; se elige en la misma sesión de la toma en consideración (art. 179.1)"],
+["¿Cuándo no se pueden presentar propuestas de reforma de los Estatutos?","En los tres meses anteriores a la finalización del mandato del Claustro (art. 180)"]];
+function qz(){const x=QB[Math.random()*QB.length|0],q=$("#q");q.hidden=false;q.innerHTML=`<b>Pregunta:</b><p>${x[0]}</p><p hidden><b>Respuesta:</b> ${x[1]}</p><button onclick="this.previousElementSibling.hidden=false">Ver respuesta</button> <button onclick="qz()">Otra ➜</button> <button onclick="$('#q').hidden=true">✕</button>`}
+go(0);
+</script></body></html>
